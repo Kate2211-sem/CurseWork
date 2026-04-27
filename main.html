@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная | Салон красоты OK!</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+  <div class="container header__container">
+    <!-- Логотип -->
+    <a href="main.html" class="header__logo">
+      <img src="img/header/ok-logo.png" alt="OK!" class="logo-ok">
+      <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
+    </a>
+
+    <!-- Навигация -->
+    <nav class="nav" id="mainNav">
+      <ul class="nav__list">
+        <li><a href="#" class="nav__link active">Главная</a></li>
+        <li><a href="#" class="nav__link">Стоимость</a></li>
+        <li><a href="#" class="nav__link">Магазин косметики</a></li>
+        <li><a href="#" class="nav__link">О нас</a></li>
+        <li><a href="#" class="nav__link">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <!-- Правая часть: всё сгруппировано -->
+    <div class="header__right">
+      <!-- Инструменты (язык, тема, слабовидящие) -->
+      <div class="header__tools">
+        <button class="tool-btn" data-tool="lang">RU</button>
+        <button class="tool-btn" data-tool="theme">🌙</button>
+        <button class="tool-btn" data-tool="access">👁</button>
+      </div>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com" class="social-link" target="_blank">
+        <img src="img/header/instagram.png" alt="Instagram">
+      </a>
+
+      <!-- Кнопка записи -->
+      <a href="#" class="btn-online">Онлайн запись</a>
+
+      <!-- Зона пользователя -->
+      <div class="user-zone">
+        <a href="#" class="icon-btn">
+          <span>❤️</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="#" class="icon-btn">
+          <span>🛒</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="index.html" class="user-profile">
+          <span class="user-name">Войти</span>
+        </a>
+      </div>
+
+      <!-- Бургер -->
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+  <!-- Здесь будет остальной контент страницы -->
+ <main class="main">
+    
+
+<!-- Секция с заголовком -->
+<section class="hero">
+    <div class="hero__container">
+      
+      <!-- ЛЕВАЯ ЧАСТЬ: Текст и кнопки -->
+      <div class="hero__content">
+        <h1 class="hero-title">Хорошие волосы это<br>залог красивого образа!</h1>
+        <p class="hero-description">
+          Вы готовы к погружению в яркую страничку Вашей истории? Тогда Добро Пожаловать!
+        </p>
+        
+        <div class="hero-actions-group">
+          <!-- Кнопки вместе -->
+          <div class="hero-buttons">
+            <button class="btn-primary">Перейти в магазин</button>
+            <button class="btn-secondary">Личный кабинет</button>
+          </div>
+          
+          <!-- Ссылка отдельно -->
+          <a href="#" class="link-arrow">
+            Узнать больше о нас <span class="arrow-icon">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ПРАВАЯ ЧАСТЬ: Картинки (только ОДИН раз!) -->
+      <div class="hero__visuals">
+        <img src="img/hero/hero-detail.png" alt="Детали укладки" class="hero-img hero-img--detail">
+        <img src="img/hero/hero-main.png" alt="Главная модель" class="hero-img hero-img--main">
+      </div>
+<div class="floating-arrows">
+      <span class="arrow arrow-left">&#10094;</span>
+      <span class="arrow arrow-right">&#10095;</span>
+    </div>
+    </div>
+  </section>
+  <!-- Секция с информационными карточками -->
+<section class="info-cards-section">
+  <div class="info-cards__container">
+    
+    <!-- Карточка 1: Телефон -->
+    <div class="info-card info-card--phone">
+      <img src="img/hero/phone.png" alt="Телефон" class="info-card__icon">
+      <h3 class="info-card__title">+375 25 655-44-33</h3>
+      <p class="info-card__subtitle">Запись и информация</p>
+    </div>
+
+    <!-- Карточка 2: Адрес (оранжевая) -->
+    <div class="info-card info-card--accent">
+      <img src="img/hero/location.png" alt="Адрес" class="info-card__icon">
+      <h3 class="info-card__title info-card__title--light">Ул. Ленинградская, 10</h3>
+      <p class="info-card__subtitle info-card__subtitle--light">Вход со двора</p>
+    </div>
+
+    <!-- Карточка 3: Время -->
+    <div class="info-card info-card--hours">
+      <img src="img/hero/clock.png" alt="Время" class="info-card__icon">
+      <h3 class="info-card__title">9:00 - 21:00</h3>
+      <p class="info-card__subtitle">Ежедневно</p>
+    </div>
+
+  </div>
+</section>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
