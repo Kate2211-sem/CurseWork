@@ -903,3 +903,186 @@ body {
     width: 100%;
 }
 }
+/* ========================================= */
+/* СЕКЦИЯ "ПРИХОДИТЕ К НАМ" (ЧИСТЫЙ ЛИСТ)   */
+/* ========================================= */
+
+/* ========== VISIT-US: DESKTOP STYLES ========== */
+.visit-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+    background-color: #F9F5F0;
+    width: 100%;
+}
+
+.visit-us__header {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.visit-us__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin: 0 0 10px 0;
+}
+
+.visit-us__subtitle {
+    color: rgba(51, 51, 51, 0.50);
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.visit-us__content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 72px; /* Расстояние между картинкой и прайсом */
+}
+
+.visit-us__image {
+    position: relative; /* Чтобы позиционировать жёлтый круг */
+    flex-shrink: 0;
+    margin-left: 0px;
+    margin-right: -200px;
+    width: 664px;
+    height: 443px;
+}
+
+.visit-us__image img {
+     max-width: 740px;
+    max-height: 520px;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+/* ✅ ЖЁЛТЫЙ КРУГ (декоративный элемент) */
+.visit-us__image::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #FFD028 0%, #FF8A00 100%);
+    border-radius: 50%;
+    z-index: -1; /* Позади картинки */
+}
+
+.visit-us__price-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.price-title {
+    color: #FD9113;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.price-list {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.price-list__names, .price-list__values {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    line-height: 42px;
+}
+
+.price-list__names { font-weight: 500; }
+.price-list__values { font-weight: 700; }
+
+.btn-gradient {
+    width: 211px;
+    height: 55px;
+    border: none;
+    border-radius: 15px;
+    color: #FFF;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+   background: linear-gradient(270deg, #FD5913 0%, #FD9F13 100%), linear-gradient(90deg, #F50276 0.04%, #F50259 99.96%);
+
+    box-shadow: 0 0 20px 0 rgba(254, 167, 20, 0.50);
+    transition: 0.3s;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px 0 rgba(254, 167, 20, 0.70);
+}/* ========== БАННЕР (ПРОМО) ========== */
+.promo-banner {
+    width: 975px;
+    height: 136px;
+    margin: 80px auto 0;
+    border-radius: 15px;
+    
+    /*  Светлый телесный градиент (без свечения и прозрачности) */
+    background: linear-gradient(270deg, #FFF8F0 0%, #FFE8D6 100%);
+    
+    /* Убрали box-shadow, чтобы блок был обычным и плоским */
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 130px;
+}
+
+.promo-text { 
+    font-size: 16px; 
+    color: #333; 
+    margin-bottom: 5px; 
+}
+
+.promo-target { 
+    font-size: 22px; 
+    font-weight: 700; 
+    color: #333; 
+}
+
+.promo-banner__value { 
+    display: flex; 
+    align-items: baseline; 
+    gap: 10px; 
+}
+
+/* "до" — ярко-оранжевый, как 20% */
+.promo-pre { 
+    font-size: 24px; 
+    font-weight: 700; 
+    color: #FD5913; 
+}
+
+/* "20%" — ярко-оранжевый и тоньше */
+.promo-percent {
+    font-size: 60px;
+    font-weight: 700; /* Было 800 → сделали тоньше */
+    color: #FD5913;   /* Яркий оранжевый */
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
