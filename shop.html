@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магазин косметики  | Салон красоты OK!</title>
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+  <div class="container header__container">
+    <!-- Логотип -->
+    <a href="main.html" class="header__logo">
+      <img src="img/header/ok-logo.png" alt="OK!" class="logo-ok">
+      <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
+    </a>
+
+    <!-- Навигация -->
+    <nav class="nav" id="mainNav">
+      <ul class="nav__list">
+        <li><a href="main.html" class="nav__link active">Главная</a></li>
+        <li><a href="#" class="nav__link">Стоимость</a></li>
+        <li><a href="shop.html" class="nav__link">Магазин косметики</a></li>
+        <li><a href="#" class="nav__link">О нас</a></li>
+        <li><a href="#" class="nav__link">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <!-- Правая часть: всё сгруппировано -->
+    <div class="header__right">
+      <!-- Инструменты (язык, тема, слабовидящие) -->
+      <div class="header__tools">
+        <button class="tool-btn" data-tool="lang">RU</button>
+        <button class="tool-btn" data-tool="theme">🌙</button>
+        <button class="tool-btn" data-tool="access">👁</button>
+      </div>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com" class="social-link" target="_blank">
+        <img src="img/header/instagram.png" alt="Instagram">
+      </a>
+
+      <!-- Кнопка записи -->
+      <a href="#" class="btn-online">Онлайн запись</a>
+
+      <!-- Зона пользователя -->
+      <div class="user-zone">
+        <a href="#" class="icon-btn">
+          <span>❤️</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="#" class="icon-btn">
+          <span>🛒</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="index.html" class="user-profile">
+          <span class="user-name">Войти</span>
+        </a>
+      </div>
+
+      <!-- Бургер -->
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+ <main class="shop">
+    <div class="container">
+        <div class="shop__header">
+            <div class="shop__text">
+                <h1 class="shop__title">Магазин косметики</h1>
+                <p class="shop__description">
+                    Здоровые и ухоженные волосы - то, ради чего работают наши мастера. Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос.
+                </p>
+            </div>
+            <div class="shop__benefits">
+                <div class="benefit">
+                    <div class="benefit__icon icon-green">
+                        <img src="img/icons/gift.png" alt="Пробники">
+                    </div>
+                    <div class="benefit__info">
+                        <h3>Бесплатные пробники</h3>
+                        <p>Для всех покупателей</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit__icon icon-green">
+                        <img src="img/icons/tag.png" alt="Цены">
+                    </div>
+                    <div class="benefit__info">
+                        <h3>Цены ниже магазина</h3>
+                        <p>Напрямую от поставщика</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop__filters">
+            <div class="filter-item">
+                <span class="filter-label">Производитель</span>
+                <select class="filter-select"><option>ESTEL</option></select>
+            </div>
+            <div class="filter-item">
+                <span class="filter-label">Категория</span>
+                <select class="filter-select"><option>Шампунь</option></select>
+            </div>
+            <div class="filter-price-wrapper">
+                <span class="price-value">12 р.</span>
+                <div class="neon-range">
+                    <div class="neon-line"></div>
+                    <div class="neon-dot dot-left"></div>
+                    <div class="neon-dot dot-right"></div>
+                </div>
+                <span class="price-value">56 р.</span>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/sh1.jpg" alt=""></div>
+                <p class="p-category">Шампунь</p>
+                <h2 class="p-name">Estel Curex Versus Winter Защита</h2>
+                <div class="p-footer"><span class="p-price">25,90 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><span class="discount-badge">%</span><img src="img/products/s1.jpg" alt=""></div>
+                <p class="p-category">Спрей</p>
+                <h2 class="p-name">Estel 18+ Многофункциональный</h2>
+                <div class="p-footer"><span class="p-price orange">19,90 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/ma1.jpg" alt=""></div>
+                <p class="p-category">Маска</p>
+                <h2 class="p-name">Estel Otium Aqua Увлажнение</h2>
+                <div class="p-footer"><span class="p-price">32,50 <small>руб.</small></span><span class="p-volume">300 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s2.jpg" alt=""></div>
+                <p class="p-category">Масло</p>
+                <h2 class="p-name">Londa Velvet Oil с арганой</h2>
+                <div class="p-footer"><span class="p-price">45,00 <small>руб.</small></span><span class="p-volume">100 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s3.jpg" alt=""></div>
+                <p class="p-category">Кондиционер</p>
+                <h2 class="p-name">Matrix Total Results Brass Off</h2>
+                <div class="p-footer"><span class="p-price">28,10 <small>руб.</small></span><span class="p-volume">300 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s4.jpg" alt=""></div>
+                <p class="p-category">Сыворотка</p>
+                <h2 class="p-name">Ollin Perfect Hair 15 в 1</h2>
+                <div class="p-footer"><span class="p-price">18,50 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s5.jpg" alt=""></div>
+                <p class="p-category">Стайлинг</p>
+                <h2 class="p-name">Schwarzkopf Silhouette Лак</h2>
+                <div class="p-footer"><span class="p-price">35,20 <small>руб.</small></span><span class="p-volume">500 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s6.jpg" alt=""></div>
+                <p class="p-category">Пилинг</p>
+                <h2 class="p-name">Nioxin Scalp Recovery Пилинг</h2>
+                <div class="p-footer"><span class="p-price">54,90 <small>руб.</small></span><span class="p-volume">150 мл</span></div>
+            </div>
+        </div>
+
+        <section class="banner">
+            <div class="banner__body">
+                <div class="banner__content">
+                    <p class="banner__subtitle">Скидка января</p>
+                    <h2 class="banner__title">Комплект для ухода<br>за волосами KIKIMORA</h2>
+                    <a href="#" class="banner__link">Перейти к товару <span>→</span></a>
+                </div>
+                <div class="banner__discount">-20%</div>
+                <img src="img/sale/kiki_set_s_montazhnaya-oblast-1 1.png" alt="KIKIMORA" class="banner__img">
+            </div>
+        </section>
+
+        <div class="product-grid second-block">
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/sh2.jpg" alt=""></div>
+                <p class="p-category">Шампунь</p>
+                <h2 class="p-name">Londa Color Radiance Защита цвета</h2>
+                <div class="p-footer"><span class="p-price">22,40 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><span class="discount-badge">%</span><img src="img/products/ma2.jpg" alt=""></div>
+                <p class="p-category">Бальзам</p>
+                <h2 class="p-name">Estel Otium Miracle Восстановление</h2>
+                <div class="p-footer"><span class="p-price orange">17,80 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s7.jpg" alt=""></div>
+                <p class="p-category">Уход</p>
+                <h2 class="p-name">Ollin Bionika Плотность волос</h2>
+                <div class="p-footer"><span class="p-price">29,90 <small>руб.</small></span><span class="p-volume">100 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s8.jpg" alt=""></div>
+                <p class="p-category">Спрей</p>
+                <h2 class="p-name">Estel Couture Термозащита</h2>
+                <div class="p-footer"><span class="p-price">26,00 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s9.jpg" alt=""></div>
+                <p class="p-category">Спрей</p>
+                <h2 class="p-name">Matrix Biolage Глубокое увлажнение</h2>
+                <div class="p-footer"><span class="p-price">41,20 <small>руб.</small></span><span class="p-volume">150 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/sh3.jpg" alt=""></div>
+                <p class="p-category">Шампунь</p>
+                <h2 class="p-name">Wella Invigo Питание и блеск</h2>
+                <div class="p-footer"><span class="p-price">31,50 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="img/products/s10.jpg" alt=""></div>
+                <p class="p-category">Мусс</p>
+                <h2 class="p-name">Londa Dramatic Hold Объем</h2>
+                <div class="p-footer"><span class="p-price">24,90 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><span class="discount-badge">%</span><img src="img/products/s11.jpg" alt=""></div>
+                <p class="p-category">Уход</p>
+                <h2 class="p-name">Matrix Keep Me Vivid Яркость цвета</h2>
+                <div class="p-footer"><span class="p-price orange">21,30 <small>руб.</small></span><span class="p-volume">300 мл</span></div>
+            </div>
+        </div>
+       
+    </div>
+ <section class="about-preview">
+    <div class="container">
+        <div class="about-preview__content">
+            <!-- Левая часть: Фото + Декоративный круг -->
+            <div class="about-preview__image-block">
+                <div class="about-preview__circle"></div>
+                <img src="img/about/hairstyle.png" alt="Ваше место для красоты">
+            </div>
+            
+            <!-- Правая часть: Текст + Кнопка -->
+            <div class="about-preview__text-block">
+                <h2 class="about-preview__title">Ваше место<br>для красоты</h2>
+                <p class="about-preview__desc">
+                    Парикмахерская Ок - это счастливые девушки и парни, яркие цвета волос и воздушные локоны. Это дружная семья, которая встретит Вас и окутает заботой с первого шага в парикмахерскую.
+                </p>
+                <button class="btn-gradient-blue about-preview__btn">Узнать больше о нас</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="beauty-blog">
+    <div class="container">
+        <!-- Заголовок и ссылка -->
+        <div class="blog-header">
+            <h2 class="blog-title">Бьюти блог</h2>
+            <a href="#" class="blog-link-all">
+                Смотреть все статьи
+                <!-- Стрелочка -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.33333 8H12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Карточки -->
+        <div class="blog-cards">
+            <!-- Карточка 1 -->
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="img/blog/post-1.png" alt="Антистатик зимой">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Антистатик зимой</h3>
+                    <p class="card-text">
+                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                    </p>
+                    <a href="#" class="card-link">
+                        Читать далее
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Карточка 2 -->
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="img/blog/post-2.png" alt="Мой голову правильно">
+                    <span class="card-badge">Новый пост</span> <!-- Бейдж как на макете -->
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Мой голову правильно</h3>
+                    <p class="card-text">
+                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                    </p>
+                    <a href="#" class="card-link">
+                        Читать далее
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Карточка 3 -->
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="img/blog/post-3.png" alt="Уход за кончиками">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Уход за кончиками</h3>
+                    <p class="card-text">
+                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                    </p>
+                    <a href="#" class="card-link">
+                        Читать далее
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+<section class="instagram">
+    <div class="container">
+        <div class="instagram__header">
+            <h2 class="instagram__title">Мы в инстаграм!</h2>
+            <a href="#" class="instagram__link">
+                <span>Подпишись</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <g opacity="0.7">
+                        <path d="M14.8281 7.08524C14.828 7.08507 14.8278 7.08486 14.8276 7.08469L11.766 4.03781C11.5366 3.80956 11.1656 3.81041 10.9373 4.0398C10.709 4.26917 10.7099 4.64015 10.9393 4.86844L12.9949 6.91406H0.585938C0.262324 6.91406 0 7.17638 0 7.5C0 7.82361 0.262324 8.08594 0.585938 8.08594H12.9948L10.9393 10.1316C10.7099 10.3598 10.7091 10.7308 10.9373 10.9602C11.1657 11.1896 11.5367 11.1904 11.766 10.9622L14.8276 7.91531C14.8278 7.91513 14.828 7.91493 14.8282 7.91475C15.0577 7.68571 15.0569 7.31352 14.8281 7.08524Z" fill="#FE5B14"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+
+        <div class="instagram__grid">
+            <div class="instagram__item"><img src="img/inst/1.png" alt="Inst 1"></div>
+            <div class="instagram__item"><img src="img/inst/2.png" alt="Inst 2"></div>
+            <div class="instagram__item">
+                <img src="img/inst/3.png" alt="Inst 3">
+                <div class="instagram__overlay">
+                    <span>Перейти в Instagram →</span>
+                </div>
+            </div>
+            <div class="instagram__item"><img src="img/inst/4.png" alt="Inst 4"></div>
+            <div class="instagram__item"><img src="img/inst/5.png" alt="Inst 5"></div>
+        </div>
+    </div>
+</section>
+<section class="contacts">
+    <div class="container contacts__container">
+        <div class="contacts__content">
+            <h2 class="contacts__title">Как нас найти</h2>
+            
+            <div class="contacts__item">
+                <p class="contacts__label">Адрес</p>
+                <p class="contacts__info">Минск, Ленинградская 10</p>
+                <a href="#" class="contacts__link">Схема прохода</a>
+            </div>
+
+            <div class="contacts__item">
+                <p class="contacts__label">Телефон</p>
+                <p class="contacts__info">+375 25 655-44-33</p>
+            </div>
+
+            <button class="btn-gradient contacts__btn">Записаться онлайн</button>
+        </div>
+
+        <div class="contacts__map-wrapper">
+            <div id="map" class="contacts__map">
+                <img src="img/contacts/map.png" alt="Карта" class="map-bg">
+                
+                <div class="map-marker">
+                    <img src="img/header/ok-logo.png" alt="OK!">
+                    <span>Ленинградская 10</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  </main>
+<footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__logo-block">
+            <img src="img/header/ok-logo.png" alt="OK!" class="footer__logo">
+            <p class="footer__brand">Парикмахерская ОК</p>
+            <span class="footer__unp">УНП 1964554378</span>
+        </div>
+
+        <div class="footer__menu footer__menu--bold">
+            <a href="#">Женский зал</a>
+            <a href="#">Мужской зал</a>
+            <a href="#">Маникюр</a>
+            <a href="#">Brow-сервис</a>
+        </div>
+
+        <div class="footer__menu footer__menu--medium">
+            <a href="#">О нас</a>
+            <a href="#">Стоимость</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Контакты</a>
+        </div>
+
+        <div class="footer__contacts">
+            <div class="footer__phone">
+                <img src="img/hero/phone.png" alt="" class="footer__icon">
+                <a href="tel:+375256554433">+375 25 655-44-33</a>
+            </div>
+            <div class="footer__time">
+                <img src="img/hero/clock.png" alt="" class="footer__icon">
+                <span>9:00 - 21:00</span>
+            </div>
+        </div>
+    </div>
+</footer>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
