@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная | Салон красоты OK!</title>
+  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/men-hall.css">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+  <div class="container header__container">
+    <!-- Логотип -->
+    <a href="main.html" class="header__logo">
+      <img src="img/header/ok-logo.png" alt="OK!" class="logo-ok">
+      <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
+    </a>
+
+  <nav class="nav">
+    <ul class="nav__list">
+        <li class="nav__item">
+            <a href="main.html" class="nav__link">Главная</a>
+        </li>
+        <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">Стоимость</a>
+            <ul class="dropdown">
+                <li><a href="men-hall.html" class="dropdown__link">Мужской зал</a></li>
+                <li><a href="women-hall.html" class="dropdown__link">Женский зал</a></li>
+                <li><a href="#" class="dropdown__link">Маникюр</a></li>
+                <li><a href="#" class="dropdown__link">Brow-сервис</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <a href="shop.html" class="nav__link">Магазин косметики</a>
+            
+        </li>
+         <li><a href="reviews.html" class="nav__link">О нас</a></li>
+        <li><a href="contacts.html" class="nav__link">Контакты</a></li>
+    </ul>
+</nav>
+
+    <!-- Правая часть: всё сгруппировано -->
+    <div class="header__right">
+      <!-- Инструменты (язык, тема, слабовидящие) -->
+      <div class="header__tools">
+        <button class="tool-btn" data-tool="lang">RU</button>
+        <button class="tool-btn" data-tool="theme">🌙</button>
+        <button class="tool-btn" data-tool="access">👁</button>
+      </div>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com" class="social-link" target="_blank">
+        <img src="img/header/instagram.png" alt="Instagram">
+      </a>
+
+      <!-- Кнопка записи -->
+      <a href="#" class="btn-online">Онлайн запись</a>
+
+      <!-- Зона пользователя -->
+      <div class="user-zone">
+        <a href="#" class="icon-btn">
+          <span>❤️</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="#" class="icon-btn">
+          <span>🛒</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="index.html" class="user-profile">
+          <span class="user-name">Войти</span>
+        </a>
+      </div>
+
+      <!-- Бургер -->
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<section class="men-hall">
+    <div class="container">
+        <div class="men-hall__content">
+            
+            <div class="men-hall__text-wrapper">
+                <h1 class="men-hall__title">Мужские стрижки</h1>
+                <p class="men-hall__description">
+                    Стрижка для мужчины - важная часть стиля. Если Вы ищите новые идеи, хотите обновить свою стрижку или кардинально поменять образ, приходите в Парикмахерскую Ок. Вам помогут с выбором стрижки, которая подходит именно Вам. Подберем стрижки для любой длины волос.
+                </p>
+            </div>
+
+            <div class="men-hall__image-block">
+                <div class="men-hall__circle-bg">
+                    <svg width="155" height="155" viewBox="0 0 155 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="69.5" cy="67.5" r="62.5" fill="url(#men_grad)"/>
+                        <defs>
+                            <linearGradient id="men_grad" x1="132" y1="66.3636" x2="7" y2="66.3636" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#8BA4D8"/><stop offset="1" stop-color="#00C3FF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <img src="img/men/men-hall.png" alt="Мужчина" class="men-hall__main-img">
+            </div>
+
+        </div>
+    </div>
+</section>
+    <section class="info-cards-section info-cards-section--men">
+        <div class="info-cards__container">
+            <div class="info-card info-card--phone">
+                <img src="img/hero/phone.png" alt="Телефон" class="info-card__icon">
+                <h3 class="info-card__title">+375 25 655-44-33</h3>
+                <p class="info-card__subtitle">Запись и информация</p>
+            </div>
+
+            <div class="info-card info-card--accent">
+                <img src="img/hero/location.png" alt="Адрес" class="info-card__icon">
+                <h3 class="info-card__title info-card__title--light">Ул. Ленинградская, 10</h3>
+                <p class="info-card__subtitle info-card__subtitle--light">Вход со двора</p>
+            </div>
+
+            <div class="info-card info-card--hours">
+                <img src="img/hero/clock.png" alt="Время" class="info-card__icon">
+                <h3 class="info-card__title">9:00 - 21:00</h3>
+                <p class="info-card__subtitle">Ежедневно</p>
+            </div>
+        </div>
+    </section>
+    <section class="price-section">
+    <div class="container">
+        <h2 class="price-section__title">Стоимость услуг</h2>
+        
+        <div class="price-section__content">
+            <div class="price-section__image-block">
+                <img src="img/men/men-price.png" alt="Мужские стрижки" class="price-section__img">
+                <div class="price-section__circle">
+                    <svg width="125" height="125" viewBox="0 0 125 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="62.5" cy="62.5" r="62.5" fill="url(#price_grad)"/>
+                        <defs>
+                            <linearGradient id="price_grad" x1="125" y1="62.5" x2="0" y2="62.5" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#8BA4D8"/><stop offset="1" stop-color="#00C3FF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="price-section__info">
+                <div class="promo-card">
+                    <div class="promo-card__text">
+                        <span class="promo-card__label">Дарим скидку</span>
+                        <span class="promo-card__target">Новым клиентам</span>
+                    </div>
+                    <div class="promo-card__value">20%</div>
+                </div>
+
+                <div class="price-list">
+    <div class="price-row">
+        <span class="price-name">Стрижка модельная</span>
+        <span class="price-val">от 20 руб.</span>
+    </div>
+    
+    <div class="price-row">
+        <span class="price-name">Борода и усы</span>
+        <span class="price-val">15 руб.</span>
+    </div>
+    
+    <div class="price-row">
+        <span class="price-name">Стрижка машинкой</span>
+        <span class="price-val">от 60 руб.</span>
+    </div>
+    
+    <div class="price-row price-row--highlight">
+        <span class="price-name">Камуфлирование седины</span>
+        <span class="price-val price-val--blue">от 110 руб.</span>
+    </div>
+
+    <div class="price-row">
+        <span class="price-name">Стрижка модельная</span>
+        <span class="price-val">от 20 руб.</span>
+    </div>
+
+    <div class="price-row">
+        <span class="price-name">Борода и усы</span>
+        <span class="price-val">15 руб.</span>
+    </div>
+</div>
+
+                <button class="price-btn">Записаться сейчас</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="other-services">
+    <div class="container">
+        <h2 class="other-services__title">Другие услуги</h2>
+        
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-item__img-wrapper">
+                    <img src="img/women/women-hall.png" alt="Женский зал" class="service-item__img">
+                </div>
+                <h3 class="service-item__name">Женский зал</h3>
+                <p class="service-item__price">от 20 руб</p>
+                <button class="service-btn service-btn--orange">Смотреть все цены</button>
+            </div>
+
+            <div class="service-item">
+                <div class="service-item__img-wrapper">
+                    <div class="service-item__circle-pink"></div> <img src="img/manicure/manicure.png" alt="Маникюр" class="service-item__img">
+                </div>
+                <h3 class="service-item__name service-item__name--pink">Маникюр</h3>
+                <p class="service-item__price">от 20 руб</p>
+                <button class="service-btn service-btn--gradient">Смотреть все цены</button>
+            </div>
+
+            <div class="service-item">
+                <div class="service-item__img-wrapper">
+                    <img src="img/brow/brow-service.png" alt="Brow-сервис" class="service-item__img">
+                </div>
+                <h3 class="service-item__name">Brow-сервис</h3>
+                <p class="service-item__price">от 20 руб</p>
+                <button class="service-btn service-btn--purple">Смотреть все цены</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="cosmetics-shop">
+    <div class="container">
+        <div class="cosmetics__content">
+            <!-- Текстовый блок СЛЕВА -->
+            <div class="cosmetics__info">
+                <h2 class="cosmetics__title">Магазин Косметики</h2>
+                <p class="cosmetics__text">
+                    Здоровые и ухоженные волосы – то, ради чего работают наши мастера. 
+                    Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, 
+                    но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок 
+                    можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос.
+                </p>
+                
+                <div class="cosmetics__actions">
+                    <button class="btn-gradient-green">Перейти в магазин</button>
+                    <span class="cosmetics__link">Цены от поставщика</span>
+                </div>
+
+                <!-- Декоративные круги внизу -->
+                <div class="cosmetics__decor">
+                    <div class="circle-big"></div>
+                    <div class="circle-small"></div>
+                </div>
+            </div>
+
+            <!-- Блок с картинкой СПРАВА -->
+            <div class="cosmetics__image">
+                <img src="img/cosmetics/cosmetics-shop.png" alt="Магазин косметики">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="promo-section-second">
+    <div class="promo-banner">
+        <div class="promo-banner__info">
+            <p class="promo-text">Дарим скидку пенсионерам</p>
+            <p class="promo-target">Акция действует ежедневно!</p>
+        </div>
+        <div class="promo-banner__value">
+            <span class="promo-percent">20%</span>
+        </div>
+        <button class="btn-gradient promo-btn">Записаться сейчас!</button>
+    </div>
+</section>
+<section class="about-preview">
+    <div class="container">
+        <div class="about-preview__content">
+            <!-- Левая часть: Фото + Декоративный круг -->
+            <div class="about-preview__image-block">
+                <div class="about-preview__circle"></div>
+                <img src="img/about/hairstyle.png" alt="Ваше место для красоты">
+            </div>
+            
+            <!-- Правая часть: Текст + Кнопка -->
+            <div class="about-preview__text-block">
+                <h2 class="about-preview__title">Ваше место<br>для красоты</h2>
+                <p class="about-preview__desc">
+                    Парикмахерская Ок - это счастливые девушки и парни, яркие цвета волос и воздушные локоны. Это дружная семья, которая встретит Вас и окутает заботой с первого шага в парикмахерскую.
+                </p>
+                <button class="btn-gradient-blue about-preview__btn">Узнать больше о нас</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="beauty-blog">
+    <div class="container">
+        <!-- Заголовок и ссылка -->
+        <div class="blog-header">
+            <h2 class="blog-title">Бьюти блог</h2>
+            <a href="#" class="blog-link-all">
+                Смотреть все статьи
+                <!-- Стрелочка -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.33333 8H12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Карточки -->
+        <div class="blog-cards">
+            <!-- Карточка 1 -->
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="img/blog/post-1.png" alt="Антистатик зимой">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Антистатик зимой</h3>
+                    <p class="card-text">
+                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                    </p>
+                    <a href="#" class="card-link">
+                        Читать далее
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Карточка 2 -->
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="img/blog/post-2.png" alt="Мой голову правильно">
+                    <span class="card-badge">Новый пост</span> <!-- Бейдж как на макете -->
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Мой голову правильно</h3>
+                    <p class="card-text">
+                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                    </p>
+                    <a href="#" class="card-link">
+                        Читать далее
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Карточка 3 -->
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="img/blog/post-3.png" alt="Уход за кончиками">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Уход за кончиками</h3>
+                    <p class="card-text">
+                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                    </p>
+                    <a href="#" class="card-link">
+                        Читать далее
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+<section class="instagram">
+    <div class="container">
+        <div class="instagram__header">
+            <h2 class="instagram__title">Мы в инстаграм!</h2>
+            <a href="#" class="instagram__link">
+                <span>Подпишись</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <g opacity="0.7">
+                        <path d="M14.8281 7.08524C14.828 7.08507 14.8278 7.08486 14.8276 7.08469L11.766 4.03781C11.5366 3.80956 11.1656 3.81041 10.9373 4.0398C10.709 4.26917 10.7099 4.64015 10.9393 4.86844L12.9949 6.91406H0.585938C0.262324 6.91406 0 7.17638 0 7.5C0 7.82361 0.262324 8.08594 0.585938 8.08594H12.9948L10.9393 10.1316C10.7099 10.3598 10.7091 10.7308 10.9373 10.9602C11.1657 11.1896 11.5367 11.1904 11.766 10.9622L14.8276 7.91531C14.8278 7.91513 14.828 7.91493 14.8282 7.91475C15.0577 7.68571 15.0569 7.31352 14.8281 7.08524Z" fill="#FE5B14"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+
+        <div class="instagram__grid">
+            <div class="instagram__item"><img src="img/inst/1.png" alt="Inst 1"></div>
+            <div class="instagram__item"><img src="img/inst/2.png" alt="Inst 2"></div>
+            <div class="instagram__item">
+                <img src="img/inst/3.png" alt="Inst 3">
+                <div class="instagram__overlay">
+                    <span>Перейти в Instagram →</span>
+                </div>
+            </div>
+            <div class="instagram__item"><img src="img/inst/4.png" alt="Inst 4"></div>
+            <div class="instagram__item"><img src="img/inst/5.png" alt="Inst 5"></div>
+        </div>
+    </div>
+</section>
+<section class="contacts">
+    <div class="container contacts__container">
+        <div class="contacts__content">
+            <h2 class="contacts__title">Как нас найти</h2>
+            
+            <div class="contacts__item">
+                <p class="contacts__label">Адрес</p>
+                <p class="contacts__info">Минск, Ленинградская 10</p>
+                <a href="#" class="contacts__link">Схема прохода</a>
+            </div>
+
+            <div class="contacts__item">
+                <p class="contacts__label">Телефон</p>
+                <p class="contacts__info">+375 25 655-44-33</p>
+            </div>
+
+            <button class="btn-gradient contacts__btn">Записаться онлайн</button>
+        </div>
+
+        <div class="contacts__map-wrapper">
+            <div id="map" class="contacts__map">
+                <img src="img/contacts/map.png" alt="Карта" class="map-bg">
+                
+                <div class="map-marker">
+                    <img src="img/header/ok-logo.png" alt="OK!">
+                    <span>Ленинградская 10</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  </main>
+<footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__logo-block">
+            <img src="img/header/ok-logo.png" alt="OK!" class="footer__logo">
+            <p class="footer__brand">Парикмахерская ОК</p>
+            <span class="footer__unp">УНП 1964554378</span>
+        </div>
+
+        <div class="footer__menu footer__menu--bold">
+            <a href="#">Женский зал</a>
+            <a href="#">Мужской зал</a>
+            <a href="#">Маникюр</a>
+            <a href="#">Brow-сервис</a>
+        </div>
+
+        <div class="footer__menu footer__menu--medium">
+            <a href="#">О нас</a>
+            <a href="#">Стоимость</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Контакты</a>
+        </div>
+
+        <div class="footer__contacts">
+            <div class="footer__phone">
+                <img src="img/hero/phone.png" alt="" class="footer__icon">
+                <a href="tel:+375256554433">+375 25 655-44-33</a>
+            </div>
+            <div class="footer__time">
+                <img src="img/hero/clock.png" alt="" class="footer__icon">
+                <span>9:00 - 21:00</span>
+            </div>
+        </div>
+    </div>
+</footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
