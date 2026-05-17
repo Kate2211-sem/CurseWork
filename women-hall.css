@@ -1,0 +1,610 @@
+/* ОБЩИЙ СБРОС ФОНА НА СТРАНИЦЕ */
+body, .main {
+    background-color: #ffffff; /* Белый фон везде по ТЗ */
+}
+
+/* СЕКЦИЯ МЕЛИРОВАНИЯ */
+.highlight-promo {
+    padding-top: 99px; /* Отступ от шапки до заголовка по ТЗ */
+    padding-bottom: 100px;
+    background-color: #ffffff;
+}
+
+.highlight-promo__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 94px;   /* Отступ от левого края по ТЗ */
+    padding-right: 150px; /* Отступ от правого края до картинки по ТЗ */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* ЛЕВАЯ КОЛОНКА С ТЕКСТОМ */
+.highlight-promo__content {
+    width: 440px; /* Ширина текстового блока по ТЗ */
+}
+
+.highlight-promo__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px;
+    margin: 0 0 24px 0; /* Нижний отступ 24px до текста по ТЗ */
+}
+
+.highlight-promo__text {
+    color: rgba(51, 51, 51, 0.70);
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    height: 291px; /* Высота текстового блока по ТЗ */
+    overflow: hidden; /* Если текста станет чуть больше, он аккуратно зафиксируется */
+    margin: 0 0 30px 0; /* Отступ снизу до кнопки */
+}
+
+/* ЯРКАЯ КНОПКА С ГРАДИЕНТОМ */
+.highlight-promo__btn {
+    width: 211px;  /* Размеры по ТЗ */
+    height: 55px;
+    border: none;
+    border-radius: 15px; /* Скругление по ТЗ */
+    background: linear-gradient(270deg, #FD9113 0%, #FDBB13 100%); /* Твой фирменный градиент */
+    color: #ffffff;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 20px 0 rgba(254, 217, 21, 0.50); /* Желтая неоновая тень по ТЗ */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-promo__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 25px 0 rgba(254, 217, 21, 0.70);
+}
+
+/* ПРАВАЯ КОЛОНКА (КАРТИНКА) */
+.highlight-promo__image-wrapper {
+    position: relative;
+    margin-left: 146px; /* Расстояние от блока текста до картинки 146px по ТЗ */
+    margin-top: -63px;  /* Смещаем картинку вверх, чтобы она была на 36px от шапки (99px - 63px = 36px) */
+    width: 428px;       /* Размеры контейнера картинки по ТЗ */
+    height: 535px;
+}
+
+.highlight-promo__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px; /* Красивые скругленные углы */
+    position: relative;
+    z-index: 2;
+}
+
+/* ДЕКОРАТИВНЫЙ ЗЕЛЕНЫЙ КРУГ НА КАРТИНКЕ */
+.highlight-promo__decor-circle {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: #00DF9A; /* Яркий мятно-зеленый цвет как на макете */
+    border-radius: 50%;
+    bottom: -20px;
+    left: -30px; /* Немного вылезает за нижний левый край картинки */
+    z-index: 3;
+}
+
+.highlight-promo__decor-circle::after {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #ffffff;
+    border-radius: 50%;
+    bottom: 15px;
+    right: -10px;
+}
+testimonials {
+    padding: 60px 0 100px;
+    background-color: #F9F5F0;
+    overflow: visible; /* Чтобы тени и элементы не резались */
+}
+
+.testimonials-main-title {
+    text-align: center;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.testimonials-track {
+    display: flex;
+    justify-content: center; /* Центрируем 5 карточек */
+    gap: 25px;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Появится скролл, если экран будет слишком узким */
+    padding-bottom: 20px;
+}
+
+/* Прячем полосу прокрутки для красоты */
+.testimonials-track::-webkit-scrollbar { display: none; }
+
+.testimonial-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    width: 287px;           /* Твоя ширина */
+    height: 334px;          /* Твоя высота */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;         /* Чтобы карточки не сжимались */
+}
+
+/* Шапка карточки: фото + имя в ряд */
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.testimonial-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid #F9F5F0;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+}
+
+.testimonial-stars {
+    color: #FFB800;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.testimonial-text {
+    /* Твои точные параметры */
+    width: 233px;
+    height: 211px;
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    /* Центрируем текст внутри карточки, если нужно */
+    margin: 0 auto; 
+    
+    /* Работа с длинным текстом */
+    overflow-y: auto;       /* Добавляет внутреннюю прокрутку, если текста много */
+    padding-right: 5px;     /* Небольшой отступ от полосы прокрутки */
+    
+    /* Скрываем стандартный скроллбар для красоты (опционально) */
+    scrollbar-width: thin;
+    scrollbar-color: #CCCCCC transparent;
+}
+
+/* Настройка скроллбара для Chrome/Safari */
+.testimonial-text::-webkit-scrollbar {
+    width: 4px;
+}
+.testimonial-text::-webkit-scrollbar-thumb {
+    background-color: #CCCCCC;
+    border-radius: 10px;
+}
+
+.testimonial-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #F2F2F2;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.testimonial-link {
+    text-decoration: none;
+    color: #CCCCCC;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.testimonial-arrow {
+    color: #CCCCCC;
+    font-size: 18px;
+}
+.services-section {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 79px; /* Отступ от круга предыдущей части */
+    background-color: #FFFF;
+}
+
+.services-title {
+    color: #333;
+    text-align: center;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 50px; /* 50px вниз до карточек */
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 80px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    text-align: center;
+}
+
+/* Обертка для фото с эффектом "капли" (blob) */
+.service-image-wrapper {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin-bottom: 20px;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Форма капли как на макете */
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+
+/* Розовый круг-декор для 3-й карточки */
+.decor-circle-pink {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #FF2D87;
+    border-radius: 50%;
+    top: -10px;
+    left: 40px;
+    z-index: -1;
+}
+
+.service-name {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.name-pink {
+    color: #FF2D87;
+}
+
+.service-price {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Стили кнопок */
+.service-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-orange { border: 1.5px solid #FFB800; color: #FFB800; }
+.btn-blue { border: 1.5px solid #00C3FF; color: #00C3FF; }
+.btn-purple { border: 1.5px solid #D68BF2; color: #D68BF2; }
+
+/* Залитая розовая кнопка для активной/выделенной услуги */
+.btn-pink-solid {
+    background: linear-gradient(270deg, #FF2D87 0%, #FF68A8 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 45, 135, 0.3);
+}
+
+.service-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+.contacts {
+    padding: 100px 0;
+    background-color: #ffffff; /* Телесный фон */
+}
+
+.contacts__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+
+.contacts__content {
+    padding-left: 74px; /* 94px от края (с учетом 20px паддинга контейнера) */
+    width: 450px;
+}
+
+.contacts__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 48px; /* Отступ вниз до адреса */
+}
+
+.contacts__item {
+    margin-bottom: 24px;
+}
+
+.contacts__label {
+    color: rgba(51, 51, 51, 0.70);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+
+.contacts__info {
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 40px; /* Уменьшил с 56, чтобы не было дырок */
+}
+
+.contacts__link {
+    color: #FE9313;
+    font-size: 14px;
+    text-decoration: underline;
+    line-height: 24px;
+    display: block;
+    margin-top: -5px; /* Чтобы "схема прохода" была ближе */
+}
+
+.contacts__btn {
+    width: 211px;
+    height: 55px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 15px;
+    color: #FFF;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(270deg, #FD9113 0%, #FDBB13 100%);
+    box-shadow: 0 0 20px 0 rgba(254, 217, 21, 0.50);
+}
+
+/* Стили карты */
+.contacts__map-wrapper {
+    width: 530px; /* Размер карты под 1280 макет */
+    height: 530px;
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contacts__map {
+    width: 100%;
+    height: 100%;
+    background: #FFF; /* Цвет до загрузки карты */
+}
+
+.map-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Тот самый маркер-логотип по центру карты */
+.map-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 134px;
+    height: 102px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    
+}
+
+/* Хвостик сообщения (типо балун) */
+.map-marker::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+}
+
+.map-marker img {
+    width: 80px; /* Размер логотипа внутри плашки */
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.map-marker span {
+    font-size: 11px;
+    font-family: 'Gilroy';
+    color: #333;
+    font-weight: 400;
+}
+.footer {
+    background-color: #ffffff; /* Или твой фирменный цвет подвала */
+    position: relative;        /* Чтобы тень корректно отображалась поверх предыдущих блоков */
+    z-index: 10;
+    
+    /* Добавляем мягкую тень, направленную вверх */
+    /* параметры: смещение по X (0), смещение по Y (-10px — идет вверх), размытие (30px), цвет с прозрачностью */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.04); 
+    
+    /* Твои остальные стили для футера (паддинги, шрифты) */
+    padding: 60px 0; 
+}
+
+.footer__container {
+    max-width: 1280px;
+    height: 222px;
+    margin: 0 auto; /* Центрируем белую карточку */
+    background: #FFFFFF;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    
+    /* Твоя внутренняя тень */
+    
+    
+    /* Добавим внешнюю тень, чтобы блок плавно выделялся на белом фоне, если нужно */
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.03), 0 5px 10px 0 rgba(0, 0, 0, 0.05) inset; */
+}
+
+/* Ограничиваем контент внутри, чтобы ничего не "разъезжалось" на 1440px */
+.footer__logo-block {
+    flex: 0 0 250px; /* Фиксированная ширина для левой части */
+}
+
+.footer__logo {
+    width: 80px; /* Отрегулируйте под ваш файл */
+    height: auto;
+}
+
+.footer__brand {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 10px 0 5px 0;
+}
+
+.footer__unp {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* Общие стили для колонок меню */
+.footer__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Женский зал и т.д. (на 474px от левого края) */
+.footer__menu--bold {
+    margin-left: 150px; /* Регулировка, чтобы в сумме от края было около 474px */
+}
+
+.footer__menu--bold a {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 36px;
+    text-decoration: none;
+}
+
+/* О нас и т.д. (отступ 137px от предыдущего) */
+.footer__menu--medium {
+    margin-left: 137px;
+}
+
+.footer__menu--medium a {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 36px;
+    text-decoration: none;
+}
+
+/* Контакты */
+.footer__contacts {
+    margin-left: auto; /* Прижимаем телефоны вправо */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer__phone, .footer__time {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.footer__phone a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer__icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Ховеры */
+.footer__menu a:hover {
+    color: #FE9313;
+    transition: 0.3s;
+}
