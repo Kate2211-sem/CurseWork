@@ -1,0 +1,458 @@
+body {
+    background-color:#F4F9FF !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* Основной контейнер (если он есть) */
+.main-content, .wrapper {
+    background-color: #F4F9FF;
+}
+.men-hall {
+    padding-top: 102px; 
+    padding-bottom: 140px;
+    /* Делаем переход: сверху твой старый светлый цвет, а снизу (где карточки) — голубой */
+    background:#F4F9FF;
+    width: 100%;
+    overflow: visible; 
+}
+
+.men-hall .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 94px;
+    position: relative;
+    overflow: visible;
+}
+
+.men-hall__content {
+    display: flex;
+    flex-direction: row;
+    /* Выравниваем по верхнему краю, чтобы легче было управлять отступами */
+    align-items: flex-start; 
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    /* Увеличиваем расстояние, чтобы картинка не наезжала на текст */
+    gap: 60px; 
+}
+
+/* БЛОК ТЕКСТА (СЛЕВА) */
+.men-hall__text-wrapper {
+    width: 546px;
+    flex-shrink: 0;
+    /* Убираем дикие минусы, корректируем положение плавно */
+    margin-top: 0px; 
+    margin-left: -19px; 
+}
+
+.men-hall__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    /* Возвращаем 22-24px как в макете */
+    margin: 0 0 22px 0; 
+    text-align: left;
+}
+
+.men-hall__description {
+    color: rgba(51, 51, 51, 0.70);
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+/* БЛОК КАРТИНКИ (СПРАВА) */
+.men-hall__image-block {
+    position: relative;
+    /* Уменьшаем размер картинки, чтобы она совпала с прозрачным макетом */
+    width: 500px; 
+    height: 380px;
+    flex-shrink: 0;
+    /* Поднимаем картинку выше */
+    margin-top: -50px; 
+    z-index: 5;
+}
+
+.men-hall__main-img {
+    width: 100%;
+    height: 100%;
+    /* Сохраняем пропорции, чтобы голову не сплющило */
+    object-fit: cover; 
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.men-hall__circle-bg {
+    position: absolute;
+    /* Подгоняем синий круг под макет */
+    left: -15px; 
+    top: 57%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+/* Кнопки/Карточки ниже */
+.info-cards-section--men {
+    /* Регулируй наплыв на секцию здесь */
+    margin-top: -180px; 
+    position: relative;
+    z-index: 10;
+    background-color: #F4F9FF;
+}
+.price-section {
+    padding: 72px 0 100px 0;
+    background-color:#F4F9FF;
+    padding-top: 15px;
+}
+
+.price-section__title {
+    color: #333;
+    text-align: center;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 72px; /* 72 ниже заголовка по ТЗ */
+}
+
+.price-section__content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 150px; /* Расстояние между фото и прайсом */
+}
+
+/* ФОТО */
+.price-section__image-block {
+    position: relative;
+    width: 440px; /* Размер фото подбери под макет */
+    flex-shrink: 0;
+}
+
+.price-section__img {
+    width: 100%;
+    border-radius: 30px;
+    z-index: 2;
+    position: relative;
+}
+
+.price-section__circle {
+    position: absolute;
+    right: -30px;
+    bottom: -30px;
+    z-index: 2;
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+.price-section__info {
+    width: 474px; /* Твоя ширина из ТЗ */
+}
+
+.promo-card {
+    /* Тот самый бледный, холодный серо-голубой цвет плашки из макета */
+    background: #E8F5FE; 
+    border-radius: 15px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+    
+    /* Добавим легкую, почти незаметную тень для глубины */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.03); 
+}
+
+.promo-card__label {
+    display: block;
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.promo-card__target {
+    display: block;
+    background: linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%);
+    
+    /* Делаем так, чтобы градиент был только на тексте */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Добавляем мягкое свечение под градиентом */
+    filter: drop-shadow(0 0 10px rgba(44, 194, 248, 0.4));
+    font-family: 'Gilroy', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* ЦИФРА 20% СО СВЕЧЕНИЕМ */
+.promo-card__value {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: normal;
+
+    /* Применяем градиент из цветов в ТЗ */
+    background: linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%);
+    
+    /* Делаем так, чтобы градиент был только на тексте */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Добавляем мягкое свечение под градиентом */
+    filter: drop-shadow(0 0 10px rgba(44, 194, 248, 0.4));
+}
+
+.price-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 474px; /* Твоя ширина из ТЗ */
+    margin-bottom: 40px;
+}
+
+
+
+/* Убираем возможные внешние отступы у самого текста */
+.price-name, .price-val {
+    margin: 0;
+}
+.price-name {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.price-val {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+    /* Если хочешь точно 153px от названия, можно использовать padding-left, 
+       но justify-content во флексе или grid-gap обычно надежнее */
+    padding-left: 20px; 
+}
+
+/* Синий цвет для цены */
+.price-val--blue {
+    color: #6EABE1;
+}
+
+/* Убираем статический класс выделения */
+.price-row--highlight {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin-left: 0;
+    width: 100%;
+}
+
+/* Один общий блок для всех свойств строки */
+.price-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    
+    /* 1. ГЛАВНОЕ: Уменьшаем высоту строки (было 48px, стало 32px) */
+    line-height: 20px; 
+    
+    /* 2. Уменьшаем внутренние отступы, чтобы строки не были "толстыми" */
+    padding: 0px 0px; 
+    
+    background: transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    
+    /* Анимация остается */
+    animation: highlightLoop 12s infinite ease-in-out; 
+}
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ (Обычный Ховер) */
+.price-row:hover {
+    background: rgba(232, 245, 254, 0.5) !important; /* Легкий синий фон */
+    transform: translateX(5px); /* Небольшой сдвиг */
+    animation-play-state: paused; /* При ховере анимация замирает */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ОПИСАНИЕ CSS АНИМАЦИИ (Highlight Loop) */
+@keyframes highlightLoop {
+    0%, 100% {
+        background: transparent;
+        box-shadow: none;
+        color: #333;
+    }
+    10%, 20% { /* Момент пика подсветки */
+        background: #FFFFFF;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    30%, 90% { /* Затухание */
+        background: transparent;
+        box-shadow: none;
+    }
+}
+
+/* ЧТОБЫ АНИМАЦИЯ ШЛА ПО ОЧЕРЕДИ: Используем n-th child */
+/* Задержка для каждого следующего пункта */
+.price-row:nth-child(1) { animation-delay: 0s; }
+.price-row:nth-child(2) { animation-delay: 1.5s; }
+.price-row:nth-child(3) { animation-delay: 3s; }
+.price-row:nth-child(4) { animation-delay: 4.5s; }
+.price-row:nth-child(5) { animation-delay: 6s; }
+.price-row:nth-child(6) { animation-delay: 7.5s; }
+
+/* Сохраняем синий цвет для цены */
+.price-val--blue {
+    color: #6EABE1;
+}
+
+/* КНОПКА */
+.price-btn {
+    width: 211px;
+    height: 55px;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%);
+    box-shadow: 0 0 20px 0 rgba(60, 182, 238, 0.50);
+    transition: transform 0.2s;
+}
+
+.price-btn:hover {
+    transform: scale(1.05);
+}
+.other-services {
+    padding: 0px 0;
+    text-align: center;
+    background-color: #F4F9FF; /* Светлый фон как в предыдущих секциях */
+}
+
+.other-services__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 60px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px; /* Ширина контейнера для элементов */
+}
+
+/* Стили изображений */
+.service-item__img-wrapper {
+    position: relative;
+    width: 216px;
+    height: 219px;
+    margin-bottom: 25px;
+}
+
+.service-item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+}
+
+/* Розовый декор для маникюра */
+.service-item__circle-pink {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #F50276;
+    border-radius: 50%;
+    top: -10px;
+    left: 20px;
+    z-index: 1;
+}
+
+/* Текстовые стили */
+.service-item__name {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 56px;
+    margin: 0;
+}
+
+.service-item__name--pink {
+    color: #F50276;
+}
+
+.service-item__price {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 42px;
+    margin: 0 0 20px 0;
+}
+
+/* ОБЩИЕ СТИЛИ КНОПОК */
+.service-btn {
+    width: 211px;
+    height: 55px;
+    border-radius: 15px;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+/* Оранжевая кнопка */
+.service-btn--orange {
+    border: 2px solid #FE9314;
+    color: #FE9314;
+}
+
+/* Фиолетовая кнопка */
+.service-btn--purple {
+    border: 2px solid #DB69EE;
+    color: #DB69EE;
+    box-shadow: 0 0 20px 0 rgba(245, 2, 118, 0.10);
+}
+
+/* Центральная градиентная кнопка */
+.service-btn--gradient {
+    border: none;
+    color: #FFF;
+    background: linear-gradient(270deg, #F50276 0%, #F276B1 100%);
+    box-shadow: 0 0 20px 0 rgba(245, 2, 118, 0.50);
+}
+
+.service-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+.cosmetics-shop,.promo-section-second,.about-preview,.beauty-blog,.instagram,.contacts {
+    background: #F4F9FF; /* Пишешь сюда свой новый цвет или новый градиент */
+}
