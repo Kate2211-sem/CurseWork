@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная | Салон красоты OK!</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contacts.css">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+  <div class="container header__container">
+    <!-- Логотип -->
+    <a href="main.html" class="header__logo">
+      <img src="img/header/ok-logo.png" alt="OK!" class="logo-ok">
+      <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
+    </a>
+
+  <nav class="nav">
+    <ul class="nav__list">
+        <li class="nav__item">
+            <a href="main.html" class="nav__link">Главная</a>
+        </li>
+        <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">Стоимость</a>
+            <ul class="dropdown">
+                <li><a href="men-hall.html" class="dropdown__link">Мужской зал</a></li>
+                <li><a href="women-hall.html" class="dropdown__link">Женский зал</a></li>
+                <li><a href="#" class="dropdown__link">Маникюр</a></li>
+                <li><a href="#" class="dropdown__link">Brow-сервис</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <a href="shop.html" class="nav__link">Магазин косметики</a>
+            
+        </li>
+       <li><a href="reviews.html" class="nav__link">О нас</a></li>
+        <li><a href="contacts.html" class="nav__link">Контакты</a></li>
+    </ul>
+</nav>
+
+    <!-- Правая часть: всё сгруппировано -->
+    <div class="header__right">
+      <!-- Инструменты (язык, тема, слабовидящие) -->
+      <div class="header__tools">
+        <button class="tool-btn" data-tool="lang">RU</button>
+        <button class="tool-btn" data-tool="theme">🌙</button>
+        <button class="tool-btn" data-tool="access">👁</button>
+      </div>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com" class="social-link" target="_blank">
+        <img src="img/header/instagram.png" alt="Instagram">
+      </a>
+
+      <!-- Кнопка записи -->
+      <a href="#" class="btn-online">Онлайн запись</a>
+
+      <!-- Зона пользователя -->
+      <div class="user-zone">
+        <a href="#" class="icon-btn">
+          <span>❤️</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="#" class="icon-btn">
+          <span>🛒</span>
+          <span class="badge">0</span>
+        </a>
+        <a href="index.html" class="user-profile">
+          <span class="user-name">Войти</span>
+        </a>
+      </div>
+
+      <!-- Бургер -->
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+  <!-- Здесь будет остальной контент страницы -->
+ <main class="main">
+  <section class="contacts">
+    <div class="container contacts__container">
+        
+        <div class="contacts__info-column">
+            <h2 class="contacts__title">Наши контакты</h2>
+            
+            <div class="contacts__item">
+                <span class="contacts__label">Адрес</span>
+                <p class="contacts__value">Минск, <br> Ленинградская 10</p>
+                <span class="contacts__note">Вход со двора</span>
+            </div>
+
+            <div class="contacts__item">
+                <span class="contacts__label">Телефон</span>
+                <p class="contacts__value">+375 25 655-44-33</p>
+            </div>
+
+            <button class="contacts__btn">Записаться онлайн</button>
+        </div>
+
+        <div class="contacts__descr-column">
+            <p class="contacts__text">
+                Парикмахерская Ок - это счастливые девушки и парни, яркие цвета волос и воздушные локоны. Это дружная семья, которая встретит Вас и окутает заботой с первого шага в парикмахерскую.
+            </p>
+        </div>
+
+        <div class="contacts__video-column">
+    <div class="video-card">
+        
+        <div class="video-play-btn">
+            <svg width="96" height="96" viewBox="0 0 96 96" fill="none">
+                <path d="M48 0C21.5312 0 0 21.5332 0 48C0 74.4668 21.5312 96 48 96C74.4688 96 96 74.4668 96 48C96 21.5332 74.4688 0 48 0ZM67.0821 49.6817L39.0821 67.6817C38.754 67.8945 38.3751 68.0001 38.0001 68.0001C37.6719 68.0001 37.3399 67.9179 37.0431 67.7559C36.3984 67.4044 36 66.7324 36 66V30C36 29.2676 36.3984 28.5956 37.0431 28.2441C37.6759 27.8964 38.4688 27.9178 39.0821 28.3183L67.0821 46.3183C67.6524 46.6854 68.0001 47.3203 68.0001 48C68.0001 48.6797 67.6524 49.3144 67.0821 49.6817Z" fill="white"/>
+            </svg>
+        </div>
+        
+        <p class="video-card__title">Смотреть видео <br> как нас найти</p>
+        
+        <img src="img/contacts/video-preview.png" alt="Превью видео" class="video-card__bg">
+          
+    </div>
+</div>
+
+    </div>
+   
+</section>
+<section class="map-section">
+    <div class="map-container">
+        <div class="map-picture-wrapper">
+            
+            <img src="img/contacts/map.png" alt="Карта проезда" class="map-image">
+            
+           <div class="map-marker">
+                    <img src="img/header/ok-logo.png" alt="OK!">
+                    <span>Ленинградская 10</span>
+                </div>
+            
+        </div>
+    </div>
+</section>
+<section class="services-section">
+    <div class="container">
+        <h2 class="services-title">Услуги нашего салона</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image-wrapper">
+                    <img src="img/women/women-hall.png" alt="Женский зал" class="service-img">
+                </div>
+                <h3 class="service-name">Женский зал</h3>
+                <p class="service-price">от 20 руб</p>
+                <a href="#" class="service-btn btn-orange">Смотреть все цены</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image-wrapper">
+                    <img src="img/men/men-hall.png" alt="Мужской зал" class="service-img">
+                </div>
+                <h3 class="service-name">Мужской зал</h3>
+                <p class="service-price">от 20 руб</p>
+                <a href="#" class="service-btn btn-blue">Смотреть все цены</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image-wrapper">
+                    <div class="decor-circle-pink"></div>
+                    <img src="img/manicure/manicure.png" alt="Маникюр" class="service-img">
+                </div>
+                <h3 class="service-name name-pink">Маникюр</h3>
+                <p class="service-price">от 20 руб</p>
+                <a href="#" class="service-btn btn-pink-solid">Смотреть все цены</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image-wrapper">
+                    <img src="img/brow/brow-service.png" alt="Brow-сервис" class="service-img">
+                </div>
+                <h3 class="service-name">Brow-сервис</h3>
+                <p class="service-price">от 20 руб</p>
+                <a href="#" class="service-btn btn-purple">Смотреть все цены</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="promo-banner double-banner">
+    
+    <div class="banner-col">
+        <p class="banner-col__text">
+            <strong>Салон там, где удобно Вам!</strong> Услуги стилиста, маникюр и Brow-сервис с выездом на дом.
+        </p>
+        <button class="banner-col__btn btn-home">Вызвать мастера</button>
+    </div>
+
+    <div class="banner-divider"></div>
+
+    <div class="banner-col">
+        <p class="banner-col__text">
+            <strong>Ищем таланты!</strong> Ищешь дружную команду и крутые условия? Ждем тебя в OK!
+        </p>
+        <button class="banner-col__btn btn-vacancy">Отправить анкету</button>
+    </div>
+
+</div>
+        <section class="testimonials">
+    <div class="container">
+        
+        
+        <div class="testimonials-track">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="img/picture/pic1.png" alt="Наталья В.">
+                    </div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-name">Наталья В.</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    Красила волосы в этой парикмахерской. Спасибо большое девочкам, в частности мастеру Оле за окрашивание. Предложили чай, кофе, все очень вежливые. Помогли выбрать идеальный оттенок, подобрали отличный уход, волосы теперь просто шелк!
+                </p>
+                <div class="testimonial-footer">
+                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <span class="testimonial-arrow">→</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="img/picture/pic2.png" alt="Елена К.">
+                    </div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-name">Елена К.</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    Делала сложный маникюр с дизайном. Мастер — настоящий профессионал своего дела! Инструменты все стерильные, крафт-пакеты вскрывали при мне. Работа выполнена очень чисто и аккуратно, хожу уже третью неделю без единого скола.
+                </p>
+                <div class="testimonial-footer">
+                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <span class="testimonial-arrow">→</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="img/picture/pic3.png" alt="Ольга С.">
+                    </div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-name">Ольга С.</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    Постоянно хожу на коррекцию бровей к девочкам. Всегда идеальная форма и цвет. Очень радует сервис: всегда предложат кофе, в салоне уютная атмосфера. Рекомендую всем подругам, это лучшее место в городе!
+                </p>
+                <div class="testimonial-footer">
+                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <span class="testimonial-arrow">→</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="img/picture/pic4.png" alt="Мария Р.">
+                    </div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-name">Мария Р.</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    Приводила сына на стрижку. Очень переживала, как он высидит, но мастер быстро нашла к нему подход. Получилось стильно и современно. Ребенок в восторге, мама довольна! Теперь будем ходить только к вам всей семьей.
+                </p>
+                <div class="testimonial-footer">
+                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <span class="testimonial-arrow">→</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="img/picture/pic1.png" alt="Анна М.">
+                    </div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-name">Анна М.</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    Попробовала новую процедуру для восстановления волос. Эффект заметен сразу! Персонал очень грамотный, все объяснили и дали советы по домашнему уходу. Салон чистый и светлый, одно удовольствие находиться.
+                </p>
+                <div class="testimonial-footer">
+                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <span class="testimonial-arrow">→</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__logo-block">
+            <img src="img/header/ok-logo.png" alt="OK!" class="footer__logo">
+            <p class="footer__brand">Парикмахерская ОК</p>
+            <span class="footer__unp">УНП 1964554378</span>
+        </div>
+
+        <div class="footer__menu footer__menu--bold">
+            <a href="#">Женский зал</a>
+            <a href="#">Мужской зал</a>
+            <a href="#">Маникюр</a>
+            <a href="#">Brow-сервис</a>
+        </div>
+
+        <div class="footer__menu footer__menu--medium">
+            <a href="#">О нас</a>
+            <a href="#">Стоимость</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Контакты</a>
+        </div>
+
+        <div class="footer__contacts">
+            <div class="footer__phone">
+                <img src="img/hero/phone.png" alt="" class="footer__icon">
+                <a href="tel:+375256554433">+375 25 655-44-33</a>
+            </div>
+            <div class="footer__time">
+                <img src="img/hero/clock.png" alt="" class="footer__icon">
+                <span>9:00 - 21:00</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
