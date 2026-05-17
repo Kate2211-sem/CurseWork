@@ -27,6 +27,7 @@ body {
   color: var(--text-main);
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
  
 }
 
@@ -326,6 +327,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  
+  /* Вставь вот эту строчку, она запретит флексам сжимать шапку по ширине */
+  flex-shrink: 0; 
 }
 
 .header__container {
@@ -400,42 +404,117 @@ body {
   background: var(--primary); 
   border-radius: 2px;
 }
+/* Родительский пункт меню */
+.nav__item--dropdown {
+    position: relative; /* КРИТИЧНО: теперь список будет привязан сюда */
+}
 
+.dropdown {
+    /* Твои стили */
+    color: #333;
+    text-align: left; /* Обычно в меню текст выравнивают по левому краю */
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 15px;
+
+    /* УБИРАЕМ ТОЧКИ */
+    list-style: none; 
+    padding: 15px 20px; /* Чтобы текст не прилипал к краям белого блока */
+    margin: 0;
+
+    /* ПОЗИЦИОНИРОВАНИЕ */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 200px;
+}
+
+/* Показываем при наведении на родителя */
+.nav__item--dropdown:hover .dropdown {
+    display: block;
+}
+
+/* Стили для самих ссылок внутри, чтобы убрать подчеркивание */
+.dropdown li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: color 0.3s;
+}
+
+.dropdown li a:hover {
+    color: #ff8c05; /* Цвет при наведении */
+}
+
+
+
+/* Стили для ссылок внутри списка */
+.dropdown__link {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.dropdown__link:hover {
+    background-color: #f9f5f0; /* Цвет фона при наведении как в твоем дизайне */
+    color: #ff8c05; /* Твой акцентный оранжевый */
+}
 .header__right {
   display: flex;
   align-items: center;
   gap: 15px; /* Уменьшили с 28px */
 }
 
-/* Инструменты (RU, тема, глаз) */
 .header__tools {
-  display: flex;
-  align-items: center;
-  gap: 5px; /* Сжимаем кнопки инструментов плотнее */
-  padding-right: 15px; /* Уменьшили отступ до разделителя */
-  border-right: 1px solid var(--border);
-  margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Компактные расстояния между кнопками */
+    background: #ffffff; /* Чистый белый фон */
+    padding: 6px 14px;
+    border-radius: 30px; /* Круглая аккуратная панелька */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Едва заметная стильная рамка */
 }
 
+/* Общие стили для кнопок внутри панельки */
 .tool-btn {
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
-  transition: all 0.2s;
-  padding: 6px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: transparent;
+    border: none;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 50%; /* Чтобы круглые иконки были ровными */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 }
 
+/* Эффект при наведении на кнопки */
 .tool-btn:hover {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
+    color: #FD9113; /* Окрашивается в твой фирменный цвет */
+    background-color: rgba(253, 145, 19, 0.05); /* Легкий аккуратный кружок сзади */
+}
+.tool-btn svg, .tool-btn img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.tool-btn:hover svg, .tool-btn:hover img {
+    opacity: 1;
 }
 
 /* Instagram */
@@ -778,39 +857,7 @@ body {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* ========== АДАПТИВ (по методичке) ========== */
-@media (max-width: 992px) {
-  .info-cards__container {
-    padding: 0 40px;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .info-card {
-    width: 100%;
-    max-width: 320px;
-    min-height: auto;
-    padding: 24px 20px;
-  }
-  .info-card--accent {
-    order: -1; /* Адрес встаёт первым на планшете */
-  }
-}
 
-@media (max-width: 576px) {
-  .info-cards-section {
-    margin-top: -40px;
-    padding-bottom: 40px;
-  }
-  .info-cards__container {
-    padding: 0 20px;
-    flex-direction: column;
-    align-items: center;
-  }
-  .info-card {
-    width: 100%;
-    max-width: 100%;
-  }
-}
 /* Контейнер стрелок "вырван" из потока, поэтому ничего не сдвигает */
 .floating-arrows {
   position: absolute;
@@ -848,58 +895,6 @@ body {
   opacity: 0.8;
   color: #a3a3a3;
 }
-/* Адаптив */
-@media (max-width: 1100px) {
-  .header__container { 
-    padding: 0 40px; 
-  }
-  .nav__list { 
-    gap: 28px; 
-  }
-  .header__tools { 
-    display: none; 
-  }
-}
-
-@media (max-width: 720px) {
-  .header__container { 
-    padding: 0 20px; 
-  }
-  .nav {
-    position: fixed; 
-    top: 76px; 
-    left: -100%; 
-    width: 100%; 
-    height: calc(100vh - 76px);
-    background: #fff; 
-    transition: left 0.3s ease; 
-    flex-direction: column; 
-    padding: 30px 20px;
-  }
-  .nav.active { 
-    left: 0; 
-  }
-  .nav__list { 
-    flex-direction: column; 
-    gap: 24px; 
-  }
-  .burger { 
-    display: flex; 
-  }
-  .header__tools, 
-  .user-zone { 
-    display: none; 
-  }
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-}
-}
-/* ========================================= */
-/* СЕКЦИЯ "ПРИХОДИТЕ К НАМ" (ЧИСТЫЙ ЛИСТ)   */
-/* ========================================= */
 
 /* ========== VISIT-US: DESKTOP STYLES ========== */
 .visit-us {
@@ -1105,10 +1100,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 0; /* ✅ ПОДНЯЛИ ВЫШЕ */
+    padding-top: 0px; /* ✅ ПОДНЯЛИ ВЫШЕ */
     order: 1;
     padding-left: 0; /* Убираем левый отступ */
-    margin-left: -80px;
+    margin-left: -60px;
+    margin: -53px;
 }
 
 .men-hall__price-title {
@@ -1210,78 +1206,7 @@ body {
     box-shadow: 0 5px 25px 0 rgba(70, 180, 236, 0.70);
 }
 
-/* ========== MEN-HALL: TABLET (768px) ========== */
-@media (max-width: 768px) {
-    .men-hall {
-        padding: 60px 0;
-    }
-    
-    .men-hall__title {
-        font-size: 32px;
-        line-height: 40px;
-    }
-    
-    .men-hall__content {
-        flex-direction: column;
-        gap: 40px;
-        align-items: center;
-    }
-    
-    .men-hall__price-block,
-    .men-hall__image {
-        order: unset;
-        width: 100%;
-        max-width: 500px;
-    }
-    
-    .men-hall__image {
-        width: 100%;
-        height: auto;
-    }
-    
-    .men-hall__image img {
-        max-width: 100%;
-        height: auto;
-    }
-    
-    .men-hall__price-list {
-        gap: 20px;
-    }
-    
-    .price-list__names, 
-    .price-list__values {
-        font-size: 16px;
-        line-height: 36px;
-    }
-}
 
-/* ========== MEN-HALL: MOBILE (320px) ========== */
-@media (max-width: 320px) {
-    .men-hall {
-        padding: 40px 0;
-    }
-    
-    .men-hall__title {
-        font-size: 28px;
-        line-height: 36px;
-    }
-    
-    .men-hall__price-title {
-        font-size: 20px;
-    }
-    
-    .price-list__names, 
-    .price-list__values {
-        font-size: 14px;
-        line-height: 32px;
-    }
-    
-    .btn-gradient-blue {
-        width: 100%;
-        max-width: 211px;
-    }
-
-}
 /* ========== MANICURE: DESKTOP STYLES ========== */
 .manicure {
     display: flex;
@@ -1291,15 +1216,21 @@ body {
     background-color: #F9F5F0;
     width: 100%;
 }
-
 .manicure__content {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start; /* Элементы выстраиваются строго друг за другом слева направо */
     width: 100%;
     max-width: 1280px;
-    margin: 0 auto;
-    gap: 12px;
+    margin: -80px auto 0;        /* Центрируем сам контейнер, но приподнимаем его вверх на -80px */
+    
+    /* Расстояние МЕЖДУ картинкой и ценами. 
+       Если захочешь сделать цены еще ближе к фото — уменьшай эту цифру (например, до 20px) */
+    gap: 0px; 
+    
+    /* Четкий отступ слева, чтобы картинка стояла ровно по одной линии с остальными заголовками сайта */
+    padding-left: -400px; 
+    box-sizing: border-box; 
 }
 
 /* ✅ КАРТИНКА СЛЕВА */
@@ -1309,8 +1240,8 @@ body {
     width: 664px;
     height: 443px;
     order: 1; /* Ставим картинку первой */
-     margin-right: 0 !important; 
-       margin-top: -50px; 
+     margin-right: 10% !important; 
+       margin-top: -35px; 
 }
 
 .manicure__image img {
@@ -1337,14 +1268,13 @@ body {
     filter: drop-shadow(8px 10px 15px rgba(0, 0, 0, 0.10));
 }
 
-/* ✅ ТЕКСТ СПРАВА */
 .manicure__price-block {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    order: 2; /* Текст вторым */
-    
-       margin-left: -100px ;
+    order: 2;
+    flex-shrink: 0; /* Запрещаем ценам растягиваться, теперь они займут ровно столько места, сколько им нужно */
+    margin-left: -200px; /* Очищаем старые маргины, если они где-то оставались */
 }
 
 .manicure__title {
@@ -1394,21 +1324,7 @@ body {
     box-shadow: 0 5px 25px 0 rgba(255, 46, 122, 0.50);
 }
 
-/* ========== ADAPTIVE ========== */
-@media (max-width: 768px) {
-    .manicure__content {
-        flex-direction: column;
-        gap: 40px;
-        align-items: center;
-    }
-    .manicure__image, .manicure__price-block {
-        order: unset;
-        width: 100%;
-        max-width: 500px;
-    }
-}
-/* ========== BROW-SERVICE: DESKTOP STYLES ========== */
-/* ========== BROW-SERVICE: DESKTOP STYLES ========== */
+
 .brow-service {
     display: flex;
     flex-direction: column;
@@ -1432,19 +1348,26 @@ body {
     left: -80px; 
 }
 
-/* ✅ КОНТЕЙНЕР — ВОЗВРАЩАЕМ СТАНДАРТ */
 .brow-service__content {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-end; /* Держим общую привязку к правому краю */
+    justify-content: flex-end; /* Картинка и текст прижимаются к правому краю */
     width: 100%;
     max-width: 1280px;
-    margin-left: auto; 
-    margin-right: 0;
-    gap: 72px;
-    padding-right: 40px; 
+    margin: 0 auto;            /* Стандартное центрирование контейнера */
+    
+    /* 1. СДВИГАЕМ ВЕСЬ БЛОК ВЫШЕ */
+    margin-top: -85px;         /* Отрицательный маргин поднимает и фото, и текст одновременно */
+    
+    /* 2. РАССТОЯНИЕ МЕЖДУ ТЕКСТОМ И ФОТО */
+    /* Чем меньше эта цифра, тем ПРАВЕЕ и ближе к картинке сдвинется текст */
+    gap: 30px; 
+    
+    /* 3. ОТСТУП ОТ ПРАВОГО КРАЯ ЭКРАНА */
+    /* По ТЗ у тебя справа отступ 101px. Картинка встанет ровно по этой линии */
+    padding-right: 10px; 
+    box-sizing: border-box; 
 }
-
 .brow-service__title {
     color: #4FC3F7; /* Голубой цвет заголовка */
     font-size: 24px;
@@ -1531,21 +1454,6 @@ margin-left: 60px; }
     box-shadow: 0 5px 25px 0 rgba(197, 101, 255, 0.70);
 }
 
-/* ========== ADAPTIVE ========== */
-@media (max-width: 768px) {
-    .brow-service__content {
-        flex-direction: column;
-        gap: 40px;
-        align-items: center;
-    }
-    .brow-service__price-block,
-    .brow-service__image {
-        order: unset;
-        width: 100%;
-        max-width: 500px;
-    }
-}
-/* ========== COSMETICS SHOP: DESKTOP STYLES ========== */
 .cosmetics-shop {
     padding: 100px 0;
     background-color: #F9F5F0;
@@ -1743,26 +1651,28 @@ margin-left: 60px; }
 .about-preview {
     padding: 80px 0;
     background-color: #F9F5F0;
+    width: 100%;
+    overflow: hidden; /* Защита от случайных вылетов декоративных элементов */
 }
 
+/* Ограничивающий контейнер, который держит сетку */
 .about-preview__content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 60px;
+    justify-content: center; /* Картинка и текст встанут ровно по центру экрана */
+    gap: 80px;               /* Фиксированный красивый зазор между фото и текстом */
     max-width: 1280px;
     margin: 0 auto;
+    padding: 0 20px;         /* Безопасные отступы по бокам, если экран станет меньше 1280px */
+    box-sizing: border-box;
 }
 
-/* ✅ ЛЕВАЯ ЧАСТЬ: ФОТО */
+/* ✅ ЛЕВАЯ ЧАСТЬ: ФОТО (Без диких отрицательных маржинов) */
 .about-preview__image-block {
     position: relative;
     flex-shrink: 0;
     width: 450px;
     height: 550px;
-      margin-left: -300px; 
-    margin-top: 40px;
-     margin-right: 50px; 
 }
 
 .about-preview__image-block img {
@@ -1782,38 +1692,33 @@ margin-left: 60px; }
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    z-index: 2;
+    z-index: 2; /* Поверх фото, как в твоем коде */
     
-    /* Многослойный градиент, как в вашем экспорте */
     background: 
         linear-gradient(270deg, #00C3FF 0%, #8BA4D8 100%),
         linear-gradient(270deg, #32DAE4 0%, #00C3FF 100%),
         linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%),
         linear-gradient(270deg, #FCFB4F 0%, #FD9F13 100%),
-        #C4C4C4; /* Фоллбэк-цвет */
+        #C4C4C4;
         
     filter: drop-shadow(8px 10px 15px rgba(0, 0, 0, 0.10));
 }
 
 /* ✅ ПРАВАЯ ЧАСТЬ: ТЕКСТОВЫЙ БЛОК */
 .about-preview__text-block {
-    width: 500px; /* Ваше требование */
-    min-height: 228px; /* Чтобы блок не схлопывался, но мог растянуться при необходимости */
+    flex: 0 1 500px; /* Аккуратная резиновая ширина до 500px */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
-    padding-left: 70px; 
-   
+    gap: 20px; /* Равномерный зазор между заголовком, текстом и кнопкой */
 }
 
 .about-preview__title {
     color: #333;
     font-family: 'Gilroy', sans-serif;
     font-size: 46px;
-    font-style: normal;
     font-weight: 700;
-    line-height: 56px;
+    line-height: 1.2;
     margin: 0;
 }
 
@@ -1821,7 +1726,6 @@ margin-left: 60px; }
     color: rgba(51, 51, 51, 0.70);
     font-family: 'Gilroy', sans-serif;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 24px;
     margin: 0;
@@ -1838,18 +1742,18 @@ margin-left: 60px; }
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
-     margin-top: 54px;
-    /* Градиент кнопки (подберите точные цвета из Figma, если нужно) */
-   background: 
+    margin-top: 20px; /* Заменили огромные 54px на аккуратные 20px */
+    
+    background: 
         linear-gradient(270deg, #00C3FF 0%, #8BA4D8 100%),
         linear-gradient(270deg, #32DAE4 0%, #00C3FF 100%),
         linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%),
         linear-gradient(270deg, #FCFB4F 0%, #FD9F13 100%),
-        #C4C4C4; /* Фоллбэк-цвет */
+        #C4C4C4;
         
     filter: drop-shadow(8px 10px 15px rgba(0, 0, 0, 0.10));
     box-shadow: 0 0 20px 0 rgba(0, 195, 255, 0.40);
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-gradient-blue:hover {
@@ -1859,29 +1763,39 @@ margin-left: 60px; }
 
 /* ========== АДАПТИВ (≤1024px) ========== */
 @media (max-width: 1024px) {
+    .about-preview {
+        padding: 50px 0;
+    }
+
     .about-preview__content {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
+        flex-direction: column !important; /* На планшетах падает в столбик */
+        text-align: center !important;
+        gap: 40px !important;
     }
     
     .about-preview__image-block {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        aspect-ratio: 4/5;
+        width: 100% !important;
+        max-width: 400px !important;
+        height: auto !important;
+        aspect-ratio: 4/5 !important;
     }
     
     .about-preview__text-block {
-        width: 100%;
-        max-width: 424px;
-        align-items: center;
+        width: 100% !important;
+        max-width: 450px !important;
+        align-items: center !important; /* Центрируем кнопку и заголовок */
     }
     
+    .about-preview__title {
+        font-size: 32px !important; /* Уменьшаем заголовок на мобильных */
+    }
+
     .about-preview__circle {
-        right: 50%;
-        transform: translateX(50%);
-        bottom: -20px;
+        right: -15px !important; /* Возвращаем кружок на красивое место на мобилках */
+        bottom: -15px !important;
+        transform: none !important;
+        width: 90px !important;
+        height: 90px !important;
     }
 }
 /* ========== BEAUTY BLOG ========== */
@@ -2029,6 +1943,7 @@ margin-left: 60px; }
 .card-link:hover {
     color: #FE5B14; /* При наведении красим в оранжевый */
 }
+
 
 /* ========== ADAPTIVE (Mobile) ========== */
 @media (max-width: 768px) {
@@ -2279,6 +2194,26 @@ margin-left: 60px; }
     color: #333;
     font-weight: 400;
 }
+.map-link {
+    display: block !important;
+    width: max-content !important;
+    color: #FD9113 !important;             /* Оранжевый цвет */
+    font-family: 'Gilroy', sans-serif !important;
+    font-size: 15px !important;            /* Аккуратный размер */
+    font-weight: 500 !important;
+    text-decoration: underline !important; /* Подчеркивание */
+    text-underline-offset: 4px !important; 
+    text-decoration-thickness: 1px !important;
+    
+    /* Отступы: 15px сверху от кнопки, а auto выровняет её по центру, если родитель зафлекшен */
+    margin: 15px auto 0 !important;        
+    transition: opacity 0.3s ease !important;
+    cursor: pointer;
+}
+
+.map-link:hover {
+    opacity: 0.8 !important;
+}
 .footer {
     width: 100%;
     background-color: #ffffff; /* Закрашиваем всё пространство по бокам в белый */
@@ -2395,4 +2330,813 @@ margin-left: 60px; }
 .footer__menu a:hover {
     color: #FE9313;
     transition: 0.3s;
+}
+
+.map-link {
+    display: none !important;
+}
+@media (max-width: 2200px) {
+.user-profile svg, .user-profile img {
+    display: none; /* На большом экране иконки нет, только текст */
+}
+.user-name {
+    display: inline-block;
+}
+}
+/* ==========================================================================
+   ПОЛНЫЙ АДАПТИВНЫЙ CSS ДЛЯ ШАПКИ (ИНСТАГРАМ, ВОЙТИ И НАСТРОЙКИ НА МЕСТЕ)
+   ========================================================================== */
+/* ─── 1. ПРОМЕЖУТОЧНЫЙ ЭТАП (ОТ 1242px ДО 1025px) ─── */
+@media (max-width: 1258px) {
+    .header__container {
+        padding: 0 15px;
+    }
+
+    .logo-ok { width: 85px; }
+    .logo-text { width: 105px; }
+    .nav { margin-left: 10px; }
+    .nav__list { gap: 8px; }
+    .nav__link { font-size: 13px; }
+    .header__right { gap: 10px; }
+    .social-link img { width: 20px; height: 20px; }
+    
+    .btn-online { 
+        width: 120px; 
+        height: 42px; 
+        font-size: 13px; 
+    }
+
+    /* ⚡️ ПЕРСОНАЛИЗАЦИЯ ПРЕВРАЩАЕТСЯ В ШЕСТЕРЁНКУ */
+    .header__tools {
+        position: relative;
+        padding: 8px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+    }
+    
+    /* Скрываем кнопки (RU, тему, глаз) внутри строки */
+    .header__tools .tool-btn,
+    .header__tools > a,
+    .header__tools > button,
+    .header__tools > div:not(.tools-dropdown) {
+        display: none !important; 
+    }
+    
+    /* Рисуем шестерёнку вместо них */
+    .header__tools::before {
+        content: "⚙️"; 
+        font-size: 18px;
+        display: block !important;
+    }
+
+    /* Стили для выпадающего списка при клике (.active) */
+    .header__tools.active {
+        width: auto;
+        height: auto;
+        border-radius: 12px;
+        position: absolute;
+        top: 60px; 
+        right: 180px;
+        flex-direction: column;
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 10px;
+        z-index: 150;
+    }
+    
+    /* Когда список активен, показываем кнопки в столбик */
+    .header__tools.active .tool-btn,
+    .header__tools.active > a,
+    .header__tools.active > button {
+        display: flex !important;
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 6px;
+        justify-content: flex-start;
+    }
+    
+    .header__tools.active::before {
+        display: none !important; /* Прячем саму шестерёнку при открытии */
+    }
+
+    /* ⚡️ ВОЙТИ: МЕНЯЕМ ТЕКСТ НА ИКОНКУ */
+    .user-name {
+        display: none !important; /* Скрываем текст "Войти" */
+    }
+    
+    .user-profile {
+        gap: 0;
+    }
+
+    .user-profile svg, 
+    .user-profile img {
+        display: block !important; /* Показываем иконку человека */
+        width: 22px;
+        height: 22px;
+    }
+    /* ДОБАВИТЬ ВНУТРЬ МЕДИАЗАПРОСА @media (max-width: 1258px) { ... } */
+
+/* Уменьшаем сдвиг маленькой картинки влево, чтобы она отошла от текста */
+.hero-img--detail {
+    left: -100px !important; /* Было -180px, сдвигаем ближе к большой картинке */
+    top: -30px !important;   /* Чуть опускаем, чтобы было аккуратнее */
+    width: 190px !important;  /* Делаем её слегка компактнее */
+    height: 174px !important;
+}
+
+/* Если этого мало, можно слегка уменьшить сам общий контейнер с картинками */
+.hero__visuals {
+    transform: scale(0.95); /* Немного масштабируем всю группу картинок */
+    transform-origin: right center; /* Ужимаем по правому краю */
+}
+}
+/* ==========================================================================
+   ФИКС НАЕЗЖАНИЯ КАРТИНКИ НА ТЕКСТ (ОТ 1158px И НИЖЕ)
+   ========================================================================== */
+@media (max-width: 1158px) {
+    /* 1. Ужимаем огромные боковые паддинги главного контейнера, освобождая ~100px места */
+    .hero__container {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        gap: 20px !important; /* Делаем зазор между текстом и картинкой компактнее */
+    }
+
+    /* 2. Жестко ограничиваем ширину текстового блока, чтобы он не лез на картинку */
+    .hero__content {
+        max-width: 520px !important; /* Теперь текст гарантированно остановится до картинок */
+    }
+
+    /* 3. Чуть уменьшаем размер шрифта заголовка, чтобы слова красиво переносились */
+    .hero-title {
+        font-size: 38px !important;
+        line-height: 48px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* 4. Корректируем описание, чтобы оно гармонично смотрелось с новым заголовком */
+    .hero-description {
+        font-size: 15px !important;
+        margin-bottom: 24px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* ==========================================================================
+       1. БУРГЕР И НАВИГАЦИЯ (БЕЗ ИЗМЕНЕНИЙ)
+       ========================================================================== */
+    .burger {
+        display: flex !important;
+        z-index: 110;
+        position: relative;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #ffffff;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+        margin: 0;
+        padding: 100px 30px 40px 30px;
+        box-sizing: border-box;
+        transition: right 0.4s ease;
+        z-index: 105;
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        width: 100%;
+    }
+
+    .nav__link {
+        font-size: 18px;
+        display: block;
+        width: 100%;
+    }
+
+    .nav__item--dropdown:hover .dropdown {
+        display: none;
+    }
+    
+    .dropdown {
+        position: static;
+        display: block;
+        box-shadow: none;
+        padding: 10px 0 0 15px;
+        min-width: auto;
+        background: transparent;
+    }
+
+    .header__right {
+        gap: 12px;
+    }
+    
+    .btn-online {
+        width: 115px;
+        height: 38px;
+        font-size: 13px;
+    }
+
+    .user-name {
+        display: none !important;
+    }
+    
+    .user-profile svg, 
+    .user-profile img {
+        display: block !important;
+        width: 22px;
+        height: 22px;
+    }
+
+    /* ==========================================================================
+       2. СБРОС СДВИГОВ САМИХ РОДИТЕЛЬСКИХ СЕКЦИЙ (ГЛАВНОЕ ИСПРАВЛЕНИЕ)
+       ========================================================================== */
+    .men-hall,
+    .manicure,
+    .brow-service,
+    .visit-us {
+        align-items: center !important; /* Отменяем десктопный flex-end */
+        padding: 50px 0 !important;     /* Нормализуем вертикальные отступы */
+        width: 100% !important;
+    }
+
+    /* Контентные контейнеры внутри секций */
+    .men-hall__content,
+    .manicure__content,
+    .brow-service__content,
+    .visit-us__content {
+        flex-direction: column !important; /* Строго вертикальный стек */
+        align-items: center !important;    /* Выравнивание по центру экрана */
+        justify-content: center !important; /* Сброс десктопных flex-end */
+        padding: 0 20px !important;        /* Безопасные отступы от краев дисплея */
+        gap: 30px !important;              /* Единый зазор между фото и прайсом */
+        margin: 0 auto !important;         /* Центрирование обертки */
+        margin-top: 0 !important;          /* Сбрасываем десктопные минус-маргины (-80px, -85px) */
+        padding-left: 20px !important;     /* Перебиваем десктопный padding-left: -400px у маникюра */
+        padding-right: 20px !important;    /* Перебиваем десктопный padding-right: 100px у men-hall */
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* ==========================================================================
+       3. БЛОКИ С КАРТИНКАМИ (КОНТРОЛЬ ЦЕНТРИРОВАНИЯ)
+       ========================================================================== */
+    .men-hall__image,
+    .manicure__image,
+    .brow-service__image,
+    .visit-us__image {
+        order: 1 !important;               /* Фото всегда на первом месте сверху */
+        width: 100% !important;
+        max-width: 450px !important;       /* Ограничение ширины карточки */
+        height: auto !important;           /* Сброс десктопной высоты 443px */
+        
+        /* Полный сброс всех десктопных смещений */
+        margin: 0 auto !important;         
+        margin-top: 0 !important;          
+        margin-right: auto !important;     
+        margin-left: auto !important;      
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+    }
+
+    .men-hall__image img,
+    .manicure__image img,
+    .brow-service__image img,
+    .visit-us__image img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+
+    /* Адаптация декоративных кругов под фотками */
+    .visit-us__image::before {
+        top: 20px !important;
+        right: 20px !important;
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .men-hall__image::before {
+        top: 20px !important;  /* Сбрасываем десктопные 190px */
+        left: 20px !important; /* Убираем сдвиг */
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .manicure__circle,
+    .brow-service__circle {
+        top: 20px !important;
+        left: 20px !important;
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    /* ==========================================================================
+       4. ТЕКСТОВЫЕ БЛОКИ И ПРАЙС-ЛИСТЫ (ВНИЗУ ПО ЦЕНТРУ)
+       ========================================================================== */
+    .men-hall__price-block,
+    .manicure__price-block,
+    .brow-service__price-block,
+    .visit-us__price-block {
+        order: 2 !important;               /* Прайс-блок всегда падает под фото */
+        width: 100% !important;
+        max-width: 480px !important;       /* Аккуратная фиксированная ширина для центровки */
+        
+        /* Сброс десктопных маргинов (включая margin: -53px и margin-left: -200px) */
+        margin: 0 auto !important;         
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-top: 0 !important; 
+        
+        /* Сброс относительного позиционирования у бровей (left: -80px) */
+        position: relative !important;
+        left: 0 !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;    /* Центрирует внутренние заголовки и кнопки */
+        justify-content: center !important;
+    }
+
+    /* ==========================================================================
+       5. СТИЛИЗАЦИЯ ШРИФТОВ И КНОПОК
+       ========================================================================== */
+    .men-hall__price-title,
+    .manicure__title,
+    .brow-service__title,
+    .visit-us__title,
+    .price-title {
+        text-align: center !important;
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        margin: 0 0 15px 0 !important;
+    }
+    
+    .visit-us__header {
+        width: 100% !important;
+        max-width: 500px !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+    
+    .visit-us__subtitle {
+        text-align: center !important;
+    }
+
+    /* Сетки прайс-листов */
+    .men-hall__price-list,
+    .manicure__price-list,
+    .brow-service__price-list,
+    .price-list {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: space-between !important; /* Услуга слева, цена справа */
+        gap: 20px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 25px !important;
+        padding: 0 !important;
+    }
+
+    .price-list__names, 
+    .price-list__values {
+        font-size: 16px !important;
+        line-height: 36px !important;
+    }
+
+    .price-list__names {
+        text-align: left !important;
+    }
+
+    .price-list__values {
+        text-align: right !important;
+        margin-left: 0 !important;        /* Перебиваем десктопный margin-left: 60px у бровей */
+    }
+
+    /* ==========================================================================
+       6. ПРОМО-БАННЕР
+       ========================================================================== */
+    .promo-banner {
+        width: 90% !important; 
+        max-width: 975px !important;
+        height: auto !important; 
+        padding: 25px 40px !important; 
+        margin: 40px auto 0 !important; 
+        gap: 20px !important;
+    }
+
+    .promo-percent {
+        font-size: 48px !important; 
+    }
+   /* ==========================================================================
+       7. АДАПТИВНЫЙ ГОРИЗОНТАЛЬНЫЙ ФУТЕР (ДЛЯ 1024px)
+       ========================================================================== */
+    .footer {
+        padding: 20px 0 !important;
+        width: 100% !important;
+    }
+
+    .footer__container {
+        display: flex !important;
+        flex-direction: row !important;      /* Оставляем в одну строку */
+        justify-content: space-between !important; /* Равномерно раскидываем блоки по ширине */
+        align-items: center !important;
+        height: auto !important;
+        min-height: 140px !important;       /* Делаем чуть компактнее десктопных 222px */
+        padding: 20px 30px !important;      /* Безопасные отступы от краев экрана */
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Левый блок с логотипом */
+    .footer__logo-block {
+        flex: 0 1 auto !important;          /* Сбрасываем жесткие десктопные 250px */
+        text-align: left !important;
+    }
+
+    /* Колонки меню (Женский зал / О нас) */
+    .footer__menu {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px !important;                /* Немного сжимаем зазоры между ссылками */
+    }
+
+    .footer__menu--bold {
+        margin-left: 0 !important;          /* СБРАСЫВАЕМ десктопные 150px */
+    }
+
+    .footer__menu--medium {
+        margin-left: 0 !important;          /* СБРАСЫВАЕМ десктопные 137px */
+    }
+
+    .footer__menu a {
+        font-size: 15px !important;         /* Чуть-чуть уменьшаем шрифт, чтобы точно всё влезло */
+        line-height: 28px !important;       /* Делаем строки более компактными */
+    }
+
+    /* Правый блок с контактами */
+    .footer__contacts {
+        margin-left: 0 !important;          /* Убираем лишний margin-left: auto */
+        align-items: flex-start !important; /* Текст и иконки аккуратно выровнены по левому краю своего блока */
+        gap: 10px !important;
+    }
+
+    .footer__phone, 
+    .footer__time {
+        font-size: 16px !important;         /* Слегка уменьшаем размер шрифта */
+    }
+    /* ==========================================================================
+       8. АДАПТИВНЫЕ ИНФО-КАРТОЧКИ (ДЛЯ 1024px В ОДНУ СТРОКУ)
+       ========================================================================== */
+    .info-cards-section {
+        margin-top: -40px !important; /* Чуть уменьшаем наложение на hero-секцию */
+        padding-bottom: 40px !important;
+        width: 100% !important;
+    }
+
+    .info-cards__container {
+        display: flex !important;
+        flex-direction: row !important;     /* ОСТАВЛЯЕМ в одну строку */
+        justify-content: center !important;  /* Центрируем всю группу */
+        align-items: stretch !important;    /* Выравниваем по высоте, чтобы карточки были одинаковыми */
+        gap: 15px !important;               /* Сужаем расстояние между карточками (было 32px) */
+        padding: 0 20px !important;         /* Заменяем огромные десктопные 94px на безопасные отступы */
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Делаем карточки гибкими */
+    .info-card {
+        flex: 1 1 30% !important;           /* Карточки равномерно делят пространство */
+        height: auto !important;            /* Сбрасываем фиксированную высоту */
+        min-height: unset !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Сбрасываем жесткую десктопную ширину в пикселях */
+    .info-card--phone,
+    .info-card--hours,
+    .info-card--accent {
+        width: auto !important;             /* Убираем 287px и 337px */
+        max-width: 100% !important;
+        padding: 20px 15px !important;      /* Делаем внутренние паддинги компактнее */
+    }
+
+    /* Немного уменьшаем шрифты и иконки, чтобы всё идеально влезло по ширине */
+    .info-card__icon {
+        width: 32px !important;
+        height: 32px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .info-card__title {
+        font-size: 15px !important;         /* Было 18px */
+    }
+
+    .info-card__subtitle {
+        font-size: 12px !important;         /* Было 14px */
+    }
+
+    /* СКРЫВАЕМ плавающие стрелки, так как на 1024px они сломают верстку */
+    .floating-arrows {
+        display: none !important;
+    }
+}
+
+/* ========== АДАПТИВ ДЛЯ 955px (ПОЛНОСТЬЮ ПО ТВОИМ КЛАССАМ) ========== */
+@media screen and (max-width: 955px) {
+    
+    /* 1. Главный контейнер секции */
+    .hero__container {
+        display: flex !important;
+        flex-direction: column !important; /* Картинки строго наверх, текст — вниз */
+        align-items: center !important;    /* Центрируем и картинки, и текст по горизонтали */
+        justify-content: center !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        gap: 40px !important;              /* Отступ между картинками и текстом */
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* 2. Блок с КАРТИНКАМИ — теперь он точно отцентрируется! */
+    .hero__visuals { 
+        order: 1 !important;               /* Выталкиваем коллаж наверх */
+        display: block !important;         /* Сохраняем оригинальное расположение картинок */
+        
+        /* СБРОС ДЕСКТОПНОГО ПРИЖАТИЯ ВПРАВО И ЦЕНТРИРОВАНИЕ */
+        margin: 0 auto 10px auto !important; /* Авто-маргины по бокам центрируют блок на экране */
+        align-self: center !important;     /* Флекс-центрирование */
+        
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        transform: none !important;        /* Отменяем десктопные сдвиги translate */
+        
+        width: 100% !important;
+        max-width: 430px !important;       /* Ограничиваем ширину коллажа, чтобы он не вылезал за экран */
+    }
+
+    /* Сами картинки внутри блока не трогаем, чтобы не сломать их нахлест */
+    .hero__visuals img {
+        display: inline-block !important;
+    }
+
+    /* 3. Левый блок с ТЕКСТОМ падает строго под картинки и центрируется на экране */
+    .hero__content {
+        order: 2 !important;               /* Текст уходит вниз под коллаж */
+        width: 100% !important;
+        
+        /* Ограничиваем максимальную ширину текстового блока под мобилку, */
+        /* чтобы он аккуратно стоял по центру и не размазывался по всему экрану */
+        max-width: 450px !important;       
+        
+        /* ЦЕНТРИРУЕМ сам блок на странице, но внутренности держим прижатыми влево */
+        margin: 0 auto !important;         /* margin: 0 auto выровняет сам блок по центру экрана */
+        padding: 0 !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important; /* Внутренний текст и кнопки остаются по левому краю */
+        text-align: left !important;        /* Выравнивание строк текста влево */
+    }
+
+    /* Заголовок "Хорошие волосы..." */
+    .hero-title {
+        font-size: 28px !important;
+        line-height: 36px !important;
+        text-align: left !important;       /* Строго по левому краю, как на макете */
+        margin-bottom: 16px !important;
+        width: 100% !important;
+    }
+    
+    /* Описание */
+    .hero-description {
+        font-size: 14px !important;
+        line-height: 22px !important;
+        text-align: left !important;
+        margin-bottom: 24px !important;
+        width: 100% !important;
+    }
+    
+    /* 4. Кнопки на мобильных */
+    .hero__buttons,
+    .hero__actions {
+        display: flex !important;
+        flex-direction: column !important; /* Выстраиваем кнопки в столбик */
+        width: 100% !important;
+        gap: 15px !important;
+    }
+
+    /* Оранжевая кнопка растягивается во всю ширину */
+    .hero__container a:first-of-type,
+    .hero__container .btn-orange {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 50px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 15px !important;
+        margin: 0 !important;
+    }
+
+    /* Белая кнопка "Личный кабинет" — скрываем по макету */
+    .hero__container a:nth-of-type(2) {
+        display: none !important;
+    }
+    .contacts__map {
+        display: none !important;
+    }
+/* П/* Полностью убираем большую карту и её обертку (квадрат исчезает) */
+    .contacts__map-wrapper,
+    .contacts__map {
+        display: none !important;
+    }
+
+    /* Включаем маленькую оранжевую ссылку строго под кнопкой */
+    .map-link {
+        display: block !important;             /* Проявляем её */
+        width: max-content !important;         /* Чтобы рамка ховера была только по тексту */
+        color: #FD9113 !important;             /* Наш оранжевый цвет */
+        font-family: 'Gilroy', sans-serif !important;
+        font-size: 15px !important;            /* Компактный размер */
+        font-weight: 500 !important;
+        text-decoration: underline !important; /* Подчеркивание */
+        text-underline-offset: 4px !important; 
+        text-decoration-thickness: 1px !important;
+        
+        /* Отступы и центрирование под кнопкой на мобилках */
+     margin: 15px 0 0 10px !important;     /* 15px сверху от кнопки, auto центрирует */
+        text-align: center !important;
+        transition: opacity 0.3s ease !important;
+    }
+
+    .map-link:hover {
+        opacity: 0.8 !important;
+    }
+
+    
+}
+@media (max-width: 574px) {
+ .footer {
+        padding: 40px 0 !important; /* Даем аккуратные отступы всей секции */
+    }
+
+    .footer__container {
+        flex-direction: column !important; /* Все блоки встают друг под друга */
+        height: auto !important;           /* Сбрасываем фиксированные десктопные 222px */
+        gap: 40px !important;              /* Комфортный зазор между блоками футера */
+        padding: 40px 20px !important;     /* Внутренние безопасные отступы */
+        text-align: center !important;     
+        align-items: center !important;    /* Центрируем всё по вертикальной оси */
+    }
+
+    /* Блок с логотипом, названием и УНП */
+    .footer__logo-block {
+        flex: unset !important;            /* Убираем жесткую ширину 250px */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;    /* Центрируем лого и текст */
+    }
+
+    .footer__logo {
+        margin: 0 auto !important;
+    }
+
+    .footer__brand {
+        margin: 15px 0 5px 0 !important;
+    }
+
+    /* Сбрасываем жесткие десктопные сдвиги у колонок меню */
+    .footer__menu--bold,
+    .footer__menu--medium {
+        margin-left: 0 !important;         /* Полностью убираем 150px и 137px */
+        align-items: center !important;    /* Центрируем ссылки внутри колонки */
+        gap: 5px !important;               /* Делаем списки чуть компактнее */
+    }
+
+    .footer__menu a {
+        line-height: 28px !important;      /* Немного уменьшаем высоту строк для мобильных */
+        font-size: 15px !important;
+        display: inline-block !important;
+    }
+
+    /* Блок с контактами и временем работы */
+    .footer__contacts {
+        margin-left: 0 !important;         /* Убираем прижатие margin-left: auto */
+        align-items: center !important;    /* Центрируем иконки с номерами телефонов */
+        gap: 12px !important;
+    }
+
+    .footer__phone, 
+    .footer__time {
+        font-size: 16px !important;        /* Чуть уменьшаем размер шрифта */
+        justify-content: center !important; /* Выравниваем связку иконка+текст по центру */
+    }
+}
+@media (max-width: 574px) {
+        .info-cards__container {
+            flex-wrap: wrap !important;       /* Разрешаем перенос блоков */
+            justify-content: center !important; /* Центрируем элементы на каждой строке */
+            gap: 16px !important;             /* Зазоры между карточками */
+            padding: 0 15px !important;
+        }
+
+        /* ВСЕ карточки теперь одинакового аккуратного размера */
+        .info-card--phone,
+        .info-card--hours,
+        .info-card--accent {
+            flex: 0 1 calc(50% - 8px) !important; /* Задаем одинаковую ширину */
+            width: calc(50% - 8px) !important;
+            max-width: calc(50% - 8px) !important;
+        }
+
+        /* Убираем десктопное выравнивание по нижнему краю, чтобы карточки смотрелись монолитно */
+        .info-cards__container {
+            align-items: stretch !important;
+        }
+        
+        /* Уменьшаем внутренние паддинги для мобильных экранов */
+        .info-card {
+            padding: 20px 10px !important;
+        }
+
+        .info-card__title {
+            font-size: 14px !important;
+        }
+
+        .info-card__subtitle {
+            font-size: 11px !important;
+        }
+        .header__right {
+            gap: 8px !important;
+        }
+
+        /* Делаем кнопку онлайн-записи маленькой и аккуратной */
+        .btn-online {
+            width: 80px !important;        /* Сужаем со 115px до 80px */
+            height: 34px !important;        /* Делаем чуть ниже */
+            font-size: 11px !important;     /* Уменьшаем шрифт */
+            padding: 0 !important;
+            text-align: center !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        /* Магия: если у тебя в HTML текст написан прямо внутри кнопки, 
+           мы можем визуально заменить его на короткое слово "Запись" */
+        .btn-online {
+            font-size: 0 !important; /* Прячем старый длинный текст */
+        }
+
+        .btn-online::after {
+            content: "Запись" !important; /* Подставляем компактный вариант */
+            font-size: 12px !important;   /* Возвращаем читаемый размер шрифта */
+            font-weight: 700 !important;
+            color: #fff !important;
+            display: block !important;
+        }
+    }
+/* ==========================================================================
+   3. ЭКРАНЫ СМАРТФОНОВ (ОТ 320px ДО 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+    .header__container {
+        padding: 0 10px;
+    }
+
+    .logo-ok { width: 70px; }
+    .logo-text { width: 80px; margin-left: -4px; }
+
+    .header__right .btn-online {
+        display: none !important;
+    }
+   
 }
