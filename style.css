@@ -19,6 +19,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
@@ -2999,11 +3000,172 @@ margin-left: 60px; }
     .map-link:hover {
         opacity: 0.8 !important;
     }
+.hero__container {
+        flex-direction: column; /* Разворачиваем контент в столбик: сначала текст, потом фото */
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px 40px; /* Уменьшаем конские отступы до аккуратных 20px по бокам */
+        gap: 50px;
+    }
 
-    
+    .hero-description {
+        margin: 0 auto 24px; /* Центрируем описание */
+    }
+
+    .hero-actions-group,
+    .hero-buttons {
+        align-items: center;
+        justify-content: center; /* Центрируем кнопки на планшетах */
+        width: 100%;
+    }
+
+    /* Выравниваем блок с картинками по центру */
+    .hero__visuals {
+        margin: 0 auto !important; 
+        top: 30px; /* Даем небольшой отступ сверху */
+    }
+    .info-cards__container {
+    margin-top: 80px !important; /* На сколько пикселей опустить карточки */
 }
-@media (max-width: 574px) {
- .footer {
+/* 1. Укрощаем боковые отступы Hero контейнера, о которых говорили ранее */
+    .hero__container {
+        padding: 40px 20px 20px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Перестраиваем карточки в столбик и толкаем их вниз, чтобы не наезжали */
+    .info-cards__container {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+        padding: 0 20px !important;
+        align-items: center;
+        margin: 0 auto /* Управляет отступом карточек вниз */
+    }
+
+    /* Делаем карточки адаптивными по ширине */
+    .info-card {
+        width: 100% !important;
+        max-width: 340px !important;
+        min-height: auto !important;
+        padding: 20px !important;
+    }
+
+    /* 3. ЛИКВИДАЦИЯ СКРОЛЛА: Смиряем жесткую ширину нижних секций */
+    .visit-us, .men-hall {
+        padding: 40px 0 !important;
+        overflow: hidden !important; /* Прячем вылетающие круги */
+    }
+
+    .visit-us__content, .men-hall__content {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+        padding: 0 20px !important;
+    }
+
+    /* Сбрасываем гигантские размеры картинок */
+    .visit-us__image, .men-hall__image {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 0 !important; /* Обнуляет тот самый маржин в -200px! */
+    }
+
+    .visit-us__image img, .men-hall__image img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Убираем смещения блоков прайса */
+    .visit-us__price-block, .men-hall__price-block {
+        padding: 0 !important;
+        margin: 0 !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .price-list {
+        gap: 20px !important;
+    }
+
+    /* Адаптируем оранжевый промо-баннер под маленькие экраны */
+    .promo-banner {
+        width: calc(100% - 40px) !important;
+        height: auto !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding: 20px !important;
+        margin: 40px auto 0 !important;
+        text-align: center !important;
+    }
+
+    .promo-banner__value {
+        justify-content: center !important;
+    }
+    .info-cards__container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Создаем 2 равные колонки */
+        justify-content: center !important;
+        justify-items: center !important;   /* Центрируем карточки внутри ячеек */
+        gap: 20px !important;                 /* Зазор между карточками */
+        padding: 0 20px !important;
+        margin-top: 50px !important;          /* Твой отступ вниз от кнопок */
+        max-width: 768px !important;          /* Ограничиваем общую ширину сетки, чтобы не было слишком широко */
+        margin-left: auto !important;         /* Центрируем всю сетку на экране */
+        margin-right: auto !important;
+    }
+
+    /* ФОКУС: Заставляем ТРЕТЬЮ карточку встать по центру внизу */
+    .info-cards__container .info-card:nth-child(3) {
+        grid-column: 1 / span 2 !important; /* Растягиваем невидимую границу на 2 колонки */
+        max-width: 340px !important;        /* Но саму карточку держим стандартного размера */
+    }
+
+    /* Сами карточки */
+    .info-card {
+        width: 100% !important;
+        max-width: 340px !important;        /* Карточки не будут на всю ширину, станут компактными */
+        height: auto !important;
+        min-height: auto !important;
+        padding: 20px !important;
+        text-align: center !important;      /* Текст внутри по центру */
+    }
+}
+@media (max-width: 630px) {
+.header__right {
+            gap: 8px !important;
+        }
+
+        /* Делаем кнопку онлайн-записи маленькой и аккуратной */
+        .btn-online {
+            width: 80px !important;        /* Сужаем со 115px до 80px */
+            height: 34px !important;        /* Делаем чуть ниже */
+            font-size: 11px !important;     /* Уменьшаем шрифт */
+            padding: 0 !important;
+            text-align: center !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        /* Магия: если у тебя в HTML текст написан прямо внутри кнопки, 
+           мы можем визуально заменить его на короткое слово "Запись" */
+        .btn-online {
+            font-size: 0 !important; /* Прячем старый длинный текст */
+        }
+
+        .btn-online::after {
+            content: "Запись" !important; /* Подставляем компактный вариант */
+            font-size: 12px !important;   /* Возвращаем читаемый размер шрифта */
+            font-weight: 700 !important;
+            color: #fff !important;
+            display: block !important;
+        }
+         .footer {
         padding: 40px 0 !important; /* Даем аккуратные отступы всей секции */
     }
 
@@ -3058,72 +3220,86 @@ margin-left: 60px; }
         font-size: 16px !important;        /* Чуть уменьшаем размер шрифта */
         justify-content: center !important; /* Выравниваем связку иконка+текст по центру */
     }
-}
-@media (max-width: 574px) {
-        .info-cards__container {
-            flex-wrap: wrap !important;       /* Разрешаем перенос блоков */
-            justify-content: center !important; /* Центрируем элементы на каждой строке */
-            gap: 16px !important;             /* Зазоры между карточками */
-            padding: 0 15px !important;
-        }
-
-        /* ВСЕ карточки теперь одинакового аккуратного размера */
-        .info-card--phone,
-        .info-card--hours,
-        .info-card--accent {
-            flex: 0 1 calc(50% - 8px) !important; /* Задаем одинаковую ширину */
-            width: calc(50% - 8px) !important;
-            max-width: calc(50% - 8px) !important;
-        }
-
-        /* Убираем десктопное выравнивание по нижнему краю, чтобы карточки смотрелись монолитно */
-        .info-cards__container {
-            align-items: stretch !important;
-        }
-        
-        /* Уменьшаем внутренние паддинги для мобильных экранов */
-        .info-card {
-            padding: 20px 10px !important;
-        }
-
-        .info-card__title {
-            font-size: 14px !important;
-        }
-
-        .info-card__subtitle {
-            font-size: 11px !important;
-        }
-        .header__right {
-            gap: 8px !important;
-        }
-
-        /* Делаем кнопку онлайн-записи маленькой и аккуратной */
-        .btn-online {
-            width: 80px !important;        /* Сужаем со 115px до 80px */
-            height: 34px !important;        /* Делаем чуть ниже */
-            font-size: 11px !important;     /* Уменьшаем шрифт */
-            padding: 0 !important;
-            text-align: center !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            letter-spacing: 0.5px !important;
-        }
-
-        /* Магия: если у тебя в HTML текст написан прямо внутри кнопки, 
-           мы можем визуально заменить его на короткое слово "Запись" */
-        .btn-online {
-            font-size: 0 !important; /* Прячем старый длинный текст */
-        }
-
-        .btn-online::after {
-            content: "Запись" !important; /* Подставляем компактный вариант */
-            font-size: 12px !important;   /* Возвращаем читаемый размер шрифта */
-            font-weight: 700 !important;
-            color: #fff !important;
-            display: block !important;
-        }
+    .info-cards__container {
+        /* Переключаем грид в 1 колонку (в ряд / столбик) */
+        grid-template-columns: 1fr !important; 
+        gap: 15px !important;
+        margin-top: 40px !important;
     }
+
+    /* Сбрасываем фокус третьей карточки, теперь она просто идет по порядку */
+    .info-cards__container .info-card:nth-child(3) {
+        grid-column: auto !important; 
+    }
+        .hero-title {
+        font-size: 32px !important; /* Уменьшаем гигантские буквы на телефонах */
+        line-height: 40px !important;
+    }
+
+    /* СПАСЕНИЕ ОТ СКРОЛЛА: усмиряем вылетающую маленькую картинку */
+    .hero-img--detail {
+        width: 140px !important;    /* Делаем её чуть компактнее */
+        height: 130px !important;
+        top: -30px !important;
+        left: -50px !important;     /* Уменьшаем сдвиг со 180px до безопасных 50px */
+    }
+
+    .hero__visuals {
+        width: 260px !important;    /* Немного уменьшаем всю композицию, чтобы влезла в экран */
+        height: 300px !important;
+    }
+
+    .hero-img--main {
+        width: 260px !important;
+        height: 300px !important;
+    }
+    }
+/* ========== УСМИРЕНИЕ ШАПКИ НА МОБИЛЬНЫХ (СПАСЕНИЕ ОТ СКРОЛЛА) ========== */
+@media screen and (max-width: 560px) {
+    /* 1. Уменьшаем паддинги в контейнере шапки, чтобы дать элементам больше места */
+    .header__container {
+        padding: 0 10px !important;
+        gap: 8px !important;
+    }
+
+    /* 2. Делаем логотипы компактнее */
+    .logo-ok {
+        width: 70px !important; /* Было 98px */
+        height: 38px !important;
+    }
+    
+    .logo-text {
+        width: 90px !important;  /* Было 120px */
+        height: 28px !important;
+        margin-left: -4px !important;
+    }
+
+    /* 3. Ужимаем отступы в правой части шапки */
+    .header__right {
+        gap: 8px !important;
+    }
+
+    /* 4. Делаем панельку инструментов компактнее */
+    .header__tools {
+        padding: 4px 8px !important; /* Уменьшаем внутренние паддинги */
+        gap: 6px !important;
+    }
+
+    .tool-btn {
+        padding: 2px !important;
+    }
+
+    .tool-btn svg, .tool-btn img {
+        width: 16px !important; /* Чуть уменьшаем иконки */
+        height: 16px !important;
+    }
+
+    
+    /* Скрываем инстаграм в шапке на мелких экранах, если он мешает (он всё равно будет в футере или блоке инсты) */
+    .header__right .social-link {
+        display: none !important;
+    }
+}
 /* ==========================================================================
    3. ЭКРАНЫ СМАРТФОНОВ (ОТ 320px ДО 480px)
    ========================================================================== */
@@ -3138,5 +3314,101 @@ margin-left: 60px; }
     .header__right .btn-online {
         display: none !important;
     }
-   
+    .header__container {
+        padding: 0 8px !important;
+        gap: 4px !important;
+    }
+
+    /* 2. Делаем логотипы еще чуть компактнее, чтобы выиграть драгоценное место */
+    .logo-ok {
+        width: 65px !important;
+        height: 35px !important;
+    }
+    
+    .logo-text {
+        width: 80px !important;
+        height: 25px !important;
+    }
+
+    /* 3. Укрощаем панель инструментов, которая распирает экран */
+    .header__tools {
+        padding: 4px 6px !important; /* Уменьшаем внутренние зазоры */
+        gap: 4px !important;         /* Сближаем кнопки личного кабинета и корзины */
+    }
+
+    /* Уменьшаем сами круглые кнопочки внутри панели */
+    .tool-btn {
+        width: 28px !important;
+        height: 28px !important;
+        padding: 0 !important;
+    }
+
+    .tool-btn svg, .tool-btn img {
+        width: 15px !important;
+        height: 15px !important;
+    }
+
+    /* Если у тебя в `.header__right` оставался какой-то скрытый margin или padding, обнуляем его */
+    .header__right {
+        gap: 4px !important;
+    }
+    
+}
+/* ========== МИКРО-АДАПТИВ ДЛЯ ЭКРАНОВ СВЕРХМАЛЕНЬКИХ ТЕЛЕФОНОВ (≤360px) ========== */
+@media screen and (max-width: 360px) {
+    
+    /* 1. Сжимаем до предела внутренние отступы шапки */
+    .header__container {
+        padding: 0 6px !important;
+        gap: 4px !important;
+    }
+
+    /* 2. Делаем логотип максимально компактным, чтобы выиграть место справа */
+    .logo-ok {
+        width: 55px !important;  /* Снизили с 65px */
+        height: 30px !important;
+    }
+    
+    .logo-text {
+        width: 70px !important;  /* Снизили с 80px */
+        height: 22px !important;
+        margin-left: -2px !important;
+    }
+
+    /* 3. Ужимаем правую зону, где живут все кнопки и бургер */
+    .header__right {
+        gap: 4px !important;
+    }
+
+    /* 4. Микро-настройки для белой панельки инструментов (ЛК и Корзина) */
+    .header__tools {
+        padding: 2px 4px !important; /* Минимальная рамка вокруг кнопок */
+        gap: 2px !important;         /* Кнопки встают почти вплотную */
+    }
+
+    /* Уменьшаем сами круглые кнопки ЛК и корзины */
+    .tool-btn {
+        width: 24px !important;      /* Было 28px/32px */
+        height: 24px !important;
+        padding: 0 !important;
+    }
+
+    /* Делаем иконки внутри кнопок чуть меньше */
+    .tool-btn svg, 
+    .tool-btn img {
+        width: 14px !important;      /* Было 16px/18px */
+        height: 14px !important;
+    }
+
+    /* 5. Ужимаем кнопку БУРГЕРА, чтобы она не распирала строку */
+    .burger {
+        padding: 4px !important;     /* Уменьшаем кликабельную зону */
+        gap: 4px !important;         /* Сближаем полоски друг к другу */
+    }
+
+    /* Делаем сами полосочки бургера чуть короче */
+    .burger span {
+        width: 18px !important;      /* Было 24px — теперь они аккуратные и компактные */
+        height: 2px !important;
+    }
 }
