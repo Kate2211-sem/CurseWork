@@ -608,3 +608,206 @@ testimonials {
     color: #FE9313;
     transition: 0.3s;
 }
+/* ==========================================================================
+   АДАПТИВ ЖЕНСКОГО ЗАЛА: КРУГ УБРАН, ФИКС СЛОВА "МЕЛИРОВАНИЕ"
+   ========================================================================== */
+
+/* Полностью и навсегда скрываем декоративный круг на всех экранах, как ты и просил */
+.highlight-promo__decor-circle {
+    display: none !important;
+}
+
+/* --- 1. ПК И НОУТБУКИ (Диапазон от 1279px до 1025px) --- */
+@media screen and (max-width: 1279px) {
+    .highlight-promo__container {
+        padding-left: 40px !important;
+        padding-right: 40px !important; /* Сбрасываем гигантский правый отступ из макета */
+        gap: 40px !important;
+        align-items: center !important; 
+    }
+
+    .highlight-promo__content {
+        width: 50% !important; 
+    }
+
+    .highlight-promo__image-wrapper {
+        width: 45% !important;          
+        max-width: 440px !important;    
+        flex-shrink: 1 !important;      
+        position: relative !important; 
+    }
+
+    .highlight-promo__img {
+        width: 100% !important;         
+        height: auto !important;        
+    }
+
+    .services-grid {
+        gap: 20px !important;
+    }
+}
+
+/* --- 2. ПЛАНШЕТЫ И ТЕЛЕФОНЫ (1024px и ниже) --- */
+@media screen and (max-width: 1024px) {
+    .highlight-promo {
+        padding-top: 50px !important; 
+        padding-bottom: 60px !important;
+    }
+
+    /* Картинка сверху, текст снизу, убираем боковые перекосы */
+    .highlight-promo__container {
+        flex-direction: column-reverse !important; 
+        padding-left: 30px !important;  /* Выравниваем строго по центру */
+        padding-right: 30px !important; /* Выравниваем строго по центру */
+        align-items: center !important;     
+        text-align: center !important;       
+        gap: 35px !important;                
+    }
+
+    .highlight-promo__content {
+        width: 100% !important;
+        max-width: 650px !important;
+        margin: 0 auto !important; /* Центрируем сам текстовый блок */
+    }
+
+    .highlight-promo__title {
+        font-size: 36px !important;
+        line-height: 44px !important;
+        margin-bottom: 15px !important;
+        text-align: center !important; /* Строгое центрирование заголовка */
+    }
+
+    .highlight-promo__title br {
+        display: none !important; /* Убираем принудительный перенос строк */
+    }
+
+    .highlight-promo__image-wrapper {
+        width: 100% !important;
+        max-width: 380px !important; 
+        margin: 0 auto !important;   
+    }
+
+    .highlight-promo__img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Отзывы */
+    .testimonials-track {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 24px !important;
+    }
+
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 480px !important;
+    }
+
+   .services-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Оставляем 2 ряда */
+        gap: 24px !important;
+        justify-items: center !important; /* ХАК: выравнивает каждую карточку строго по центру её колонки */
+        width: 100% !important;
+        max-width: 600px !important;       /* Ограничиваем общую ширину сетки, чтобы карточки не разлетались слишком далеко */
+        margin: 0 auto !important;         /* Центрируем саму сетку на экране */
+    }
+}
+
+/* --- 3. ДЛЯ ЭКРАНА ВАШЕГО ТЕСТА (В районе 687px) --- */
+@media screen and (max-width: 720px) {
+    .services-grid {
+        grid-template-columns: 1fr !important; 
+        justify-items: center !important;
+    }
+
+    .service-card {
+        max-width: 340px !important; 
+    }
+}
+/* --- 4. СМАРТФОНЫ (От 450px и ниже, включая 430px, 401px и 320px) --- */
+@media screen and (max-width: 480px) {
+    /* Главный контейнер секции */
+    .highlight-promo__container {
+        padding-left: 14px !important;  /* Делаем боковые поля чуть меньше, чтобы освободить место тексту */
+        padding-right: 14px !important; 
+        gap: 20px !important;
+    }
+
+    /* ИСПРАВЛЕНИЕ: Делаем текстовый блок резиновым, чтобы он сжимался внутрь экрана */
+    .highlight-promo__content {
+        width: 100% !important;        /* Больше никаких фиксированных 440px */
+        max-width: 100% !important;    /* Блок гарантированно равен ширине экрана телефона */
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    /* Настройка заголовка, чтобы буквы не вылетали */
+    .highlight-promo__title {
+        font-size: 25px !important;     /* Оптимальный размер шрифта для мобилки */
+        line-height: 32px !important;
+        text-align: center !important;
+        word-wrap: break-word !important; /* Разрешаем безопасный перенос слов, если это необходимо */
+        overflow-wrap: break-word !important;
+        margin-left: 0 !important;      
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Текст описания тоже плавно сжимается */
+    .highlight-promo__text {
+        font-size: 14px !important;
+        line-height: 22px !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    /* Кнопка */
+    .highlight-promo__btn {
+        width: 100% !important;
+        max-width: 290px !important;    /* Чтобы кнопка не была слишком гигантской */
+        margin: 0 auto !important;      /* Центрируем её */
+    }
+
+    /* Картинка */
+    .highlight-promo__image-wrapper {
+        width: 100% !important;
+        max-width: 260px !important;    /* Картинка аккуратно уменьшается на узких экранах */
+        margin: 0 auto !important;
+    }
+}
+/* --- 4. МОБИЛЬНЫЕ ТЕЛЕФОНЫ (От 400px до самых маленьких 320px) --- */
+@media screen and (max-width: 400px) {
+    .highlight-promo__container {
+        padding-left: 16px !important;  /* Минимальные аккуратные поля для мобилки */
+        padding-right: 16px !important; /* Чтобы текст не прилипал к краям экрана */
+        gap: 25px !important;
+    }
+
+    .highlight-promo__content {
+        width: 100% !important;
+    }
+
+    /* СПАСЕНИЕ ЗАГЛОВКА: уменьшаем шрифт, чтобы слово "мелирование" полностью влезло на 320px */
+    .highlight-promo__title {
+        font-size: 26px !important; /* Шрифт стал чуть компактнее, теперь слово точно поместится */
+        line-height: 32px !important;
+        text-align: center !important;
+        margin-left: 0 !important;  /* Сбрасываем любые случайные сдвиги */
+        margin-right: 0 !important;
+    }
+
+    .highlight-promo__text {
+        font-size: 14px !important;
+        line-height: 22px !important;
+        text-align: center !important;
+    }
+
+    .highlight-promo__image-wrapper {
+        max-width: 270px !important; 
+        margin: 0 auto !important;
+    }
+}
