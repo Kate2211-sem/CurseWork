@@ -112,6 +112,70 @@ body {
   background: var(--primary); 
   border-radius: 2px;
 }
+/* Родительский пункт меню */
+.nav__item--dropdown {
+    position: relative; /* КРИТИЧНО: теперь список будет привязан сюда */
+}
+
+.dropdown {
+    /* Твои стили */
+    color: #333;
+    text-align: left; /* Обычно в меню текст выравнивают по левому краю */
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 15px;
+
+    /* УБИРАЕМ ТОЧКИ */
+    list-style: none; 
+    padding: 15px 20px; /* Чтобы текст не прилипал к краям белого блока */
+    margin: 0;
+
+    /* ПОЗИЦИОНИРОВАНИЕ */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 200px;
+}
+
+/* Показываем при наведении на родителя */
+.nav__item--dropdown:hover .dropdown {
+    display: block;
+}
+
+/* Стили для самих ссылок внутри, чтобы убрать подчеркивание */
+.dropdown li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: color 0.3s;
+}
+
+.dropdown li a:hover {
+    color: #ff8c05; /* Цвет при наведении */
+}
+
+
+
+/* Стили для ссылок внутри списка */
+.dropdown__link {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.dropdown__link:hover {
+    background-color: #f9f5f0; /* Цвет фона при наведении как в твоем дизайне */
+    color: #ff8c05; /* Твой акцентный оранжевый */
+}
 
 .header__right {
   display: flex;
@@ -120,34 +184,50 @@ body {
 }
 
 /* Инструменты (RU, тема, глаз) */
+
 .header__tools {
-  display: flex;
-  align-items: center;
-  gap: 5px; /* Сжимаем кнопки инструментов плотнее */
-  padding-right: 15px; /* Уменьшили отступ до разделителя */
-  border-right: 1px solid var(--border);
-  margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Компактные расстояния между кнопками */
+    background: #ffffff; /* Чистый белый фон */
+    padding: 6px 14px;
+    border-radius: 30px; /* Круглая аккуратная панелька */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Едва заметная стильная рамка */
 }
 
+/* Общие стили для кнопок внутри панельки */
 .tool-btn {
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
-  transition: all 0.2s;
-  padding: 6px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: transparent;
+    border: none;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 50%; /* Чтобы круглые иконки были ровными */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 }
 
+/* Эффект при наведении на кнопки */
 .tool-btn:hover {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
+    color: #FD9113; /* Окрашивается в твой фирменный цвет */
+    background-color: rgba(253, 145, 19, 0.05); /* Легкий аккуратный кружок сзади */
+}
+
+/* Иконка глаза или луны внутри кнопки */
+.tool-btn svg, .tool-btn img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.tool-btn:hover svg, .tool-btn:hover img {
+    opacity: 1;
 }
 
 /* Instagram */
@@ -394,32 +474,61 @@ body {
     margin-left: 45px; /* Прижимаем ползунок к правому краю 1280px */
 }
 
+/* Делаем контейнер позиционированным, чтобы инпуты легли ровно друг на друга */
 .neon-range {
     position: relative;
-    width: 130px;
-    height: 4px;
-    background: rgba(16, 214, 178, 0.2); /* Светлая подложка линии */
-    border-radius: 2px;
+    width: 120px; /* или какая ширина у тебя в макете */
+    height: 20px; /* даем высоту, чтобы было удобно нажимать пальцем */
+    display: flex;
+    align-items: center;
 }
 
+/* Твоя линия теперь просто лежит по центру абсолютно */
 .neon-line {
     position: absolute;
-    width: 80%; /* Заполненная часть */
-    left: 10%;
-    height: 100%;
-    background: #10D6B2; /* Твой неоновый зеленый */
-    box-shadow: 0 0 8px #10D6B2;
+    width: 100%;
+    height: 4px; /* толщина твоей линии */
+    background: #e5e7eb; /* цвет линии */
+    z-index: 1;
+    pointer-events: none; /* клики проходят сквозь линию на инпуты */
 }
 
-.neon-dot {
+/* Полностью скрываем стандартную полосу инпута, оставляя только невидимую рабочую зону */
+.range-input {
     position: absolute;
-    top: 50%;
-    width: 10px;
-    height: 10px;
-    background: #10D6B2;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    pointer-events: none; /* чтобы два инпута не мешали друг другу */
+    margin: 0;
+    z-index: 2;
+}
+
+/* СТИЛИЗУЕМ КРУЖОЧЕК ИНПУТА ПОД ТВОЮ НЕОНОВУЮ ТОЧКУ (Chrome, Safari, Edge) */
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;  /* Размеры твоей точки */
+    height: 14px;
     border-radius: 50%;
-    transform: translateY(-50%);
-    box-shadow: 0 0 10px #10D6B2;
+    background: #22c55e; /* Твой зеленый неоновый цвет */
+    box-shadow: 0 0 10px #22c55e; /* Твой неоновый эффект свечения! */
+    cursor: pointer;
+    pointer-events: auto; /* Возвращаем кликабельность самой точке */
+}
+
+/* То же самое для браузера Firefox */
+.range-input::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: none;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .dot-left { left: 10%; }
@@ -585,7 +694,7 @@ body {
 }
 
 .banner__discount {
-    margin-left: 140px;
+    margin-left: 100px;
     color: #FFF;
     text-shadow: 0 0 20px rgba(22, 140, 199, 0.50);
     font-family: 'Gilroy';
@@ -1296,4 +1405,483 @@ body {
 .footer__menu a:hover {
     color: #FE9313;
     transition: 0.3s;
+}
+/* ==========================================================================
+   ИДЕАЛЬНЫЙ АДАПТИВ ДЛЯ СТРАНИЦЫ МАГАЗИНА (OK! SALON)
+   ========================================================================== */
+
+/* --- 1. БОЛЬШИЕ МОНИТОРЫ И НОУТБУКИ (До 1200px) --- */
+@media screen and (max-width: 1200px) {
+    .container {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+
+    /* Сетка товаров: перестраиваем из 4 колонок в 3 */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 20px !important;
+    }
+
+    .shop__header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+        gap: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important; /* Гарантия безопасности от вылетов */
+    }
+
+    /* 2. Левая часть: текст в начале */
+    .shop__text {
+        flex: 1 1 50% !important;
+        width: auto !important;
+        max-width: 50% !important;
+        min-width: 0 !important; /* Важно: разрешает флексу сжиматься меньше содержимого */
+    }
+
+    .shop__title {
+        max-width: 100% !important;
+        word-wrap: break-word !important;
+    }
+
+    .shop__description {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* 3. Правая часть: блок с баннером и карточками */
+    .shop__benefits {
+        flex: 1 1 45% !important;
+        width: auto !important;
+        max-width: 45% !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .banner {
+        margin-top: 60px !important;
+        padding-bottom: 60px !important;
+        width: 100% !important;
+    }
+
+    /* Убираем наезды со стороны соседнего блока "О нас" */
+    .about-preview__content {
+        margin-top: 0 !important; 
+    }
+
+    /* 2. Делаем тело баннера гибким флекс-контейнером */
+    .banner__body {
+        width: 100% !important;
+        max-width: 1085px !important;
+        height: auto !important; /* Разрешаем высоте подстраиваться */
+        min-height: 206px !important;
+        margin: 0 auto !important; /* Центрируем сам баннер на экране */
+        padding: 20px 40px !important;
+        
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative !important; /* База для центрирования слова */
+    }
+
+    /* 3. Левый текст (Не пропусти / Комплект...) */
+    .banner__content {
+        flex: 0 1 30% !important; /* Выделяем жесткую левую треть под текст */
+        position: relative !important;
+        z-index: 3 !important;
+    }
+
+    .banner__title {
+        font-size: 20px !important; /* Чуть уменьшаем, чтобы слова не ломались */
+        line-height: 28px !important;
+    }
+
+    /* 4. СЛОВО "РОЗЫГРЫШ" — ТЕПЕРЬ СТРОГО ПО ЦЕНТРУ И УМЕНЬШАЕТСЯ */
+    .banner__discount {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important; /* Магия идеального центра */
+        margin: 0 !important; /* Сбрасываем десктопный margin-left, который всё ломал! */
+        
+        /* Уменьшаем размер шрифта пропорционально экрану */
+        font-size: calc(28px + (64 - 28) * ((100vw - 768px) / (1200 - 768))) !important;
+        line-height: 1 !important;
+        text-align: center !important;
+        z-index: 1 !important; /* Уводим на задний план под картинку, если они соприкоснутся */
+        white-space: nowrap !important;
+    }
+
+    /* 5. КАРТИНКА НАБОРА — ВСЕГДА СПРАВА, ЦЕЛАЯ И УМЕНЬШАЕТСЯ */
+    .banner__img {
+        position: static !important; /* Никаких абсолютных вылетов за правый край */
+        transform: none !important;
+        
+        flex: 0 1 35% !important; /* Выделяем правую треть баннера */
+        width: 35% !important;
+        max-width: 260px !important; /* Комфортный размер, чтобы не гигантская */
+        height: auto !important;
+        object-fit: contain !important;
+        margin-left: auto !important; /* Прижимает строго к правому краю */
+        z-index: 2 !important;
+    }
+    .container {
+        padding: 0 30px !important; /* Уменьшаем боковые отступы страницы, освобождая место */
+    }
+
+    .product-grid {
+        /* Меняем фиксированные 244px на гибкую резиновую сетку */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+        gap: 20px !important;
+        padding: 20px 0 !important;
+    }
+
+    .product-card {
+        width: 100% !important; /* Карточка занимает всю ширину своей колонки */
+        height: auto !important;
+        min-height: 425px;
+    }
+
+    /* --- 3. ИСПРАВЛЕНИЕ НАЕЗДОВ В ШАПКЕ МАГАЗИНА --- */
+    .shop__header {
+        flex-direction: column !important; /* Перестраиваем в колонку, чтобы блоки не бодались */
+        align-items: flex-start !important;
+        gap: 30px !important;
+    }
+
+    .shop__description {
+        width: 100% !important; /* Текст описания занимает всю ширину */
+        max-width: 700px;
+    }
+
+    /* Укрощаем блок бенефитов (Пробники / Цены ниже) */
+    .shop__benefits {
+        transform: none !important; /* СБРАСЫВАЕМ десктопный сдвиг влево на -190px, который устраивал кашу! */
+        margin-top: 10px !important;
+        flex-direction: row !important; /* Выстраиваем преимущества горизонтально в рядок */
+        flex-wrap: wrap !important;
+        gap: 40px !important;
+        width: 100% !important;
+    }
+
+    .benefit {
+        margin-bottom: 0 !important; /* Обнуляем лишние десктопные отступы */
+    }
+
+    /* --- 4. АДАПТИВ ФИЛЬТРОВ И ПОЛЗУНКА ЦЕНЫ --- */
+    .shop__filters {
+        flex-wrap: wrap !important; /* Разрешаем фильтрам падать на новую строку, если тесно */
+        gap: 24px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .filter-price-wrapper {
+        margin-left: 0 !important; /* Сбрасываем десктопный отступ, прижимавший его вправо */
+        width: 100% !important; /* Ползунок цены аккуратно падает на строчку ниже под селекты */
+        justify-content: flex-start !important;
+        margin-top: 10px;
+    }
+    /* --- ИСПРАВЛЕНИЕ НАЕЗДОВ И ЦЕНТРИРОВАНИЕ ТЕКСТА --- */
+    .shop__header {
+        flex-direction: column !important;
+        align-items: center !important; /* Центрируем содержимое шапки по горизонтали */
+        text-align: center !important;  /* Центрируем сам текст внутри элементов */
+        gap: 25px !important;
+    }
+
+    .shop__description {
+        width: 100% !important;
+        max-width: 650px; /* Ограничиваем ширину, чтобы текст красиво читался по центру */
+        margin: 0 auto !important; /* Центрируем сам блок с текстом */
+    }
+
+    /* Укрощаем блок бенефитов (Пробники / Цены ниже) */
+    .shop__benefits {
+        transform: none !important;
+        margin-top: 15px !important;
+        flex-direction: row !important;
+        /* Центрируем карточки бенефитов относительно всей страницы */
+        justify-content: center !important; 
+        flex-wrap: wrap !important;
+        gap: 40px !important;
+        width: 100% !important;
+    }
+
+    .benefit {
+        margin-bottom: 0 !important;
+        text-align: left !important; /* Внутри самой иконки бенефита текст оставляем аккуратно слева */
+    }
+
+    /* --- АДАПТИВ ФИЛЬТРОВ И ПОЛЗУНКА ЦЕНЫ --- */
+    .shop__filters {
+        flex-wrap: wrap !important;
+        justify-content: center !important; /* Центрируем фильтры на планшетах */
+        gap: 24px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .filter-price-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+        /* Центрируем ползунок цены, когда он падает на вторую строку */
+        justify-content: center !important; 
+        margin-top: 5px;
+    }
+}
+
+/* --- ПРОМЕЖУТОЧНЫЙ ФИКС ДЛЯ БАННЕРА KIKIMORA (До 1140px) --- */
+@media screen and (max-width: 1140px) {
+    .banner {
+        width: 100% !important;
+        max-width: 100% !important;
+        /* УБИРАЕМ overflow: hidden, чтобы ничего не резало по краям */
+    }
+
+    .banner__body {
+        padding: 30px 40px !important; 
+        display: flex !important;
+        justify-content: space-between !important; /* Текст слева, картинка справа */
+        align-items: center !important;
+        position: relative !important;
+    }
+
+    .banner__content {
+        max-width: 55% !important; /* Даем тексту чуть меньше места, чтобы освободить правый бок */
+        z-index: 2 !important;
+    }
+
+    .banner__title {
+        font-size: 28px !important;
+        line-height: 36px !important;
+    }
+
+    /* КАРТИНКА: ТЕПЕРЬ ОНА ЦЕЛАЯ И НЕ ОБРЕЗАЕТСЯ */
+    .banner__img {
+        position: absolute !important; /* Оставляем позиционирование */
+        right: 10px !important;        /* Прижимаем к правому краю с безопасным отступом в 10px */
+        top: 50% !important;
+        transform: translateY(-50%) !important; /* Идеально центрируем по вертикали */
+        
+        /* МАГИЯ СЖАТИЯ: уменьшаем ширину, чтобы она влезла ЦЕЛИКОМ */
+        width: auto !important;
+        max-width: 320px !important;   /* Подбери цифру (например 300px или 320px), чтобы она была целой */
+        height: auto !important;
+        
+        object-fit: contain !important; /* Гарантируем, что браузер не сожмет её гармошкой */
+        display: block !important;
+    }
+
+    /* Сдвигаем оранжевую плашку "Розыгрыш", чтобы она не налезала на картинку */
+    .banner__discount {
+        right: 10px !important;
+        top: 15px !important;
+        z-index: 3 !important;
+    }
+}
+/* --- 2. ПЛАНШЕТЫ (До 1024px) --- */
+@media screen and (max-width: 1024px) {
+    /* Шапка магазина (Текст и Бенефиты) */
+    
+    .shop__text {
+        max-width: 100% !important;
+    }
+
+    .shop__header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+
+    /* Сбрасываем жесткий сдвиг влево (-190px), который утягивал бенефиты за экран */
+    .shop__benefits {
+        transform: none !important;
+        margin-top: 0 !important;
+        flex-direction: row !important; /* Выстраиваем карточки "пробники" и "цены" в один ряд */
+        flex-wrap: wrap !important;
+        gap: 30px !important;
+        width: 100% !important;
+    }
+
+    .benefit {
+        margin-bottom: 0 !important; /* Убираем лишние отступы */
+    }
+
+    /* Фильтры: разрешаем им переноситься, если не влезают в одну строку */
+    .shop__filters {
+        flex-wrap: wrap !important;
+        gap: 20px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .filter-price-wrapper {
+        margin-left: 0 !important; /* Сбрасываем десктопный прижим вправо */
+        width: 100% !important; /* Ползунок встает на всю ширину снизу */
+        justify-content: flex-start !important;
+    }
+
+    .neon-range {
+        width: 200px !important; /* Делаем сам ползунок чуть шире и удобнее на планшете */
+    }
+
+}
+
+/* --- 3. МАЛЕНЬКИЕ ПЛАНШЕТЫ И ТЕСТЫ (До 768px) --- */
+@media screen and (max-width: 768px) {
+    /* Сетка товаров прыгает в 2 колонки */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        justify-items: center !important; /* Убираем прилипание к левому краю! */
+        gap: 16px !important;
+    }
+
+    .product-card {
+        width: 100% !important;
+        max-width: 280px !important;
+    }
+
+    .banner__body {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 30px 20px !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    /* 2. Блок с текстом центрируется и занимает всю ширину */
+    .banner__content {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .banner__subtitle {
+        line-height: 1.4 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .banner__title {
+        font-size: 22px !important;
+        line-height: 28px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .banner__link {
+        line-height: 1.4 !important;
+    }
+
+    /* 3. СЛОВО "РОЗЫГРЫШ" — вытаскиваем из абсолютного центра в обычный поток */
+    .banner__discount {
+        position: static !important;
+        transform: none !important;
+        margin: 15px 0 20px 0 !important; /* Делаем аккуратные отступы сверху и снизу */
+        
+        /* Уменьшаем размер шрифта под мобилку, чтобы слово гарантированно влезло целиком */
+        font-size: 38px !important;
+        line-height: 1 !important;
+        text-shadow: 0 0 15px rgba(22, 140, 199, 0.4) !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    /* 4. КАРТИНКА НАБОРА — падает в самый низ строго по центру */
+    .banner__img {
+        position: static !important;
+        transform: none !important;
+        display: block !important;
+        
+        /* Делаем её адаптивной по ширине экрана */
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 240px !important; /* Картинка останется целой, крупной, но послушной */
+        height: auto !important;
+        
+        /* Обнуляем правые/левые маржины и за счет auto центрируем */
+        margin: 0 auto !important; 
+        object-fit: contain !important;
+    }
+}
+
+/* --- 4. СМАРТФОНЫ И ЭКРАН 320px (До 480px) --- */
+@media screen and (max-width: 480px) {
+    .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    /* Заголовки */
+    .shop__title {
+        font-size: 32px !important;
+        line-height: 40px !important;
+    }
+
+    /* Фильтр цены на мобилках */
+    .filter-price-wrapper {
+        width: 100% !important;
+        justify-content: center !important;
+        margin-top: 10px !important;
+    }
+
+    .neon-range, .range-container {
+        width: 140px !important; /* Оптимальный размер ползунка на узком экране */
+    }
+
+    /* КАРТОЧКИ ТОВАРОВ: Строго по одной в ряд — сочно, крупно и аккуратно */
+    .product-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .product-card {
+        max-width: 310px !important;
+    }
+
+    /* Бьюти блог заголовок */
+    .blog-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+
+    /* Инстаграм на телефонах делаем в 2 колонки */
+    .instagram__grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .instagram__item:nth-child(5) {
+        display: block !important; /* Возвращаем скрытую картинку для ровной сетки 2х2 */
+    }
+
+    /* Секция "О нас" — уменьшаем декоративный круг */
+    .about-preview__circle {
+        width: 260px !important;
+        height: 260px !important;
+    }
+
+    .about-preview__title {
+        font-size: 30px !important;
+        line-height: 38px !important;
+    }
+
+    /* ПОЛНЫЙ РАЗВОР ОТ ФУТЕРА В СТОЛБИК */
+    .footer__container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
+    .footer__contacts {
+        align-items: center !important;
+    }
 }
