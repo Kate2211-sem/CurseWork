@@ -456,3 +456,207 @@ body {
 .cosmetics-shop,.promo-section-second,.about-preview,.beauty-blog,.instagram,.contacts {
     background: #F4F9FF; /* Пишешь сюда свой новый цвет или новый градиент */
 }
+/* ==========================================================================
+   ФИКС СКРОЛЛА В ДИАПАЗОНЕ 1265px - 1220px
+   ========================================================================== */
+
+/* 1. СТРОГО ДЛЯ МАКЕТА 1280px (Фиксированные пиксели из макета, без изменений) */
+@media screen and (width: 1280px) {
+    .men-hall .container {
+        padding: 0 40px !important; 
+    }
+
+    .men-hall__content {
+        gap: 40px !important; 
+    }
+
+    .men-hall__text-wrapper {
+        width: 546px !important;
+        flex-shrink: 0 !important;
+        margin-left: 0 !important; 
+    }
+
+    .men-hall__image-block {
+        width: 500px !important;
+        height: 380px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .price-section__content {
+        gap: 70px !important; 
+    }
+    
+    .price-section__image-block {
+        width: 440px !important;
+    }
+
+    .price-section__info {
+        width: 474px !important;
+    }
+}
+
+/* 2. СПАСИТЕЛЬНЫЙ РЕЖИМ (Включается от 1279px и ниже) — Уничтожает скролл на 1265-1220px */
+@media screen and (max-width: 1279px) {
+    .men-hall .container,
+    .price-section .container {
+        padding: 0 30px !important; /* Чуть сужаем боковые поля, чтобы дать воздуху контенту */
+    }
+
+    /* МУЖСКОЙ ЗАЛ: Переводим блоки на плавные проценты сразу, как только экран меньше 1280px */
+    .men-hall__content {
+        gap: 4% !important; 
+    }
+
+    .men-hall__text-wrapper {
+        width: 48% !important;   /* Занимает чуть меньше половины */
+        max-width: 546px !important;
+        min-width: auto !important;
+        flex-shrink: 1 !important;
+        margin-left: 0 !important;
+    }
+
+    .men-hall__image-block {
+        width: 48% !important;   /* Занимает вторую половину */
+        max-width: 500px !important;
+        min-width: auto !important;
+        height: auto !important;  /* Высота подстраивается автоматически, чтобы не искажать фото */
+        flex-shrink: 1 !important;
+    }
+
+    /* СЕКЦИЯ ЦЕН: Тоже делаем резиновой, чтобы она не выталкивала скролл */
+    .price-section__content {
+        gap: 5% !important;
+    }
+
+    .price-section__image-block {
+        width: 44% !important;
+        max-width: 440px !important;
+        min-width: auto !important;
+    }
+
+    .price-section__info {
+        width: 51% !important;
+        max-width: 474px !important;
+        min-width: auto !important;
+    }
+}
+
+/* 3. ДЛЯ ПЛАНШЕТОВ (Меньше 1024px) — Этот блок оставляй как есть, он работает отлично */
+@media screen and (max-width: 1024px) {
+    .men-hall {
+        padding-top: 60px !important;
+        padding-bottom: 80px !important;
+    }
+    .men-hall__content {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+    .men-hall__text-wrapper {
+        width: 100% !important;
+        max-width: 600px !important;
+    }
+    .men-hall__title {
+        text-align: center !important;
+        font-size: 36px !important;
+        line-height: 44px !important;
+    }
+    .men-hall__description {
+        text-align: center !important;
+    }
+    .men-hall__image-block {
+        width: 100% !important;
+        max-width: 480px !important;
+        margin-top: 20px !important;
+    }
+    .price-section__content {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 40px !important;
+    }
+    .price-section__image-block {
+        width: 100% !important;
+        max-width: 400px !important;
+    }
+    .price-section__info {
+        width: 100% !important;
+        max-width: 500px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* 3. ДЛЯ ПЛАНШЕТОВ И МОБИЛОК (До 678px включительно) */
+@media screen and (max-width: 678px) {
+    .men-hall__title, 
+    .price-section__title {
+        font-size: 28px !important;
+        line-height: 36px !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* Уменьшаем синий круг за картинкой, чтобы не вылезал */
+    .men-hall__circle-bg svg {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    /* Скидочная плашка 20% */
+    .promo-card {
+        padding: 15px 20px !important;
+    }
+
+    .promo-card__label {
+        font-size: 16px !important;
+    }
+
+    .promo-card__target {
+        font-size: 18px !important;
+    }
+
+    .promo-card__value {
+        font-size: 48px !important;
+    }
+
+    /* Строки цен */
+    .price-name, .price-val {
+        font-size: 16px !important;
+    }
+}
+/* ==========================================================================
+   СПАСЕНИЕ ДЛЯ СВЕРХМАЛЕНЬКИХ ЭКРАНОВ (От 401px и ниже)
+   Убираем гигантскую картинку и ликвидируем скролл справа
+   ========================================================================== */
+@media screen and (max-width: 401px) {
+    /* Ограничиваем общую ширину контейнера, чтобы ничего не вылезало */
+    .men-hall {
+        overflow: hidden !important; /* Жесткий щит от любых случайных вылетов */
+    }
+
+    .men-hall .container {
+        padding: 0 16px !important; /* Делаем аккуратные мобильные поля */
+    }
+
+    
+
+ .men-hall__image-block::before,
+    .men-hall__image-block::after,
+    .men-hall__circle { 
+        display: none !important; /* На экранах меньше 400px круг полностью исчезает */
+    }
+
+    /* Саму картинку с мужчинами центрируем и делаем безопасного размера */
+    .men-hall__image-block {
+        width: 90% !important;       
+        max-width: 280px !important; 
+        height: auto !important;     
+        margin: 20px auto 0 auto !important; 
+    }
+
+    .men-hall__image-block img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
