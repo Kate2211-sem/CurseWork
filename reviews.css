@@ -1,0 +1,1461 @@
+/* Основная секция */
+.reviews-section {
+    padding-top: 22px; /* Отступ от шапки по ТЗ */
+    padding-bottom: 80px;
+    background-color: #F9F5F0; /* Светлый бело-голубой фон */
+    overflow: hidden; /* Чтобы декоративные элементы не создавали прокрутку */
+}
+
+
+
+
+
+.reviews-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 95px; /* Отступ текста от края экрана по ТЗ */
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ТЕКСТ СЛЕВА */
+.reviews-text {
+    margin-top: 60px;
+    width: 445px; /* Фиксированная ширина по ТЗ */
+}
+
+.reviews-title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 24px;
+}
+
+.reviews-description {
+    color: rgba(51, 51, 51, 0.70);
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.reviews-collage {
+    position: relative;
+    width: 700px;
+    height: 450px;
+   margin-left: 50px;
+}
+
+.collage-img {
+    position: absolute;
+    object-fit: cover;
+    /* Убираем сильную тень, оставляем легкую, чтобы не было "грязных" ореолов */
+   
+}
+
+/* 1. Центральное фото (самое верхнее по слоям) */
+.img-2 {
+    width: 400px;
+    height: 460px;
+    top: 20px;
+    left: 160px;
+    z-index: 5; /* Самый большой индекс, чтобы быть ПОВЕРХ всех */
+    
+}
+
+/* 2. Левое верхнее фото (за центральным) */
+.img-1 {
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 50px;
+    z-index: 1; /* Уходит под центральное */
+    
+}
+
+/* 3. Левое нижнее фото (ближе к центру) */
+.img-3 {
+    width: 300px;
+    height: 300px;
+    bottom: 0;
+    left: 40px; /* Уменьшили отступ, чтобы прижать к центру */
+    top:60%;
+    z-index: 10; 
+    
+}
+
+/* 4. Правое нижнее фото (ближе к центру) */
+.img-4 {
+    width: 300px;
+    height: 300px;
+    bottom: 10px;
+    top:60%;
+    right: 40px; /* Прижали ближе к центральному фото */
+    z-index: 10;
+   
+}
+
+/* ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ */
+
+/* Синий градиентный круг - теперь ЗА фото */
+.decor-circle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%);
+    border-radius: 50%;
+    top: 20px;
+    right: 190px;
+    z-index: 0; /* Самый низкий уровень, за всеми фото */
+}
+/* КНОПКА ОСТАВИТЬ ОТЗЫВ */
+.reviews-btn {
+    display: inline-block;
+    width: 211px;
+    height: 55px;
+    margin-top: 30px; /* Отступ от текста до кнопки */
+    border: none;
+    border-radius: 15px; /* Скругление углов, как у всех кнопок на сайте */
+    
+    /* Твой фирменный градиент */
+    background: linear-gradient(270deg, #FD9113 0%, #FDBB13 100%);
+    
+    color: #ffffff;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    
+    /* Мягкая золотисто-желтая тень */
+    box-shadow: 0 0 20px 0 rgba(254, 217, 21, 0.50);
+    
+    /* Анимация для плавного hover-эффекта */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Эффект при наведении курсора */
+.reviews-btn:hover {
+    transform: translateY(-2px); /* Кнопка слегка приподнимается */
+    box-shadow: 0 5px 25px 0 rgba(254, 217, 21, 0.70); /* Тень становится чуть глубже */
+}
+
+/* Эффект при клике */
+.reviews-btn:active {
+    transform: translateY(0); /* Возвращается на место */
+}
+.testimonials {
+    padding: 60px 0 100px;
+    background-color: #F9F5F0;
+    overflow: visible; /* Чтобы тени и элементы не резались */
+}
+
+.testimonials-main-title {
+    text-align: center;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.testimonials-track {
+    display: flex;
+    justify-content: center; /* Центрируем 5 карточек */
+    gap: 25px;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Появится скролл, если экран будет слишком узким */
+    padding-bottom: 20px;
+}
+
+/* Прячем полосу прокрутки для красоты */
+.testimonials-track::-webkit-scrollbar { display: none; }
+
+.testimonial-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    width: 287px;           /* Твоя ширина */
+    height: 334px;          /* Твоя высота */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;         /* Чтобы карточки не сжимались */
+}
+
+/* Шапка карточки: фото + имя в ряд */
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.testimonial-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid #F9F5F0;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+}
+
+.testimonial-stars {
+    color: #FFB800;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.testimonial-text {
+    /* Твои точные параметры */
+    width: 233px;
+    height: 211px;
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    /* Центрируем текст внутри карточки, если нужно */
+    margin: 0 auto; 
+    
+    /* Работа с длинным текстом */
+    overflow-y: auto;       /* Добавляет внутреннюю прокрутку, если текста много */
+    padding-right: 5px;     /* Небольшой отступ от полосы прокрутки */
+    
+    /* Скрываем стандартный скроллбар для красоты (опционально) */
+    scrollbar-width: thin;
+    scrollbar-color: #CCCCCC transparent;
+}
+
+/* Настройка скроллбара для Chrome/Safari */
+.testimonial-text::-webkit-scrollbar {
+    width: 4px;
+}
+.testimonial-text::-webkit-scrollbar-thumb {
+    background-color: #CCCCCC;
+    border-radius: 10px;
+}
+
+.testimonial-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #F2F2F2;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.testimonial-link {
+    text-decoration: none;
+    color: #CCCCCC;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.testimonial-arrow {
+    color: #CCCCCC;
+    font-size: 18px;
+}
+.beauty-format {
+    padding-top: 105px; /* Отступ вниз от предыдущей секции */
+    padding-bottom: 100px;
+    background-color: #F9F5F0;
+}
+
+.beauty-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 136px; /* Расстояние между картинкой и текстом */
+}
+
+/* КАРТИНКА */
+.beauty-image-wrapper {
+    position: relative;
+    width: 428px;
+    height: 535px;
+    flex-shrink: 0;
+}
+
+.beauty-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px; /* Скругление как на фото */
+}
+
+/* СИНИЙ КРУГ СНИЗУ СПРАВА */
+.beauty-decor-circle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%);
+    border-radius: 50%;
+    bottom: -30px;
+    right: -40px;
+    z-index: 2;
+}
+
+/* ТОЧКИ (СЕТКА) */
+.beauty-decor-dots {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: radial-gradient(#ccc 2px, transparent 2px);
+    background-size: 15px 15px;
+    bottom: 20px;
+    right: -20px;
+    z-index: 1;
+}
+
+/* КОНТЕНТ (ТЕКСТ) */
+.beauty-content {
+    width: 379px; /* Ширина текстового блока */
+}
+
+.beauty-title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 31px; /* Расстояние до текста */
+}
+
+.beauty-text-block {
+    height: 392px; /* Твоя высота */
+    color: rgba(51, 51, 51, 0.70);
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+/* Настройка абзацев через строчку */
+.beauty-text-block p {
+    margin-bottom: 24px; /* Создает эффект пропуска строки */
+}
+
+.beauty-final-line {
+    margin-top: 30px;
+    font-weight: 500;
+    color: #333; /* Последняя строка чуть акцентнее */
+}
+.services-section {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 79px; /* Отступ от круга предыдущей части */
+    background-color: #F9F5F0;
+}
+
+.services-title {
+    color: #333;
+    text-align: center;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 50px; /* 50px вниз до карточек */
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 80px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    text-align: center;
+}
+
+/* Обертка для фото с эффектом "капли" (blob) */
+.service-image-wrapper {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin-bottom: 20px;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Форма капли как на макете */
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+
+/* Розовый круг-декор для 3-й карточки */
+.decor-circle-pink {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #FF2D87;
+    border-radius: 50%;
+    top: -10px;
+    left: 40px;
+    z-index: -1;
+}
+
+.service-name {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.name-pink {
+    color: #FF2D87;
+}
+
+.service-price {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Стили кнопок */
+.service-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-orange { border: 1.5px solid #FFB800; color: #FFB800; }
+.btn-blue { border: 1.5px solid #00C3FF; color: #00C3FF; }
+.btn-purple { border: 1.5px solid #D68BF2; color: #D68BF2; }
+
+/* Залитая розовая кнопка для активной/выделенной услуги */
+.btn-pink-solid {
+    background: linear-gradient(270deg, #FF2D87 0%, #FF68A8 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 45, 135, 0.3);
+}
+
+.service-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+.promo-banner {
+    width: 975px;
+    height: 136px;
+    margin: 0px auto 0;
+    border-radius: 15px;
+    
+    /*  Светлый телесный градиент (без свечения и прозрачности) */
+    background: linear-gradient(270deg, #FFF8F0 0%, #FFE8D6 100%);
+    
+    /* Убрали box-shadow, чтобы блок был обычным и плоским */
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 130px;
+}
+
+.promo-text { 
+    font-size: 16px; 
+    color: #333; 
+    margin-bottom: 5px; 
+}
+
+.promo-target { 
+    font-size: 22px; 
+    font-weight: 700; 
+    color: #333; 
+}
+
+.promo-banner__value { 
+    display: flex; 
+    align-items: baseline; 
+    gap: 10px; 
+}
+
+/* "до" — ярко-оранжевый, как 20% */
+.promo-pre { 
+    font-size: 24px; 
+    font-weight: 700; 
+    color: #FD5913; 
+}
+
+/* "20%" — ярко-оранжевый и тоньше */
+.promo-percent {
+    font-size: 60px;
+    font-weight: 700; /* Было 800 → сделали тоньше */
+    color: #FD5913;   /* Яркий оранжевый */
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+/* ========== COSMETICS SHOP: DESKTOP STYLES ========== */
+.cosmetics-shop {
+    padding: 100px 0;
+    background-color: #F9F5F0;
+    width: 100%;
+    overflow: hidden; /* Чтобы круги не вылезали за границы */
+}
+
+.cosmetics__content {
+    display: flex;
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* ✅ ЛЕВАЯ ЧАСТЬ С ТЕКСТОМ */
+.cosmetics__info {
+    flex-shrink: 0;
+    max-width: 500px; /* Ограничиваем ширину текста */
+    position: relative;
+    z-index: 2;
+}
+
+.cosmetics__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 24px;
+}
+
+.cosmetics__text {
+    color: rgba(51, 51, 51, 0.70);
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    max-width: 420px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+
+/* Кнопка и ссылка в ряд */
+.cosmetics__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px; /* Отступ до кругов */
+}
+
+/* ✅ ЗЕЛЕНАЯ КНОПКА */
+/* ✅ ЗЕЛЕНАЯ КНОПКА С ГРАДИЕНТОМ ИЗ FIGMA */
+.btn-gradient-green {
+    width: 211px;
+    height: 55px;
+    border: none;
+    border-radius: 15px;
+    color: #FFF;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    
+    /* Многослойный градиент как в Figma */
+    background: 
+        linear-gradient(270deg, #10D6B2 26.56%, #1BDB68 100%),
+        linear-gradient(270deg, #8BA4D8 0%, #00C3FF 100%),
+        linear-gradient(270deg, #FCFB4F 0%, #FD9F13 100%),
+        #C4C4C4;
+    
+    box-shadow: 0 0 20px 0 rgba(16, 214, 178, 0.50);
+    transition: 0.3s;
+}
+
+.btn-gradient-green:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px 0 rgba(16, 214, 178, 0.70);
+}
+.btn-gradient-green:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px 0 rgba(16, 185, 129, 0.70);
+}
+
+/* Текст ссылки рядом */
+.cosmetics__link {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cosmetics__link:hover {
+    color: #10B981; /* Подсветка при наведении */
+}
+
+/* ✅ ДЕКОРАТИВНЫЕ КРУГИ (ВНИЗУ СЛЕВА) */
+.cosmetics__decor {
+    position: absolute;
+    bottom: -90px;
+   
+    left:700px;
+    z-index: 0;
+}
+
+.circle-big {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00C3FF 0%, #10B981 100%);
+    filter: drop-shadow(8px 10px 15px rgba(0, 0, 0, 0.10));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.circle-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FFF;
+    position: absolute;
+    bottom: 15px;
+    left: 90px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Поверх большого круга */
+}
+
+/* ✅ ПРАВАЯ ЧАСТЬ С КАРТИНКОЙ */
+.cosmetics__image {
+    flex-shrink: 0;
+    position: relative;
+}
+
+.cosmetics__image img {
+    width: 450px; /* Фиксированный размер как на макете */
+    height: 568px;
+    object-fit: cover;
+    display: block;
+    border-radius: 30px; /* Скругление углов картинки (если есть на макете) */
+     transform: translate(-35px, -29px); 
+}
+
+
+/* ========== ADAPTIVE ========== */
+@media (max-width: 1024px) {
+    .cosmetics__content {
+        flex-direction: column-reverse; /* Картинка сверху, текст снизу */
+        align-items: center;
+        gap: 40px;
+    }
+
+    .cosmetics__info {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .cosmetics__actions {
+        justify-content: center;
+    }
+
+    .cosmetics__image img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .cosmetics__decor {
+        display: none; /* Убираем круги на планшете, чтобы не мешали */
+    }
+}
+
+@media (max-width: 768px) {
+    .cosmetics__title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    
+    .cosmetics__actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-gradient-green {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+.beauty-blog {
+    padding: 80px 0;
+    background-color: #F9F5F0; /* Телесный фон всей секции */
+    width: 100%;
+}
+
+/* ✅ ЗАГОЛОВОК И ССЫЛКА "СМОТРЕТЬ ВСЕ" */
+.blog-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px; /* Отступ до карточек */
+}
+
+.blog-title {
+    color: #333;
+    text-align: center;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin: 0 0 10px 0;
+}
+
+.blog-link-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #FE5B14;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1; /* Убрал 350%, иначе будет огромная высота */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: 0.3s;
+}
+
+.blog-link-all:hover {
+    opacity: 0.8;
+}
+
+/* ✅ СЕТКА КАРТОЧЕК */
+.blog-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ✅ КАРТОЧКА */
+.blog-card {
+    width: 336.31px; /* Точный размер из макета */
+    background: #FFFFFF;
+    border-radius: 30px; /* Скругление карточки */
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Легкая тень как на макете */
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Картинка в карточке */
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Высота картинки */
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Бейдж "Новый пост" (опционально, для средней карточки) */
+.card-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: #FE5B14;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Текст внутри карточки */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Чтобы кнопка прижималась к низу */
+}
+
+.card-title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3; /* 56px для 24px текста слишком много, ставим нормальный */
+    margin: 0 0 12px 0;
+}
+
+.card-text {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+    opacity: 0.8; /* Чуть прозрачнее для текста описания */
+}
+
+/* Ссылка "Читать далее" */
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    margin-top: auto; /* Прижимаем к низу */
+    transition: 0.3s;
+}
+
+.card-link:hover {
+    color: #FE5B14; /* При наведении красим в оранжевый */
+}
+
+/* ========== ADAPTIVE (Mobile) ========== */
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    
+    .blog-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .blog-card {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+.instagram {
+    padding: 80px 0;
+    width: 100%;
+    overflow: hidden; /* Страховка от вылетания */
+}
+
+/* Контейнер строго 1280px */
+.instagram .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px; /* Небольшой защитный отступ для краев экрана */
+}
+
+.instagram__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    /* Убираем жесткий padding 96px, если он "выталкивает" заголовок. 
+       Вместо этого используем margin, если нужно сместить именно текст внутри 1280px */
+    padding-left: 76px; /* 96px минус 20px контейнера = 76px чистого смещения */
+}
+
+.instagram__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.instagram__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #FD9113;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Сетка: считаем ширину так, чтобы 5 карточек + gap влезли в 1280px */
+.instagram__grid {
+    display: flex;
+    justify-content: space-between; /* Равномерно распределяем */
+    gap: 15px; /* Уменьшим зазор, чтобы карточки были крупнее и влезали */
+}
+
+.instagram__item {
+    position: relative;
+    /* Расчет: (100% - (4 зазора по 15px)) / 5 карточек */
+    flex: 0 0 calc((100% - 60px) / 5); 
+    aspect-ratio: 1 / 1;
+    border-radius: 30px; /* Скругление по макету */
+    overflow: hidden;
+}
+
+.instagram__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Эффект при наведении на центральную карточку (или все) */
+.instagram__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.instagram__item:hover .instagram__overlay {
+    opacity: 1;
+}
+
+.instagram__overlay span {
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Gilroy';
+}
+
+/* Для адаптива */
+@media (max-width: 1024px) {
+    .instagram__grid {
+        flex-wrap: wrap;
+    }
+    .instagram__item {
+        width: calc(33.333% - 20px);
+    }
+}
+.contacts {
+    padding: 100px 0;
+    background-color: #F9F5F0; /* Телесный фон */
+}
+
+.contacts__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+
+.contacts__content {
+    padding-left: 74px; /* 94px от края (с учетом 20px паддинга контейнера) */
+    width: 450px;
+}
+
+.contacts__title {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 48px; /* Отступ вниз до адреса */
+}
+
+.contacts__item {
+    margin-bottom: 24px;
+}
+
+.contacts__label {
+    color: rgba(51, 51, 51, 0.70);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+
+.contacts__info {
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 40px; /* Уменьшил с 56, чтобы не было дырок */
+}
+
+.contacts__link {
+    color: #FE9313;
+    font-size: 14px;
+    text-decoration: underline;
+    line-height: 24px;
+    display: block;
+    margin-top: -5px; /* Чтобы "схема прохода" была ближе */
+}
+
+.contacts__btn {
+    width: 211px;
+    height: 55px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 15px;
+    color: #FFF;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(270deg, #FD9113 0%, #FDBB13 100%);
+    box-shadow: 0 0 20px 0 rgba(254, 217, 21, 0.50);
+}
+
+/* Стили карты */
+.contacts__map-wrapper {
+    width: 530px; /* Размер карты под 1280 макет */
+    height: 530px;
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contacts__map {
+    width: 100%;
+    height: 100%;
+    background: #e5e3df; /* Цвет до загрузки карты */
+}
+
+.map-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Тот самый маркер-логотип по центру карты */
+.map-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 134px;
+    height: 102px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    
+}
+
+/* Хвостик сообщения (типо балун) */
+.map-marker::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+}
+
+.map-marker img {
+    width: 80px; /* Размер логотипа внутри плашки */
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.map-marker span {
+    font-size: 11px;
+    font-family: 'Gilroy';
+    color: #333;
+    font-weight: 400;
+}
+.footer {
+    width: 100%;
+    background-color: #ffffff; /* Закрашиваем всё пространство по бокам в белый */
+    padding: 0px 0; /* Отступы сверху и снизу от края экрана */
+}
+
+.footer__container {
+    max-width: 1280px;
+    height: 222px;
+    margin: 0 auto; /* Центрируем белую карточку */
+    background: #FFFFFF;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    
+    /* Твоя внутренняя тень */
+    
+    
+    /* Добавим внешнюю тень, чтобы блок плавно выделялся на белом фоне, если нужно */
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.03), 0 5px 10px 0 rgba(0, 0, 0, 0.05) inset; */
+}
+
+/* Ограничиваем контент внутри, чтобы ничего не "разъезжалось" на 1440px */
+.footer__logo-block {
+    flex: 0 0 250px; /* Фиксированная ширина для левой части */
+}
+
+.footer__logo {
+    width: 80px; /* Отрегулируйте под ваш файл */
+    height: auto;
+}
+
+.footer__brand {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 10px 0 5px 0;
+}
+
+.footer__unp {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* Общие стили для колонок меню */
+.footer__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Женский зал и т.д. (на 474px от левого края) */
+.footer__menu--bold {
+    margin-left: 150px; /* Регулировка, чтобы в сумме от края было около 474px */
+}
+
+.footer__menu--bold a {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 36px;
+    text-decoration: none;
+}
+
+/* О нас и т.д. (отступ 137px от предыдущего) */
+.footer__menu--medium {
+    margin-left: 137px;
+}
+
+.footer__menu--medium a {
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 36px;
+    text-decoration: none;
+}
+
+/* Контакты */
+.footer__contacts {
+    margin-left: auto; /* Прижимаем телефоны вправо */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer__phone, .footer__time {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.footer__phone a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer__icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Ховеры */
+.footer__menu a:hover {
+    color: #FE9313;
+    transition: 0.3s;
+}
+/* ==========================================================================
+   АДАПТИВ КАРТОЧЕК И ОТЗЫВОВ НА ГЛАВНОЙ (ПО АНАЛОГИИ С НАШИМИ НАСТРОЙКАМИ)
+   ========================================================================== */
+/* ==========================================================================
+   ЖЕСТКИЙ МОНОЛИТНЫЙ АДАПТИВ (ВЫРАВНИВАНИЕ СТРОГО ПО ЦЕНТРУ ЭКРАНА)
+   ========================================================================== */
+@media screen and (max-width: 1150px) {
+    .reviews-container {
+        display: flex !important;
+        flex-direction: column-reverse !important; /* Коллаж сверху, текст снизу */
+        align-items: center !important;
+        justify-content: center !important; 
+        text-align: center !important;
+        gap: 10px !important; 
+        padding-left: 0 !important;   /* Убираем десктопный сдвиг */
+        padding-right: 0 !important;  
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .reviews-text {
+        width: 100% !important;
+        max-width: 550px !important;
+        margin: 0 auto !important;
+        padding-top: 0 !important;
+    }
+
+    .reviews-collage {
+        position: relative !important;
+        width: 700px !important;   /* Родной десктопный размер монолита */
+        height: 460px !important;  
+        margin: 0 auto !important; 
+        left: 0 !important;
+        right: 0 !important;
+        flex-shrink: 0 !important;
+
+        /* Уменьшаем от центра, пока экран позволяет (до 600px) */
+        transform: scale(0.85) !important;
+        transform-origin: center center !important;
+    }
+}
+
+
+
+
+
+
+/* --- ПЛАНШЕТЫ И ТЕЛЕФОНЫ (1024px и ниже) --- */
+@media screen and (max-width: 1024px) {
+    /* ОТЗЫВЫ: выстраиваем карточки в гибкий флекс-ряд с переносом */
+    .testimonials-track {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 24px !important;
+    }
+
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 480px !important; /* Наша стандартная идеальная ширина для карточки */
+    }
+
+    /* УСЛУГИ НА ГЛАВНОЙ: делаем сетку из 2 колонок, как мы делали ранее */
+    .services-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 24px !important;
+        justify-items: center !important; /* Выравниваем каждую карточку строго по центру */
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+    }
+   
+
+    /* --- 2. СЕКЦИЯ БЬЮТИ В НОВОМ ФОРМАТЕ --- */
+    .beauty-container {
+        display: flex !important;
+        flex-direction: column !important; /* ФОТО ВСЕГДА ПЕРВОЕ, ТЕКСТ ВТОРОЙ */
+        align-items: center !important;
+        gap: 30px !important;
+        padding: 0 20px !important;
+    }
+
+    .beauty-image-wrapper {
+        width: 100% !important;
+        max-width: 360px !important; /* Ограничиваем ширину фото на планшете/мобилке */
+        margin: 0 auto !important;
+        position: relative !important;
+    }
+
+    .beauty-main-img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        border-radius: 10px !important;
+    }
+
+    .beauty-content {
+        width: 100% !important;
+        max-width: 550px !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+    }
+
+    .beauty-title br {
+        display: none !important; /* Убираем жесткий перенос строк из HTML */
+    }
+    .beauty-decor-circle,
+    .beauty-decor-dots {
+        display: none !important;
+    }
+}
+/* --- ПЛАНШЕТЫ (850px) --- */
+@media screen and (max-width: 850px) {
+    .reviews-collage {
+        transform: scale(0.7) !important;
+        transform-origin: center center !important;
+        
+        /* Из-за transform: scale вокруг блока образуются пустые невидимые поля. 
+           Отрицательными margin-top и margin-bottom мы аккуратно их прижимаем, 
+           а боковые margin: auto держат железный центр. */
+        margin: -40px auto !important; 
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
+/* --- ДЛЯ ЭКРАНОВ В РАЙОНЕ 720px --- */
+@media screen and (max-width: 720px) {
+    /* Переводим сетку услуг в одну колонку */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        justify-items: center !important;
+    }
+
+    .service-card {
+        max-width: 340px !important;
+    }
+}
+@media screen and (max-width: 600px) {
+    .reviews-collage {
+        /* Отключаем автоматический маржин, который ломался из-за ширины 700px */
+        margin-left: 50% !important; 
+        margin-right: auto !important;
+        
+        /* Сдвигаем точку отсчета в верхний центр и плавно сжимаем */
+        transform: translateX(-50%) scale(0.55) !important;
+        transform-origin: top center !important;
+        
+        margin-top: 0 !important;
+        /* Отрицательный нижний отступ убирает пустоту, которая создается от scale */
+        margin-bottom: -190px !important; 
+    }
+}
+
+
+
+/* --- СМАРТФОНЫ И УЗКИЕ ЭКРАНЫ (От 450px до самых маленьких 320px) --- */
+@media screen and (max-width: 450px) {
+    /* ОТЗЫВЫ НА 320px: делаем карточку и текст внутри неё полностью резиновыми */
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 290px !important; /* Чтобы гарантированно поместиться на экране 320px */
+        padding: 15px !important;    /* Слегка ужимаем внутренние поля */
+        box-sizing: border-box !important;
+    }
+
+    /* ИСПРАВЛЕНИЕ: Полностью убираем фиксированную ширину у текста отзыва */
+    .testimonial-text {
+        width: 100% !important;     /* Текст больше не вылазит вправо! */
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding-right: 0 !important;
+        margin: 10px 0 !important;
+        font-size: 13px !important;
+        line-height: 19px !important;
+    }
+
+    /* УСЛУГИ НА 320px: сужаем карточки строго под мобильный экран */
+    .service-card {
+        width: 100% !important;
+        max-width: 260px !important; /* Наш идеальный размер для аккуратного отображения на телефонах */
+    }
+
+    .service-image-wrapper {
+        width: 200px !important;
+        height: 200px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .services-title {
+        font-size: 32px !important;
+        line-height: 42px !important;
+        margin-bottom: 35px !important;
+    }
+.reviews-collage {
+        margin-left: 50% !important; 
+        margin-right: auto !important;
+        
+        /* Ещё немного уменьшаем под экраны 320px, но удерживаем железный центр */
+        transform: translateX(-50%) scale(0.44) !important;
+        transform-origin: top center !important;
+        
+        margin-top: 0 !important;
+        margin-bottom: -245px !important; 
+    }
+
+    .reviews-title {
+        font-size: 32px !important;
+        line-height: 40px !important;
+    }
+    /* Бьюти формат: подгоняем размеры под узкий экран смартфона */
+    .beauty-image-wrapper {
+        max-width: 280px !important;
+    }
+
+    /* Масштабируем фоновые декоративные круги под фото, чтобы не распирали бока */
+    .beauty-decor-circle,
+    .beauty-decor-dots {
+        transform: scale(0.7) !important;
+        opacity: 0.4 !important;
+    }
+
+    .beauty-title {
+        font-size: 28px !important;
+        line-height: 36px !important;
+    }
+
+    .beauty-text-block p {
+        font-size: 14px !important;
+        line-height: 22px !important;
+        margin-bottom: 12px !important;
+    }
+}
