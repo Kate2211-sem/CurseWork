@@ -1226,3 +1226,86 @@
     color: #FE9313;
     transition: 0.3s;
 }
+/* ==========================================================================
+   АДАПТИВ КАРТОЧЕК И ОТЗЫВОВ НА ГЛАВНОЙ (ПО АНАЛОГИИ С НАШИМИ НАСТРОЙКАМИ)
+   ========================================================================== */
+
+/* --- ПЛАНШЕТЫ И ТЕЛЕФОНЫ (1024px и ниже) --- */
+@media screen and (max-width: 1024px) {
+    /* ОТЗЫВЫ: выстраиваем карточки в гибкий флекс-ряд с переносом */
+    .testimonials-track {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 24px !important;
+    }
+
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 480px !important; /* Наша стандартная идеальная ширина для карточки */
+    }
+
+    /* УСЛУГИ НА ГЛАВНОЙ: делаем сетку из 2 колонок, как мы делали ранее */
+    .services-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 24px !important;
+        justify-items: center !important; /* Выравниваем каждую карточку строго по центру */
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* --- ДЛЯ ЭКРАНОВ В РАЙОНЕ 720px --- */
+@media screen and (max-width: 720px) {
+    /* Переводим сетку услуг в одну колонку */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        justify-items: center !important;
+    }
+
+    .service-card {
+        max-width: 340px !important;
+    }
+}
+
+/* --- СМАРТФОНЫ И УЗКИЕ ЭКРАНЫ (От 450px до самых маленьких 320px) --- */
+@media screen and (max-width: 450px) {
+    /* ОТЗЫВЫ НА 320px: делаем карточку и текст внутри неё полностью резиновыми */
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 290px !important; /* Чтобы гарантированно поместиться на экране 320px */
+        padding: 15px !important;    /* Слегка ужимаем внутренние поля */
+        box-sizing: border-box !important;
+    }
+
+    /* ИСПРАВЛЕНИЕ: Полностью убираем фиксированную ширину у текста отзыва */
+    .testimonial-text {
+        width: 100% !important;     /* Текст больше не вылазит вправо! */
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding-right: 0 !important;
+        margin: 10px 0 !important;
+        font-size: 13px !important;
+        line-height: 19px !important;
+    }
+
+    /* УСЛУГИ НА 320px: сужаем карточки строго под мобильный экран */
+    .service-card {
+        width: 100% !important;
+        max-width: 260px !important; /* Наш идеальный размер для аккуратного отображения на телефонах */
+    }
+
+    .service-image-wrapper {
+        width: 200px !important;
+        height: 200px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .services-title {
+        font-size: 32px !important;
+        line-height: 42px !important;
+        margin-bottom: 35px !important;
+    }
+}
