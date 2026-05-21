@@ -17,24 +17,36 @@
       <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
     </a>
 
-    <!-- Навигация -->
-    <nav class="nav" id="mainNav">
-      <ul class="nav__list">
-        <li><a href="#" class="nav__link active">Главная</a></li>
-        <li><a href="#" class="nav__link">Стоимость</a></li>
-        <li><a href="#" class="nav__link">Магазин косметики</a></li>
-        <li><a href="#" class="nav__link">О нас</a></li>
-        <li><a href="#" class="nav__link">Контакты</a></li>
-      </ul>
-    </nav>
+  <nav class="nav">
+    <ul class="nav__list">
+        <li class="nav__item">
+            <a href="index.html" class="nav__link">Главная</a>
+        </li>
+        <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">Стоимость</a>
+            <ul class="dropdown">
+                <li><a href="men-hall.html" class="dropdown__link">Мужской зал</a></li>
+                <li><a href="women-hall.html" class="dropdown__link">Женский зал</a></li>
+                <li><a href="#" class="dropdown__link">Маникюр</a></li>
+                <li><a href="#" class="dropdown__link">Brow-сервис</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <a href="shop.html" class="nav__link">Магазин косметики</a>
+            
+        </li>
+       <li><a href="reviews.html" class="nav__link">О нас</a></li>
+        <li><a href="contacts.html" class="nav__link">Контакты</a></li>
+    </ul>
+</nav>
 
     <!-- Правая часть: всё сгруппировано -->
     <div class="header__right">
       <!-- Инструменты (язык, тема, слабовидящие) -->
       <div class="header__tools">
         <button class="tool-btn" data-tool="lang">RU</button>
-        <button class="tool-btn" data-tool="theme">🌙</button>
-        <button class="tool-btn" data-tool="access">👁</button>
+        <button id="theme-toggle" class="tool-btn" data-tool="theme">🌙</button>
+       <button class="tool-btn" id="access-toggle" data-tool="access">👁</button>
       </div>
 
       <!-- Instagram -->
@@ -56,8 +68,12 @@
           <span class="badge">0</span>
         </a>
         <a href="index.html" class="user-profile">
-          <span class="user-name">Войти</span>
-        </a>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-main); opacity: 0.85;">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+    <span class="user-name">Войти</span>
+</a>
       </div>
 
       <!-- Бургер -->
@@ -90,9 +106,7 @@
           </div>
           
           <!-- Ссылка отдельно -->
-          <a href="#" class="link-arrow">
-            Узнать больше о нас <span class="arrow-icon">→</span>
-          </a>
+         
         </div>
       </div>
 
@@ -481,7 +495,6 @@
             <div class="contacts__item">
                 <p class="contacts__label">Адрес</p>
                 <p class="contacts__info">Минск, Ленинградская 10</p>
-                <a href="#" class="contacts__link">Схема прохода</a>
             </div>
 
             <div class="contacts__item">
@@ -490,6 +503,8 @@
             </div>
 
             <button class="btn-gradient contacts__btn">Записаться онлайн</button>
+
+            <a href="https://yandex.ru/maps/..." target="_blank" class="map-link">Схема прохода</a>
         </div>
 
         <div class="contacts__map-wrapper">
@@ -539,6 +554,81 @@
         </div>
     </div>
 </footer>
+<div class="accessibility-modal" id="accessibility-modal">
+  <div class="accessibility-modal__backdrop" id="accessibility-backdrop"></div>
+  <div class="accessibility-modal__panel">
+    
+    <div class="accessibility-modal__header">
+      <h2 class="accessibility-modal__title">Настройки доступности</h2>
+      <button class="accessibility-modal__close-x" id="accessibility-close-x">&times;</button>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <h3 class="accessibility-modal__label">Размер шрифта</h3>
+      <div class="accessibility-modal__options" id="a11y-font-size">
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="normal" checked />
+          <span class="accessibility-modal__option-text" style="font-size: 1em">Стандартный (Aa)</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="large" />
+          <span class="accessibility-modal__option-text" style="font-size: 1.1em">Средний (Aa+)</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="xlarge" />
+          <span class="accessibility-modal__option-text" style="font-size: 1.2em">Крупный (Aa++)</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <h3 class="accessibility-modal__label">Цветовая схема</h3>
+      <div class="accessibility-modal__options accessibility-modal__options--schemes" id="a11y-color-scheme">
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="default" checked />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--default">Aa</span>
+          <span class="accessibility-modal__option-text">Обычная тема</span>
+        </label>
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="black-white" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--black-white">Aa</span>
+          <span class="accessibility-modal__option-text">Чёрным по белому</span>
+        </label>
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="white-black" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--white-black">Aa</span>
+          <span class="accessibility-modal__option-text">Белым по чёрному</span>
+        </label>
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="blue-darkblue" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--blue-darkblue">Aa</span>
+          <span class="accessibility-modal__option-text">Синим по голубому</span>
+        </label>
+        
+      </div>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <label class="accessibility-modal__option">
+        <input class="checkbox" type="checkbox" id="a11y-images-toggle" />
+        <span class="accessibility-modal__option-text" style="font-weight: 600;">Выключить изображения (показывать текст)</span>
+      </label>
+    </div>
+    
+    <div class="accessibility-modal__actions">
+      <button class="btn-secondary" id="accessibility-reset">Сбросить</button>
+      <button class="btn-primary" id="accessibility-apply-btn">Применить</button>
+    </div>
+    
+  </div>
+</div>
   <script src="js/main.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/accessibility.js"></script>
+   <script src="js/translate.js"></script>
 </body>
 </html>
