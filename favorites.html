@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-ru="Избранное | Салон красоты OK!" data-en="Favorites | Beauty Salon OK!">Избранное | Салон красоты OK!</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <style>
+     .favorites-page { padding: 60px 0; min-height: 100vh; background: var(--bg-page) !important; }
+    .favorites-container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+    .favorites-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .favorites-title { font-family: 'Gilroy', sans-serif; font-size: 36px; font-weight: 700; color: var(--text-main); margin: 0; }
+    .favorites-back { color: var(--primary); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .favorites-back:hover { opacity: 0.8; }
+    
+    .favorites-empty { text-align: center; padding: 80px 20px; }
+    .favorites-empty-icon { font-size: 80px; margin-bottom: 20px; }
+    .favorites-empty h3 { font-family: 'Gilroy', sans-serif; font-size: 24px; margin-bottom: 10px; }
+    .favorites-empty p { color: var(--text-muted); margin-bottom: 30px; }
+    
+    .favorites-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .fav-card { background: var(--bg-card); border-radius: 20px; padding: 16px; text-align: center; transition: 0.3s; }
+    .fav-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .fav-img { width: 100%; height: 180px; border-radius: 12px; overflow: hidden; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; }
+    .fav-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .fav-name { font-family: 'Gilroy', sans-serif; font-size: 16px; font-weight: 600; margin: 0 0 8px 0; min-height: 40px; }
+    .fav-meta { color: var(--text-muted); font-size: 13px; margin-bottom: 12px; }
+    .fav-price { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
+    .fav-actions { display: flex; gap: 8px; justify-content: center; }
+    .fav-btn { flex: 1; padding: 10px; border: none; border-radius: 8px; font-family: 'Gilroy', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .fav-btn-cart { background: linear-gradient(270deg, #FD9113 0%, #FDBB13 100%); color: #fff; }
+    .fav-btn-remove { background: #f3f4f6; color: var(--error); }
+    .fav-btn:hover { opacity: 0.9; }
+    
+    @media (max-width: 1024px) { .favorites-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .favorites-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .favorites-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка (та же) -->
+  <header class="header">
+  <div class="container header__container">
+    <a href="main.html" class="header__logo">
+      <img src="img/header/ok-logo.png" alt="OK!" class="logo-ok">
+      <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
+    </a>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="main.html" class="nav__link" data-ru="Главная" data-en="Main">Главная</a></li>
+        <li class="nav__item nav__item--dropdown">
+          <a href="#" class="nav__link" data-ru="Стоимость" data-en="Prices">Стоимость</a>
+          <ul class="dropdown">
+            <li><a href="men-hall.html" class="dropdown__link">Мужской зал</a></li>
+            <li><a href="women-hall.html" class="dropdown__link">Женский зал</a></li>
+            <li><a href="#">Маникюр</a></li>
+            <li><a href="#">Brow-сервис</a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a href="shop.html" class="nav__link active" data-ru="Магазин косметики" data-en="Cosmetics shop">Магазин косметики</a></li>
+        <li><a href="reviews.html" class="nav__link">О нас</a></li>
+        <li><a href="contacts.html" class="nav__link">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="header__right">
+      <div class="header__tools">
+        <button class="tool-btn" data-tool="lang">RU</button>
+        <button id="theme-toggle" class="tool-btn">🌙</button>
+        <button class="tool-btn" id="access-toggle">👁</button>
+      </div>
+      <a href="https://instagram.com" class="social-link" target="_blank"><img src="img/header/instagram.png" alt="Instagram"></a>
+      <a href="#" 
+   class="btn-online" 
+   data-ru-full="Онлайн запись" 
+   data-ru-short="Запись"
+   data-en-full="Book online" 
+   data-en-short="Book">
+   Онлайн запись
+</a>
+
+      <div class="user-zone">
+        <a href="#" class="icon-btn" id="header-favorites" data-page="favorites.html"><span>❤️</span><span class="badge" id="badge-favorites">0</span></a>
+        <a href="#" class="icon-btn" id="header-cart" data-page="cart.html"><span>🛒</span><span class="badge" id="badge-cart">0</span></a>
+        <a href="index.html" class="user-profile">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span class="user-name">Войти</span>
+        </a>
+      </div>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+  <main class="favorites-page">
+    <div class="favorites-container">
+      <div class="favorites-header">
+        <h1 class="favorites-title">Избранное</h1>
+        <a href="shop.html" class="favorites-back">← Вернуться в магазин</a>
+      </div>
+
+      <!-- Пустое избранное -->
+      <div id="favorites-empty" class="favorites-empty" style="display: none;">
+        <div class="favorites-empty-icon">❤️</div>
+        <h3>Избранное пусто</h3>
+        <p>Нажимайте ❤️ на понравившихся товарах, чтобы сохранить их здесь</p>
+        <a href="shop.html" class="btn-online" style="width: auto; padding: 14px 32px;">Смотреть товары</a>
+      </div>
+
+      <!-- Сетка избранного -->
+      <div id="favorites-grid" class="favorites-grid"></div>
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__logo-block">
+        <img src="img/header/ok-logo.png" alt="OK!" class="footer__logo">
+        <p class="footer__brand">Парикмахерская ОК</p>
+        <span class="footer__unp">УНП 1964554378</span>
+      </div>
+      <div class="footer__contacts" style="margin-left: auto;">
+        <div class="footer__phone"><img src="img/hero/phone.png" alt="" class="footer__icon"><a href="tel:+375256554433">+375 25 655-44-33</a></div>
+        <div class="footer__time"><img src="img/hero/clock.png" alt="" class="footer__icon"><span>9:00 - 21:00</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast и модальное окно -->
+  <div id="toast-notification" class="toast-notification">
+    <div class="toast-content">
+      <div class="toast-icon">✓</div>
+      <div class="toast-message"><strong class="toast-title">Добавлено!</strong><span class="toast-text">Товар добавлен в корзину</span></div>
+      <button class="toast-close" onclick="hideToast()">&times;</button>
+    </div>
+    <div class="toast-actions">
+      <button class="toast-btn toast-btn-secondary" onclick="hideToast()">Продолжить</button>
+      <button class="toast-btn toast-btn-primary" onclick="goToCart()">В корзину</button>
+    </div>
+  </div>
+  <div id="quick-view-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content"><button class="modal-close" onclick="closeModal()">&times;</button><div id="modal-body"></div></div>
+  </div>
+
+  <!-- Скрипты -->
+  <script src="js/main.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/favorites.js"></script>
+  
+  <script>
+    // Рендер избранного
+    document.addEventListener('DOMContentLoaded', () => {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const emptyEl = document.getElementById('favorites-empty');
+      const gridEl = document.getElementById('favorites-grid');
+      
+      if (favorites.length === 0) {
+        emptyEl.style.display = 'block';
+        return;
+      }
+      
+      emptyEl.style.display = 'none';
+      
+      gridEl.innerHTML = favorites.map(fav => `
+        <div class="fav-card" data-item-id="${fav.itemId}" data-item-type="${fav.itemType}">
+          <div class="fav-img">
+            <img src="${fav.meta?.image || 'img/products/placeholder.jpg'}" alt="${fav.meta?.name || 'Товар'}">
+          </div>
+          <h3 class="fav-name">${fav.meta?.name || 'Товар'}</h3>
+          <p class="fav-meta">${fav.meta?.category || ''}${fav.meta?.volume ? ' • ' + fav.meta.volume : ''}</p>
+          <div class="fav-price">${fav.meta?.price ? parseFloat(fav.meta.price).toFixed(2).replace('.', ',') + ' руб.' : ''}</div>
+          <div class="fav-actions">
+            ${fav.itemType === 'product' ? `<button class="fav-btn fav-btn-cart" onclick="addToCartFromFav('${fav.itemId}', ${JSON.stringify(fav.meta).replace(/'/g, "\\'")})">🛒 В корзину</button>` : ''}
+            <button class="fav-btn fav-btn-remove" onclick="removeFromFav('${fav.itemId}', '${fav.itemType}')">Удалить</button>
+          </div>
+        </div>
+      `).join('');
+      
+      if (typeof updateHeaderBadges === 'function') updateHeaderBadges();
+    });
+    
+   function addToCartFromFav(productId, meta) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existing = cart.find(i => i.productId === productId);
+    
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({
+        productId,
+        name: meta.name,
+        price: parseFloat(meta.price),
+        image: meta.image,
+        category: meta.category,
+        volume: meta.volume,
+        quantity: 1,
+        addedAt: new Date().toISOString()
+      });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Обновляем бейджи и показываем уведомление
+    if (typeof window.updateHeaderBadges === 'function') window.updateHeaderBadges();
+    if (typeof window.showToast === 'function') {
+      window.showToast('cart', meta.name || 'Товар', 'Добавлено в корзину');
+    }
+  }
+
+  // Удалить из избранного
+  function removeFromFav(itemId, itemType) {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    favorites = favorites.filter(f => !(f.itemId === itemId && f.itemType === itemType));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    
+    if (typeof window.updateHeaderBadges === 'function') window.updateHeaderBadges();
+    location.reload();
+  }
+
+  // === Рендер страницы избранного ===
+  document.addEventListener('DOMContentLoaded', () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const emptyEl = document.getElementById('favorites-empty');
+    const gridEl = document.getElementById('favorites-grid');
+    
+    if (favorites.length === 0) {
+      emptyEl.style.display = 'block';
+      if (typeof window.updateHeaderBadges === 'function') window.updateHeaderBadges();
+      return;
+    }
+    
+    emptyEl.style.display = 'none';
+    
+    gridEl.innerHTML = favorites.map(fav => {
+      // Безопасная сериализация метаданных для onclick
+      const metaStr = JSON.stringify(fav.meta || {}).replace(/"/g, '&quot;');
+      
+      return `
+        <div class="fav-card" data-item-id="${fav.itemId}" data-item-type="${fav.itemType}">
+          <div class="fav-img">
+            <img src="${fav.meta?.image || 'img/products/placeholder.jpg'}" alt="${fav.meta?.name || 'Товар'}">
+          </div>
+          <h3 class="fav-name">${fav.meta?.name || 'Товар'}</h3>
+          <p class="fav-meta">${fav.meta?.category || ''}${fav.meta?.volume ? ' • ' + fav.meta.volume : ''}</p>
+          <div class="fav-price">${fav.meta?.price ? parseFloat(fav.meta.price).toFixed(2).replace('.', ',') + ' руб.' : ''}</div>
+          <div class="fav-actions">
+            ${fav.itemType === 'product' ? 
+              `<button class="fav-btn fav-btn-cart" 
+                       data-action="add-to-cart-from-fav" 
+                       data-product-id="${fav.itemId}" 
+                       data-meta='${JSON.stringify(fav.meta || {})}'>
+                 🛒 В корзину
+               </button>` : ''}
+            <button class="fav-btn fav-btn-remove" 
+                    data-action="remove-from-fav" 
+                    data-item-id="${fav.itemId}" 
+                    data-item-type="${fav.itemType}">
+              Удалить
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+    // === Делегирование событий (вместо inline onclick) ===
+    gridEl.addEventListener('click', (e) => {
+      // Кнопка "В корзину"
+      const cartBtn = e.target.closest('[data-action="add-to-cart-from-fav"]');
+      if (cartBtn) {
+        e.preventDefault();
+        const productId = cartBtn.dataset.productId;
+        const meta = JSON.parse(cartBtn.dataset.meta || '{}');
+        addToCartFromFav(productId, meta);
+        
+        // Визуальный фидбек
+        const originalText = cartBtn.innerHTML;
+        cartBtn.disabled = true;
+        cartBtn.innerHTML = '✅';
+        setTimeout(() => {
+          cartBtn.disabled = false;
+          cartBtn.innerHTML = originalText;
+        }, 1200);
+        return;
+      }
+      
+      // Кнопка "Удалить"
+      const removeBtn = e.target.closest('[data-action="remove-from-fav"]');
+      if (removeBtn) {
+        e.preventDefault();
+        const itemId = removeBtn.dataset.itemId;
+        const itemType = removeBtn.dataset.itemType;
+        if (confirm('Удалить этот товар из избранного?')) {
+          removeFromFav(itemId, itemType);
+        }
+      }
+    });
+    
+    // Обновляем бейджи после рендера
+    if (typeof window.updateHeaderBadges === 'function') window.updateHeaderBadges();
+  });
+</script>
+  </script>
+  <script src="js/notifications.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/favorites.js"></script>
+
+</body>
+</html>
