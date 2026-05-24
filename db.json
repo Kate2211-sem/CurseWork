@@ -1,0 +1,205 @@
+{
+  "top100passwords": [
+    {
+      "id": "1",
+      "password": "12345678"
+    },
+    {
+      "id": "2",
+      "password": "password"
+    },
+    {
+      "id": "3",
+      "password": "123456789"
+    },
+    {
+      "id": "4",
+      "password": "qwerty"
+    },
+    {
+      "id": "5",
+      "password": "abc123"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "phone": "+375299999999",
+      "email": "admin@ok.by",
+      "dob": "1990-01-01",
+      "fio": "Администратор Салона",
+      "password": "AdminOk2025!",
+      "nickname": "AdminOK",
+      "role": "admin",
+      "createdAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "phone": "+375257578086",
+      "email": "semyonchikovakata@icloud.com",
+      "dob": "2010-02-18",
+      "fio": "Силиванов Констанкин Анатольевна",
+      "password": "SwiftFox21",
+      "nickname": "LuckyFox30",
+      "role": "user",
+      "createdAt": "2026-05-21T22:50:57.093Z",
+      "id": "Pbn-vFN5GpE"
+    },
+    {
+      "phone": "+375257578086",
+      "email": "semyonchikova222@icloud.com",
+      "dob": "2010-04-07",
+      "fio": "Семенчикова наталья Петровна",
+      "password": "SwiftPixel48",
+      "nickname": "Kate2288",
+      "role": "user",
+      "createdAt": "2026-05-21T22:59:05.829Z",
+      "id": "a_EpKkHxkx0"
+    },
+    {
+      "phone": "+375291685630",
+      "email": "tatiana2006@gmail.com",
+      "dob": "2001-01-01",
+      "fio": "Семёнчикова Татьяна Анатольевна",
+      "password": "HappyPixel92",
+      "nickname": "SmartFox82",
+      "role": "user",
+      "createdAt": "2026-05-22T16:41:39.841Z",
+      "id": "STQ8FX-gIR4"
+    },
+    {
+      "phone": "+375292738908",
+      "email": "kate32@icoud.com",
+      "dob": "2010-04-20",
+      "fio": "Шахнова Виктория Дмитриевна",
+      "password": "CosmicWave15",
+      "nickname": "CosmicWave13",
+      "role": "user",
+      "createdAt": "2026-05-22T16:48:22.402Z",
+      "id": "Rj9H_Q8Qots"
+    },
+    {
+      "phone": "+375257578086",
+      "email": "semyonchi77@icloud.com",
+      "dob": "2010-04-07",
+      "fio": "смит Силинанчик Анатольевна",
+      "password": "Korik22!",
+      "nickname": "MagicZen92",
+      "role": "user",
+      "createdAt": "2026-05-22T17:21:53.175Z",
+      "id": "mLLDEgZdGeM"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "Шампунь Estel Curex Versus Winter",
+      "category": "shampoo",
+      "price": 25.9,
+      "volume": "200 мл",
+      "brand": "ESTEL",
+      "image": "img/products/shampoo-estel.jpg",
+      "inStock": true,
+      "discount": null
+    },
+    {
+      "id": "p2",
+      "name": "Спрей Estel 18+ Многофункциональный",
+      "category": "spray",
+      "price": 19.9,
+      "volume": "200 мл",
+      "brand": "ESTEL",
+      "image": "img/products/spray-estel.jpg",
+      "inStock": true,
+      "discount": null
+    },
+    {
+      "id": "p3",
+      "name": "Масло Londa Velvet Oil с арганой",
+      "category": "oil",
+      "price": 45,
+      "volume": "100 мл",
+      "brand": "Londa",
+      "image": "img/products/oil-londa.jpg",
+      "inStock": true,
+      "discount": 10
+    }
+  ],
+  "services": [
+    {
+      "id": "s1",
+      "name": "Стрижка женская",
+      "category": "hair",
+      "price": 45,
+      "duration": 45,
+      "description": "Стрижка с укладкой и консультацией",
+      "image": "img/services/haircut.jpg"
+    },
+    {
+      "id": "s2",
+      "name": "Окрашивание в один тон",
+      "category": "hair",
+      "price": 80,
+      "duration": 90,
+      "description": "Окрашивание профессиональной краской",
+      "image": "img/services/coloring.jpg"
+    },
+    {
+      "id": "s3",
+      "name": "Маникюр классический",
+      "category": "nails",
+      "price": 35,
+      "duration": 60,
+      "description": "Обрезной или аппаратный маникюр",
+      "image": "img/services/manicure.jpg"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "apt1",
+      "userId": "STQ8FX-gIR4",
+      "serviceId": "s1",
+      "masterId": "m1",
+      "dateTime": "2026-06-01T14:00:00",
+      "status": "pending",
+      "totalPrice": 45,
+      "createdAt": "2026-05-22T10:00:00"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "fav1",
+      "userId": "STQ8FX-gIR4",
+      "itemId": "p1",
+      "itemType": "product",
+      "addedAt": "2026-05-22T12:00:00"
+    },
+    {
+      "id": "fav2",
+      "userId": "STQ8FX-gIR4",
+      "itemId": "s1",
+      "itemType": "service",
+      "addedAt": "2026-05-22T12:05:00"
+    }
+  ],
+  "masters": [
+    {
+      "id": "m1",
+      "name": "Анна Петрова",
+      "specialty": "hair",
+      "rating": 4.9,
+      "photo": "img/masters/anna.jpg",
+      "experience": 5
+    },
+    {
+      "id": "m2",
+      "name": "Елена Смирнова",
+      "specialty": "nails",
+      "rating": 4.8,
+      "photo": "img/masters/elena.jpg",
+      "experience": 3
+    }
+  ],
+  "cart": [],
+  "reviews": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
