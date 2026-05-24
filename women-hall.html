@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Главная | Салон красоты OK!</title>
+  <title data-ru="Главная | Салон красоты OK!" data-en="Main | Beauty Salon OK!">Главная | Салон красоты OK!</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/women-hall.css">
 </head>
 <body>
 
-  <!-- Шапка -->
   <header class="header">
   <div class="container header__container">
-    <!-- Логотип -->
     <a href="main.html" class="header__logo">
       <img src="img/header/ok-logo.png" alt="OK!" class="logo-ok">
       <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
@@ -21,78 +19,86 @@
   <nav class="nav">
     <ul class="nav__list">
         <li class="nav__item">
-            <a href="main.html" class="nav__link">Главная</a>
+            <a href="main.html" class="nav__link" data-ru="Главная" data-en="Main">Главная</a>
         </li>
         <li class="nav__item nav__item--dropdown">
-            <a href="#" class="nav__link">Стоимость</a>
+            <a href="#" class="nav__link" data-ru="Стоимость" data-en="Prices">Стоимость</a>
             <ul class="dropdown">
-                <li><a href="men-hall.html" class="dropdown__link">Мужской зал</a></li>
-                <li><a href="women-hall.html" class="dropdown__link">Женский зал</a></li>
-                <li><a href="#" class="dropdown__link">Маникюр</a></li>
-                <li><a href="#" class="dropdown__link">Brow-сервис</a></li>
+                <li><a href="men-hall.html" class="dropdown__link" data-ru="Мужской зал" data-en="Men's hall">Мужской зал</a></li>
+                <li><a href="women-hall.html" class="dropdown__link" data-ru="Женский зал" data-en="Women's hall">Женский зал</a></li>
+                <li><a href="#" class="dropdown__link" data-ru="Маникюр" data-en="Manicure">Маникюр</a></li>
+                <li><a href="#" class="dropdown__link" data-ru="Brow-сервис" data-en="Brow-service">Brow-сервис</a></li>
             </ul>
         </li>
         <li class="nav__item">
-            <a href="shop.html" class="nav__link">Магазин косметики</a>
-            
+            <a href="shop.html" class="nav__link" data-ru="Магазин косметики" data-en="Cosmetics shop">Магазин косметики</a>
         </li>
-       <li><a href="reviews.html" class="nav__link">О нас</a></li>
-        <li><a href="contacts.html" class="nav__link">Контакты</a></li>
+       <li><a href="reviews.html" class="nav__link" data-ru="О нас" data-en="About us">О нас</a></li>
+        <li><a href="contacts.html" class="nav__link" data-ru="Контакты" data-en="Contacts">Контакты</a></li>
     </ul>
 </nav>
 
-    <!-- Правая часть: всё сгруппировано -->
     <div class="header__right">
-      <!-- Инструменты (язык, тема, слабовидящие) -->
       <div class="header__tools">
         <button class="tool-btn" data-tool="lang">RU</button>
-        <button class="tool-btn" data-tool="theme">🌙</button>
-        <button class="tool-btn" data-tool="access">👁</button>
+      <button id="theme-toggle" class="tool-btn" data-tool="theme">🌙</button>
+         <button class="tool-btn" id="access-toggle" data-tool="access">👁</button>
       </div>
 
-      <!-- Instagram -->
       <a href="https://instagram.com" class="social-link" target="_blank">
         <img src="img/header/instagram.png" alt="Instagram">
       </a>
 
-      <!-- Кнопка записи -->
-      <a href="#" class="btn-online">Онлайн запись</a>
+   <a href="#" 
+   class="btn-online" 
+   id="btn-book-appointment"
+   data-book
+   data-ru-full="Онлайн запись" 
+   data-ru-short="Запись"
+   data-en-full="Book online" 
+   data-en-short="Book">
+   Онлайн запись
+</a>
 
-      <!-- Зона пользователя -->
       <div class="user-zone">
-        <a href="#" class="icon-btn">
-          <span>❤️</span>
-          <span class="badge">0</span>
-        </a>
-        <a href="#" class="icon-btn">
-          <span>🛒</span>
-          <span class="badge">0</span>
-        </a>
+           <a href="favorites.html" class="icon-btn" aria-label="Избранное">
+        <span>❤️</span>
+    </a>
+    
+    <!-- Корзина — просто ссылка, без бейджа и JS -->
+    <a href="cart.html" class="icon-btn" aria-label="Корзина">
+        <span>🛒</span>
+    </a>
         <a href="index.html" class="user-profile">
-          <span class="user-name">Войти</span>
-        </a>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-main); opacity: 0.85;">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+    <span class="user-name" data-ru="Войти" data-en="Login">Войти</span>
+</a>
       </div>
 
-      <!-- Бургер -->
       <button class="burger" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
-  <!-- Здесь будет остальной контент страницы -->
- <main class="main">
+
+  <main class="main">
 <section class="highlight-promo">
     <div class="container highlight-promo__container">
         
         <div class="highlight-promo__content">
-            <h1 class="highlight-promo__title">Частичное<br>мелирование</h1>
+            <h1 class="highlight-promo__title" data-ru="Частичное
+ мелирование" data-en="Partial
+ hair highlights">Частичное<br> мелирование</h1>
             
-            <p class="highlight-promo__text">
+            <p class="highlight-promo__text" data-ru="Здоровые и ухоженные волосы - то, ради чего работают наши мастера. Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос. Здоровые и ухоженные волосы - то, ради чего работают наши мастера. Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос." data-en="Healthy and well-groomed hair is exactly what our masters work for. It is important to us that you are completely satisfied not only with the haircut or coloring, but also with the condition of your hair during subsequent home care. In Hairdresser Ok you can purchase hair products that are right for you, for your specific hair type. Healthy and well-groomed hair is exactly what our masters work for. It is important to us that you are completely satisfied not only with the haircut or coloring, but also with the condition of your hair during subsequent home care. In Hairdresser Ok you can purchase hair products that are right for you, for your specific hair type.">
                 Здоровые и ухоженные волосы - то, ради чего работают наши мастера. Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос. Здоровые и ухоженные волосы - то, ради чего работают наши мастера. Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос.
             </p>
             
-            <button class="highlight-promo__btn">Записаться онлайн</button>
+            <button class="highlight-promo__btn" data-ru="Записаться онлайн" data-en="Book appointment online">Записаться онлайн</button>
         </div>
 
         <div class="highlight-promo__image-wrapper">
@@ -103,9 +109,9 @@
 
     </div>
 </section>
+
 <section class="testimonials">
     <div class="container">
-        
         
         <div class="testimonials-track">
             <div class="testimonial-card">
@@ -114,15 +120,15 @@
                         <img src="img/picture/pic1.png" alt="Наталья В.">
                     </div>
                     <div class="testimonial-user-info">
-                        <h4 class="testimonial-name">Наталья В.</h4>
+                        <h4 class="testimonial-name" data-ru="Наталья В." data-en="Natalia V.">Наталья В.</h4>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimonial-text">
+                <p class="testimonial-text" data-ru="Красила волосы в этой парикмахерской. Спасибо большое девочкам, в частности мастеру Оле за окрашивание. Предложили чай, кофе, все очень вежливые. Помогли выбрать идеальный оттенок, подобрали отличный уход, волосы теперь просто шелк!" data-en="I colored my hair in this salon. Thanks a lot to the girls, especially to the master Olga for the coloring. They offered tea, coffee, everyone is very polite. They helped me choose the perfect shade, selected excellent care, my hair is now just like silk!">
                     Красила волосы в этой парикмахерской. Спасибо большое девочкам, в частности мастеру Оле за окрашивание. Предложили чай, кофе, все очень вежливые. Помогли выбрать идеальный оттенок, подобрали отличный уход, волосы теперь просто шелк!
                 </p>
                 <div class="testimonial-footer">
-                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <a href="#" class="testimonial-link" data-ru="Перейти к отзыву" data-en="Read full review">Перейти к отзыву</a>
                     <span class="testimonial-arrow">→</span>
                 </div>
             </div>
@@ -133,15 +139,15 @@
                         <img src="img/picture/pic2.png" alt="Елена К.">
                     </div>
                     <div class="testimonial-user-info">
-                        <h4 class="testimonial-name">Елена К.</h4>
+                        <h4 class="testimonial-name" data-ru="Елена К." data-en="Elena K.">Елена К.</h4>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimonial-text">
+                <p class="testimonial-text" data-ru="Делала сложный маникюр с дизайном. Мастер — настоящий профессионал своего дела! Инструменты все стерильные, крафт-пакеты вскрывали при мне. Работа выполнена очень чисто и аккуратно, хожу уже третью неделю без единого скола." data-en="I got a complex manicure with a design. The master is a real professional in her field! All tools are sterile, the craft bags were opened right in front of me. The work was done very cleanly and neatly, I have been going for three weeks now without a single chip.">
                     Делала сложный маникюр с дизайном. Мастер — настоящий профессионал своего дела! Инструменты все стерильные, крафт-пакеты вскрывали при мне. Работа выполнена очень чисто и аккуратно, хожу уже третью неделю без единого скола.
                 </p>
                 <div class="testimonial-footer">
-                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <a href="#" class="testimonial-link" data-ru="Перейти к отзыву" data-en="Read full review">Перейти к отзыву</a>
                     <span class="testimonial-arrow">→</span>
                 </div>
             </div>
@@ -152,15 +158,15 @@
                         <img src="img/picture/pic3.png" alt="Ольга С.">
                     </div>
                     <div class="testimonial-user-info">
-                        <h4 class="testimonial-name">Ольга С.</h4>
+                        <h4 class="testimonial-name" data-ru="Ольга С." data-en="Olga S.">Ольга С.</h4>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimonial-text">
+                <p class="testimonial-text" data-ru="Постоянно хожу на коррекцию бровей к девочкам. Всегда идеальная форма и цвет. Очень радует сервис: всегда предложат кофе, в салоне уютная атмосфера. Рекомендую всем подругам, это лучшее место в городе!" data-en="I constantly go to the girls for brow correction. Always the perfect shape and color. Very pleased with the service: they always offer coffee, the salon has a cozy atmosphere. I recommend it to all my friends, this is the best place in town!">
                     Постоянно хожу на коррекцию бровей к девочкам. Всегда идеальная форма и цвет. Очень радует сервис: всегда предложат кофе, в салоне уютная атмосфера. Рекомендую всем подругам, это лучшее место в городе!
                 </p>
                 <div class="testimonial-footer">
-                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <a href="#" class="testimonial-link" data-ru="Перейти к отзыву" data-en="Read full review">Перейти к отзыву</a>
                     <span class="testimonial-arrow">→</span>
                 </div>
             </div>
@@ -171,15 +177,15 @@
                         <img src="img/picture/pic4.png" alt="Мария Р.">
                     </div>
                     <div class="testimonial-user-info">
-                        <h4 class="testimonial-name">Мария Р.</h4>
+                        <h4 class="testimonial-name" data-ru="Мария Р." data-en="Maria R.">Мария Р.</h4>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimonial-text">
+                <p class="testimonial-text" data-ru="Приводила сына на стрижку. Очень переживала, как он высидит, но мастер быстро нашла к нему подход. Получилось стильно и современно. Ребенок в восторге, мама довольна! Теперь будем ходить только к вам всей семьей." data-en="I brought my son for a haircut. I was very worried about how he would sit through it, but the master quickly found a way to connect with him. It turned out stylish and modern. The child is delighted, the mother is happy! Now we will only go to you as a whole family.">
                     Приводила сына на стрижку. Очень переживала, как он высидит, но мастер быстро нашла к нему подход. Получилось стильно и современно. Ребенок в восторге, мама довольна! Теперь будем ходить только к вам всей семьей.
                 </p>
                 <div class="testimonial-footer">
-                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <a href="#" class="testimonial-link" data-ru="Перейти к отзыву" data-en="Read full review">Перейти к отзыву</a>
                     <span class="testimonial-arrow">→</span>
                 </div>
             </div>
@@ -190,42 +196,43 @@
                         <img src="img/picture/pic1.png" alt="Анна М.">
                     </div>
                     <div class="testimonial-user-info">
-                        <h4 class="testimonial-name">Анна М.</h4>
+                        <h4 class="testimonial-name" data-ru="Анна М." data-en="Anna M.">Анна М.</h4>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimonial-text">
+                <p class="testimonial-text" data-ru="Попробовала новую процедуру для восстановления волос. Эффект заметен сразу! Персонал очень грамотный, все объяснили и дали советы по домашнему уходу. Салон чистый и светлый, одно удовольствие находиться." data-en="I tried a new hair restoration procedure. The effect is noticeable right away! The staff is very knowledgeable, they explained everything and gave tips on home care. The salon is clean and bright, it's a real pleasure to be here.">
                     Попробовала новую процедуру для восстановления волос. Эффект заметен сразу! Персонал очень грамотный, все объяснили и дали советы по домашнему уходу. Салон чистый и светлый, одно удовольствие находиться.
                 </p>
                 <div class="testimonial-footer">
-                    <a href="#" class="testimonial-link">Перейти к отзыву</a>
+                    <a href="#" class="testimonial-link" data-ru="Перейти к отзыву" data-en="Read full review">Перейти к отзыву</a>
                     <span class="testimonial-arrow">→</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <section class="services-section">
     <div class="container">
-        <h2 class="services-title">Услуги нашего салона</h2>
+        <h2 class="services-title" data-ru="Услуги нашего салона" data-en="Our salon services">Услуги нашего салона</h2>
         
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-image-wrapper">
                     <img src="img/women/women-hall.png" alt="Женский зал" class="service-img">
                 </div>
-                <h3 class="service-name">Женский зал</h3>
-                <p class="service-price">от 20 руб</p>
-                <a href="#" class="service-btn btn-orange">Смотреть все цены</a>
+                <h3 class="service-name" data-ru="Женский зал" data-en="Women's hall">Женский зал</h3>
+                <p class="service-price" data-ru="от 20 руб" data-en="from 20 BYN">от 20 руб</p>
+                <a href="#" class="service-btn btn-orange" data-ru="Смотреть все цены" data-en="See all prices">Смотреть все цены</a>
             </div>
 
             <div class="service-card">
                 <div class="service-image-wrapper">
                     <img src="img/men/men-hall.png" alt="Мужской зал" class="service-img">
                 </div>
-                <h3 class="service-name">Мужской зал</h3>
-                <p class="service-price">от 20 руб</p>
-                <a href="#" class="service-btn btn-blue">Смотреть все цены</a>
+                <h3 class="service-name" data-ru="Мужской зал" data-en="Men's hall">Мужской зал</h3>
+                <p class="service-price" data-ru="от 20 руб" data-en="from 20 BYN">от 20 руб</p>
+                <a href="#" class="service-btn btn-blue" data-ru="Смотреть все цены" data-en="See all prices">Смотреть все цены</a>
             </div>
 
             <div class="service-card">
@@ -233,39 +240,40 @@
                     <div class="decor-circle-pink"></div>
                     <img src="img/manicure/manicure.png" alt="Маникюр" class="service-img">
                 </div>
-                <h3 class="service-name name-pink">Маникюр</h3>
-                <p class="service-price">от 20 руб</p>
-                <a href="#" class="service-btn btn-pink-solid">Смотреть все цены</a>
+                <h3 class="service-name name-pink" data-ru="Маникюр" data-en="Manicure">Маникюр</h3>
+                <p class="service-price" data-ru="от 20 руб" data-en="from 20 BYN">от 20 руб</p>
+                <a href="#" class="service-btn btn-pink-solid" data-ru="Смотреть все цены" data-en="See all prices">Смотреть все цены</a>
             </div>
 
             <div class="service-card">
                 <div class="service-image-wrapper">
                     <img src="img/brow/brow-service.png" alt="Brow-сервис" class="service-img">
                 </div>
-                <h3 class="service-name">Brow-сервис</h3>
-                <p class="service-price">от 20 руб</p>
-                <a href="#" class="service-btn btn-purple">Смотреть все цены</a>
+                <h3 class="service-name" data-ru="Brow-сервис" data-en="Brow-service">Brow-сервис</h3>
+                <p class="service-price" data-ru="от 20 руб" data-en="from 20 BYN">от 20 руб</p>
+                <a href="#" class="service-btn btn-purple" data-ru="Смотреть все цены" data-en="See all prices">Смотреть все цены</a>
             </div>
         </div>
     </div>
 </section>
+
     <section class="contacts">
     <div class="container contacts__container">
         <div class="contacts__content">
-            <h2 class="contacts__title">Как нас найти</h2>
+            <h2 class="contacts__title" data-ru="Как нас найти" data-en="How to find us">Как нас найти</h2>
             
             <div class="contacts__item">
-                <p class="contacts__label">Адрес</p>
-                <p class="contacts__info">Минск, Ленинградская 10</p>
-                <a href="#" class="contacts__link">Схема прохода</a>
+                <p class="contacts__label" data-ru="Адрес" data-en="Address">Адрес</p>
+                <p class="contacts__info" data-ru="Минск, Ленинградская 10" data-en="Minsk, Leningradskaya 10">Минск, Ленинградская 10</p>
+                <a href="#" class="contacts__link" data-ru="Схема прохода" data-en="Directions layout">Схема прохода</a>
             </div>
 
             <div class="contacts__item">
-                <p class="contacts__label">Телефон</p>
+                <p class="contacts__label" data-ru="Телефон" data-en="Phone">Телефон</p>
                 <p class="contacts__info">+375 25 655-44-33</p>
             </div>
 
-            <button class="btn-gradient contacts__btn">Записаться онлайн</button>
+            <button class="btn-gradient contacts__btn" data-ru="Записаться онлайн" data-en="Book appointment online">Записаться онлайн</button>
         </div>
 
         <div class="contacts__map-wrapper">
@@ -274,33 +282,34 @@
                 
                 <div class="map-marker">
                     <img src="img/header/ok-logo.png" alt="OK!">
-                    <span>Ленинградская 10</span>
+                    <span data-ru="Ленинградская 10" data-en="Leningradskaya 10">Ленинградская 10</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
   </main>
+
 <footer class="footer">
     <div class="container footer__container">
         <div class="footer__logo-block">
             <img src="img/header/ok-logo.png" alt="OK!" class="footer__logo">
-            <p class="footer__brand">Парикмахерская ОК</p>
-            <span class="footer__unp">УНП 1964554378</span>
+            <p class="footer__brand" data-ru="Парикмахерская ОК" data-en="Hairdressing salon OK">Парикмахерская ОК</p>
+            <span class="footer__unp" data-ru="УНП 1964554378" data-en="UNP 1964554378">УНП 1964554378</span>
         </div>
 
         <div class="footer__menu footer__menu--bold">
-            <a href="#">Женский зал</a>
-            <a href="#">Мужской зал</a>
-            <a href="#">Маникюр</a>
-            <a href="#">Brow-сервис</a>
+            <a href="#" data-ru="Женский зал" data-en="Women's hall">Женский зал</a>
+            <a href="#" data-ru="Мужской зал" data-en="Men's hall">Мужской зал</a>
+            <a href="#" data-ru="Маникюр" data-en="Manicure">Маникюр</a>
+            <a href="#" data-ru="Brow-сервис" data-en="Brow-service">Brow-сервис</a>
         </div>
 
         <div class="footer__menu footer__menu--medium">
-            <a href="#">О нас</a>
-            <a href="#">Стоимость</a>
-            <a href="#">Вакансии</a>
-            <a href="#">Контакты</a>
+            <a href="#" data-ru="О нас" data-en="About us">О нас</a>
+            <a href="#" data-ru="Стоимость" data-en="Prices">Стоимость</a>
+            <a href="#" data-ru="Вакансии" data-en="Jobs">Вакансии</a>
+            <a href="#" data-ru="Контакты" data-en="Contacts">Контакты</a>
         </div>
 
         <div class="footer__contacts">
@@ -310,11 +319,119 @@
             </div>
             <div class="footer__time">
                 <img src="img/hero/clock.png" alt="" class="footer__icon">
-                <span>9:00 - 21:00</span>
+                <span data-ru="9:00 - 21:00" data-en="9:00 AM - 9:00 PM">9:00 - 21:00</span>
             </div>
         </div>
     </div>
 </footer>
+
+<div class="accessibility-modal" id="accessibility-modal">
+  <div class="accessibility-modal__backdrop" id="accessibility-backdrop"></div>
+  <div class="accessibility-modal__panel">
+    
+    <div class="accessibility-modal__header">
+      <h2 class="accessibility-modal__title">Настройки доступности</h2>
+      <button class="accessibility-modal__close-x" id="accessibility-close-x">&times;</button>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <h3 class="accessibility-modal__label">Размер шрифта</h3>
+      <div class="accessibility-modal__options" id="a11y-font-size">
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="normal" checked />
+          <span class="accessibility-modal__option-text" style="font-size: 1em">Стандартный (Aa)</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="large" />
+          <span class="accessibility-modal__option-text" style="font-size: 1.1em">Средний (Aa+)</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="xlarge" />
+          <span class="accessibility-modal__option-text" style="font-size: 1.2em">Крупный (Aa++)</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <h3 class="accessibility-modal__label">Цветовая схема</h3>
+      <div class="accessibility-modal__options accessibility-modal__options--schemes" id="a11y-color-scheme">
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="default" checked />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--default">Aa</span>
+          <span class="accessibility-modal__option-text">Обычная тема</span>
+        </label>
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="black-white" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--black-white">Aa</span>
+          <span class="accessibility-modal__option-text">Чёрным по белому</span>
+        </label>
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="white-black" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--white-black">Aa</span>
+          <span class="accessibility-modal__option-text">Белым по чёрному</span>
+        </label>
+        
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="blue-darkblue" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--blue-darkblue">Aa</span>
+          <span class="accessibility-modal__option-text">Синим по голубому</span>
+        </label>
+        
+      </div>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <label class="accessibility-modal__option">
+        <input class="checkbox" type="checkbox" id="a11y-images-toggle" />
+        <span class="accessibility-modal__option-text" style="font-weight: 600;">Выключить изображения (показывать текст)</span>
+      </label>
+    </div>
+    
+    <div class="accessibility-modal__actions">
+      <button class="btn-secondary" id="accessibility-reset">Сбросить</button>
+      <button class="btn-primary" id="accessibility-apply-btn">Применить</button>
+    </div>
+    
+  </div>
+</div>
+<!-- === ГЛОБАЛЬНЫЕ СКРИПТЫ (подключать на ВСЕХ страницах) === -->
+<!-- Toast уведомление (одинаковое для всех страниц) -->
+<div id="toast-notification" class="toast-notification">
+    <div class="toast-content">
+        <div class="toast-icon">✓</div>
+        <div class="toast-message">
+            <strong class="toast-title">Добавлено!</strong>
+            <span class="toast-text">Товар добавлен в корзину</span>
+        </div>
+        <button class="toast-close" onclick="hideToast()">&times;</button>
+    </div>
+    <div class="toast-actions">
+        <button class="toast-btn toast-btn-secondary" onclick="hideToast()">Продолжить</button>
+        <button class="toast-btn toast-btn-primary" onclick="goToCart()">В корзину</button>
+    </div>
+</div>
+
+<!-- Модальное окно -->
+<div id="quick-view-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- Подключаем notifications.js -->
+<script src="js/notifications.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/theme.js"></script>
+   <script src="js/accessibility.js"></script>
+   <script src="js/translate.js"></script>
+   <script src="js/user-info.js"></script>
+   <script src="js/booking.js"></script>
+
+   <!-- Toast и модальное окно (одинаковые для всех страниц) -->
+
 </body>
 </html>

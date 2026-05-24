@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Магазин косметики  | Салон красоты OK!</title>
+  <title data-ru="Магазин косметики | Салон красоты OK!" data-en="Cosmetics Shop | Beauty Salon OK!">Магазин косметики | Салон красоты OK!</title>
   <link rel="stylesheet" href="css/shop.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -17,24 +18,35 @@
       <img src="img/header/salon-name.png" alt="Парикмахерская Маникюр" class="logo-text">
     </a>
 
-    <!-- Навигация -->
-    <nav class="nav" id="mainNav">
-      <ul class="nav__list">
-        <li><a href="main.html" class="nav__link active">Главная</a></li>
-        <li><a href="#" class="nav__link">Стоимость</a></li>
-        <li><a href="shop.html" class="nav__link">Магазин косметики</a></li>
-        <li><a href="#" class="nav__link">О нас</a></li>
-        <li><a href="#" class="nav__link">Контакты</a></li>
-      </ul>
-    </nav>
+  <nav class="nav">
+    <ul class="nav__list">
+        <li class="nav__item">
+            <a href="main.html" class="nav__link" data-ru="Главная" data-en="Main">Главная</a>
+        </li>
+        <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link" data-ru="Стоимость" data-en="Prices">Стоимость</a>
+            <ul class="dropdown">
+                <li><a href="men-hall.html" class="dropdown__link" data-ru="Мужской зал" data-en="Men's hall">Мужской зал</a></li>
+                <li><a href="women-hall.html" class="dropdown__link" data-ru="Женский зал" data-en="Women's hall">Женский зал</a></li>
+                <li><a href="#" class="dropdown__link" data-ru="Маникюр" data-en="Manicure">Маникюр</a></li>
+                <li><a href="#" class="dropdown__link" data-ru="Brow-сервис" data-en="Brow-service">Brow-сервис</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <a href="shop.html" class="nav__link" data-ru="Магазин косметики" data-en="Cosmetics shop">Магазин косметики</a>
+        </li>
+        <li><a href="reviews.html" class="nav__link" data-ru="О нас" data-en="About us">О нас</a></li>
+        <li><a href="contacts.html" class="nav__link" data-ru="Контакты" data-en="Contacts">Контакты</a></li>
+    </ul>
+</nav>
 
     <!-- Правая часть: всё сгруппировано -->
     <div class="header__right">
       <!-- Инструменты (язык, тема, слабовидящие) -->
       <div class="header__tools">
         <button class="tool-btn" data-tool="lang">RU</button>
-        <button class="tool-btn" data-tool="theme">🌙</button>
-        <button class="tool-btn" data-tool="access">👁</button>
+        <button id="theme-toggle" class="tool-btn" data-tool="theme">🌙</button>
+        <button class="tool-btn" id="access-toggle" data-tool="access">👁</button>
       </div>
 
       <!-- Instagram -->
@@ -43,20 +55,35 @@
       </a>
 
       <!-- Кнопка записи -->
-      <a href="#" class="btn-online">Онлайн запись</a>
-
+      <a href="#" 
+   class="btn-online" 
+   id="btn-book-appointment"
+   data-book
+   data-ru-full="Онлайн запись" 
+   data-ru-short="Запись"
+   data-en-full="Book online" 
+   data-en-short="Book">
+   Онлайн запись
+</a>
       <!-- Зона пользователя -->
       <div class="user-zone">
-        <a href="#" class="icon-btn">
-          <span>❤️</span>
-          <span class="badge">0</span>
-        </a>
-        <a href="#" class="icon-btn">
-          <span>🛒</span>
-          <span class="badge">0</span>
-        </a>
+       <!-- Избранное -->
+<a href="favorites.html" class="icon-btn" id="header-favorites" data-page="favorites.html">
+  <span>❤️</span>
+  <span class="badge" id="badge-favorites">0</span>
+</a>
+
+<!-- Корзина -->
+<a href="cart.html" class="icon-btn" id="header-cart" data-page="cart.html">
+  <span>🛒</span>
+  <span class="badge" id="badge-cart">0</span>
+</a>
         <a href="index.html" class="user-profile">
-          <span class="user-name">Войти</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-main); opacity: 0.85;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="user-name" data-ru="Войти" data-en="Login">Войти</span>
         </a>
       </div>
 
@@ -72,8 +99,8 @@
     <div class="container">
         <div class="shop__header">
             <div class="shop__text">
-                <h1 class="shop__title">Магазин косметики</h1>
-                <p class="shop__description">
+                <h1 class="shop__title" data-ru="Магазин косметики" data-en="Cosmetics Shop">Магазин косметики</h1>
+                <p class="shop__description" data-ru="Здоровые и ухоженные волосы - то, ради чего работают наши мастера. Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос." data-en="Healthy and well-groomed hair is what our masters work for. It's important to us that you're completely satisfied not only with the haircut or coloring, but also with the condition of your hair during home care. At Hairdresser Ok, you can purchase hair products that are right for you and your hair type.">
                     Здоровые и ухоженные волосы - то, ради чего работают наши мастера. Нам важно, чтобы Вы были полностью довольны не только стрижкой или окрашиванием, но и состоянием своих волос при дальнейшем домашнем уходе. В Парикмахерской Ок можно приобрести продукты для волос, которые подходят именно для Вас, под Ваш тип волос.
                 </p>
             </div>
@@ -83,8 +110,8 @@
                         <img src="img/icons/gift.png" alt="Пробники">
                     </div>
                     <div class="benefit__info">
-                        <h3>Бесплатные пробники</h3>
-                        <p>Для всех покупателей</p>
+                        <h3 data-ru="Бесплатные пробники" data-en="Free samples">Бесплатные пробники</h3>
+                        <p data-ru="Для всех покупателей" data-en="For all customers">Для всех покупателей</p>
                     </div>
                 </div>
                 <div class="benefit">
@@ -92,8 +119,8 @@
                         <img src="img/icons/tag.png" alt="Цены">
                     </div>
                     <div class="benefit__info">
-                        <h3>Цены ниже магазина</h3>
-                        <p>Напрямую от поставщика</p>
+                        <h3 data-ru="Цены ниже магазина" data-en="Prices below retail">Цены ниже магазина</h3>
+                        <p data-ru="Напрямую от поставщика" data-en="Direct from supplier">Напрямую от поставщика</p>
                     </div>
                 </div>
             </div>
@@ -101,319 +128,549 @@
 
         <div class="shop__filters">
             <div class="filter-item">
-                <span class="filter-label">Производитель</span>
-                <select class="filter-select"><option>ESTEL</option></select>
+                <span class="filter-label" data-ru="Производитель" data-en="Brand">Производитель</span>
+                <select class="filter-select"><option data-ru="ESTEL" data-en="ESTEL">ESTEL</option></select>
             </div>
             <div class="filter-item">
-                <span class="filter-label">Категория</span>
-                <select class="filter-select"><option>Шампунь</option></select>
+                <span class="filter-label" data-ru="Категория" data-en="Category">Категория</span>
+                <select class="filter-select"><option data-ru="Шампунь" data-en="Shampoo">Шампунь</option></select>
             </div>
             <div class="filter-price-wrapper">
-                <span class="price-value">12 р.</span>
+                <span class="price-value" data-ru="12 р." data-en="12 BYN">12 р.</span>
                 <div class="neon-range">
                     <div class="neon-line"></div>
-                    <div class="neon-dot dot-left"></div>
-                    <div class="neon-dot dot-right"></div>
+                    <input type="range" class="range-input min-price" min="12" max="56" value="12">
+                    <input type="range" class="range-input max-price" min="12" max="56" value="56">
                 </div>
-                <span class="price-value">56 р.</span>
+                <span class="price-value" data-ru="56 р." data-en="56 BYN">56 р.</span>
             </div>
         </div>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/sh1.jpg" alt=""></div>
-                <p class="p-category">Шампунь</p>
-                <h2 class="p-name">Estel Curex Versus Winter Защита</h2>
-                <div class="p-footer"><span class="p-price">25,90 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
+      <div class="product-grid">
+    <!-- Товар 1: Шампунь -->
+    <div class="product-card" 
+         data-product-id="p1" 
+         data-product-name="Estel Curex Versus Winter Защита" 
+         data-product-price="25.90" 
+         data-product-image="img/products/sh1.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p1" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p1" aria-label="В корзину">🛒</button>
             </div>
-            <div class="product-card">
-                <div class="product-image"><span class="discount-badge">%</span><img src="img/products/s1.jpg" alt=""></div>
-                <p class="p-category">Спрей</p>
-                <h2 class="p-name">Estel 18+ Многофункциональный</h2>
-                <div class="p-footer"><span class="p-price orange">19,90 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/ma1.jpg" alt=""></div>
-                <p class="p-category">Маска</p>
-                <h2 class="p-name">Estel Otium Aqua Увлажнение</h2>
-                <div class="p-footer"><span class="p-price">32,50 <small>руб.</small></span><span class="p-volume">300 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s2.jpg" alt=""></div>
-                <p class="p-category">Масло</p>
-                <h2 class="p-name">Londa Velvet Oil с арганой</h2>
-                <div class="p-footer"><span class="p-price">45,00 <small>руб.</small></span><span class="p-volume">100 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s3.jpg" alt=""></div>
-                <p class="p-category">Кондиционер</p>
-                <h2 class="p-name">Matrix Total Results Brass Off</h2>
-                <div class="p-footer"><span class="p-price">28,10 <small>руб.</small></span><span class="p-volume">300 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s4.jpg" alt=""></div>
-                <p class="p-category">Сыворотка</p>
-                <h2 class="p-name">Ollin Perfect Hair 15 в 1</h2>
-                <div class="p-footer"><span class="p-price">18,50 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s5.jpg" alt=""></div>
-                <p class="p-category">Стайлинг</p>
-                <h2 class="p-name">Schwarzkopf Silhouette Лак</h2>
-                <div class="p-footer"><span class="p-price">35,20 <small>руб.</small></span><span class="p-volume">500 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s6.jpg" alt=""></div>
-                <p class="p-category">Пилинг</p>
-                <h2 class="p-name">Nioxin Scalp Recovery Пилинг</h2>
-                <div class="p-footer"><span class="p-price">54,90 <small>руб.</small></span><span class="p-volume">150 мл</span></div>
-            </div>
+            <img src="img/products/sh1.jpg" alt="Estel Curex">
         </div>
-
-        <section class="banner">
-            <div class="banner__body">
-                <div class="banner__content">
-                    <p class="banner__subtitle">Скидка января</p>
-                    <h2 class="banner__title">Комплект для ухода<br>за волосами KIKIMORA</h2>
-                    <a href="#" class="banner__link">Перейти к товару <span>→</span></a>
-                </div>
-                <div class="banner__discount">-20%</div>
-                <img src="img/sale/kiki_set_s_montazhnaya-oblast-1 1.png" alt="KIKIMORA" class="banner__img">
-            </div>
-        </section>
-
-        <div class="product-grid second-block">
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/sh2.jpg" alt=""></div>
-                <p class="p-category">Шампунь</p>
-                <h2 class="p-name">Londa Color Radiance Защита цвета</h2>
-                <div class="p-footer"><span class="p-price">22,40 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><span class="discount-badge">%</span><img src="img/products/ma2.jpg" alt=""></div>
-                <p class="p-category">Бальзам</p>
-                <h2 class="p-name">Estel Otium Miracle Восстановление</h2>
-                <div class="p-footer"><span class="p-price orange">17,80 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s7.jpg" alt=""></div>
-                <p class="p-category">Уход</p>
-                <h2 class="p-name">Ollin Bionika Плотность волос</h2>
-                <div class="p-footer"><span class="p-price">29,90 <small>руб.</small></span><span class="p-volume">100 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s8.jpg" alt=""></div>
-                <p class="p-category">Спрей</p>
-                <h2 class="p-name">Estel Couture Термозащита</h2>
-                <div class="p-footer"><span class="p-price">26,00 <small>руб.</small></span><span class="p-volume">200 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s9.jpg" alt=""></div>
-                <p class="p-category">Спрей</p>
-                <h2 class="p-name">Matrix Biolage Глубокое увлажнение</h2>
-                <div class="p-footer"><span class="p-price">41,20 <small>руб.</small></span><span class="p-volume">150 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/sh3.jpg" alt=""></div>
-                <p class="p-category">Шампунь</p>
-                <h2 class="p-name">Wella Invigo Питание и блеск</h2>
-                <div class="p-footer"><span class="p-price">31,50 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="img/products/s10.jpg" alt=""></div>
-                <p class="p-category">Мусс</p>
-                <h2 class="p-name">Londa Dramatic Hold Объем</h2>
-                <div class="p-footer"><span class="p-price">24,90 <small>руб.</small></span><span class="p-volume">250 мл</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><span class="discount-badge">%</span><img src="img/products/s11.jpg" alt=""></div>
-                <p class="p-category">Уход</p>
-                <h2 class="p-name">Matrix Keep Me Vivid Яркость цвета</h2>
-                <div class="p-footer"><span class="p-price orange">21,30 <small>руб.</small></span><span class="p-volume">300 мл</span></div>
-            </div>
-        </div>
-       
-    </div>
- <section class="about-preview">
-    <div class="container">
-        <div class="about-preview__content">
-            <!-- Левая часть: Фото + Декоративный круг -->
-            <div class="about-preview__image-block">
-                <div class="about-preview__circle"></div>
-                <img src="img/about/hairstyle.png" alt="Ваше место для красоты">
-            </div>
-            
-            <!-- Правая часть: Текст + Кнопка -->
-            <div class="about-preview__text-block">
-                <h2 class="about-preview__title">Ваше место<br>для красоты</h2>
-                <p class="about-preview__desc">
-                    Парикмахерская Ок - это счастливые девушки и парни, яркие цвета волос и воздушные локоны. Это дружная семья, которая встретит Вас и окутает заботой с первого шага в парикмахерскую.
-                </p>
-                <button class="btn-gradient-blue about-preview__btn">Узнать больше о нас</button>
-            </div>
+        <p class="p-category" data-ru="Шампунь" data-en="Shampoo">Шампунь</p>
+        <h2 class="p-name">Estel Curex Versus Winter Защита</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="25,90 руб." data-en="25.90 BYN">25,90 <small>руб.</small></span>
+            <span class="p-volume">200 мл</span>
         </div>
     </div>
-</section>
-<section class="beauty-blog">
-    <div class="container">
-        <!-- Заголовок и ссылка -->
-        <div class="blog-header">
-            <h2 class="blog-title">Бьюти блог</h2>
-            <a href="#" class="blog-link-all">
-                Смотреть все статьи
-                <!-- Стрелочка -->
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.33333 8H12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
 
-        <!-- Карточки -->
-        <div class="blog-cards">
-            <!-- Карточка 1 -->
-            <article class="blog-card">
-                <div class="card-image">
-                    <img src="img/blog/post-1.png" alt="Антистатик зимой">
+    <!-- Товар 2: Спрей (со скидкой) -->
+    <div class="product-card" 
+         data-product-id="p2" 
+         data-product-name="Estel 18+ Многофункциональный" 
+         data-product-price="19.90" 
+         data-product-image="img/products/s1.jpg">
+        <div class="product-image">
+            <span class="discount-badge">%</span>
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p2" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p2" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s1.jpg" alt="Estel 18+">
+        </div>
+        <p class="p-category" data-ru="Спрей" data-en="Spray">Спрей</p>
+        <h2 class="p-name">Estel 18+ Многофункциональный</h2>
+        <div class="p-footer">
+            <span class="p-price orange" data-ru="19,90 руб." data-en="19.90 BYN">19,90 <small>руб.</small></span>
+            <span class="p-volume">200 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 3: Маска -->
+    <div class="product-card" 
+         data-product-id="p3" 
+         data-product-name="Estel Otium Aqua Увлажнение" 
+         data-product-price="32.50" 
+         data-product-image="img/products/ma1.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p3" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p3" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/ma1.jpg" alt="Estel Otium Aqua">
+        </div>
+        <p class="p-category" data-ru="Маска" data-en="Mask">Маска</p>
+        <h2 class="p-name">Estel Otium Aqua Увлажнение</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="32,50 руб." data-en="32.50 BYN">32,50 <small>руб.</small></span>
+            <span class="p-volume">300 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 4: Масло -->
+    <div class="product-card" 
+         data-product-id="p4" 
+         data-product-name="Londa Velvet Oil с арганой" 
+         data-product-price="45.00" 
+         data-product-image="img/products/s2.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p4" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p4" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s2.jpg" alt="Londa Velvet Oil">
+        </div>
+        <p class="p-category" data-ru="Масло" data-en="Oil">Масло</p>
+        <h2 class="p-name">Londa Velvet Oil с арганой</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="45,00 руб." data-en="45.00 BYN">45,00 <small>руб.</small></span>
+            <span class="p-volume">100 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 5: Кондиционер -->
+    <div class="product-card" 
+         data-product-id="p5" 
+         data-product-name="Matrix Total Results Brass Off" 
+         data-product-price="28.10" 
+         data-product-image="img/products/s3.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p5" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p5" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s3.jpg" alt="Matrix Brass Off">
+        </div>
+        <p class="p-category" data-ru="Кондиционер" data-en="Conditioner">Кондиционер</p>
+        <h2 class="p-name">Matrix Total Results Brass Off</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="28,10 руб." data-en="28.10 BYN">28,10 <small>руб.</small></span>
+            <span class="p-volume">300 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 6: Сыворотка -->
+    <div class="product-card" 
+         data-product-id="p6" 
+         data-product-name="Ollin Perfect Hair 15 в 1" 
+         data-product-price="18.50" 
+         data-product-image="img/products/s4.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p6" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p6" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s4.jpg" alt="Ollin Perfect Hair">
+        </div>
+        <p class="p-category" data-ru="Сыворотка" data-en="Serum">Сыворотка</p>
+        <h2 class="p-name">Ollin Perfect Hair 15 в 1</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="18,50 руб." data-en="18.50 BYN">18,50 <small>руб.</small></span>
+            <span class="p-volume">250 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 7: Стайлинг -->
+    <div class="product-card" 
+         data-product-id="p7" 
+         data-product-name="Schwarzkopf Silhouette Лак" 
+         data-product-price="35.20" 
+         data-product-image="img/products/s5.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p7" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p7" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s5.jpg" alt="Schwarzkopf Silhouette">
+        </div>
+        <p class="p-category" data-ru="Стайлинг" data-en="Styling">Стайлинг</p>
+        <h2 class="p-name">Schwarzkopf Silhouette Лак</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="35,20 руб." data-en="35.20 BYN">35,20 <small>руб.</small></span>
+            <span class="p-volume">500 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 8: Пилинг -->
+    <div class="product-card" 
+         data-product-id="p8" 
+         data-product-name="Nioxin Scalp Recovery Пилинг" 
+         data-product-price="54.90" 
+         data-product-image="img/products/s6.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p8" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p8" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s6.jpg" alt="Nioxin Scalp Recovery">
+        </div>
+        <p class="p-category" data-ru="Пилинг" data-en="Peeling">Пилинг</p>
+        <h2 class="p-name">Nioxin Scalp Recovery Пилинг</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="54,90 руб." data-en="54.90 BYN">54,90 <small>руб.</small></span>
+            <span class="p-volume">150 мл</span>
+        </div>
+    </div>
+</div>
+
+<section class="banner">
+    <div class="banner__body">
+        <div class="banner__content">
+            <p class="banner__subtitle" data-ru="Не пропусти" data-en="Don't miss">Не пропусти</p>
+            <h2 class="banner__title" data-ru="Комплект для ухода за волосами KIKIMORA" data-en="KIKIMORA hair care set giveaway">Комплект для ухода<br>за волосами KIKIMORA</h2>
+            <a href="#" class="banner__link" data-ru="Участвовать в розыгрыше → " data-en="Join the giveaway → ">Участвовать в розыгрыше <span>→</span></a>
+        </div>
+        <div class="banner__discount" data-ru="Розыгрыш" data-en="Giveaway">Розыгрыш</div>
+        <img src="img/sale/kiki_set_s_montazhnaya-oblast-1 1.png" alt="KIKIMORA" class="banner__img">
+    </div>
+
+
+       <div class="product-grid second-block">
+    <!-- Товар 9: Шампунь -->
+    <div class="product-card" 
+         data-product-id="p9" 
+         data-product-name="Londa Color Radiance Защита цвета" 
+         data-product-price="22.40" 
+         data-product-image="img/products/sh2.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p9" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p9" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/sh2.jpg" alt="Londa Color Radiance">
+        </div>
+        <p class="p-category" data-ru="Шампунь" data-en="Shampoo">Шампунь</p>
+        <h2 class="p-name">Londa Color Radiance Защита цвета</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="22,40 руб." data-en="22.40 BYN">22,40 <small>руб.</small></span>
+            <span class="p-volume">250 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 10: Бальзам (со скидкой) -->
+    <div class="product-card" 
+         data-product-id="p10" 
+         data-product-name="Estel Otium Miracle Восстановление" 
+         data-product-price="17.80" 
+         data-product-image="img/products/ma2.jpg">
+        <div class="product-image">
+            <span class="discount-badge">%</span>
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p10" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p10" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/ma2.jpg" alt="Estel Otium Miracle">
+        </div>
+        <p class="p-category" data-ru="Бальзам" data-en="Balm">Бальзам</p>
+        <h2 class="p-name">Estel Otium Miracle Восстановление</h2>
+        <div class="p-footer">
+            <span class="p-price orange" data-ru="17,80 руб." data-en="17.80 BYN">17,80 <small>руб.</small></span>
+            <span class="p-volume">200 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 11: Уход -->
+    <div class="product-card" 
+         data-product-id="p11" 
+         data-product-name="Ollin Bionika Плотность волос" 
+         data-product-price="29.90" 
+         data-product-image="img/products/s7.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p11" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p11" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s7.jpg" alt="Ollin Bionika">
+        </div>
+        <p class="p-category" data-ru="Уход" data-en="Care">Уход</p>
+        <h2 class="p-name">Ollin Bionika Плотность волос</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="29,90 руб." data-en="29.90 BYN">29,90 <small>руб.</small></span>
+            <span class="p-volume">100 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 12: Спрей -->
+    <div class="product-card" 
+         data-product-id="p12" 
+         data-product-name="Estel Couture Термозащита" 
+         data-product-price="26.00" 
+         data-product-image="img/products/s8.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p12" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p12" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s8.jpg" alt="Estel Couture">
+        </div>
+        <p class="p-category" data-ru="Спрей" data-en="Spray">Спрей</p>
+        <h2 class="p-name">Estel Couture Термозащита</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="26,00 руб." data-en="26.00 BYN">26,00 <small>руб.</small></span>
+            <span class="p-volume">200 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 13: Спрей -->
+    <div class="product-card" 
+         data-product-id="p13" 
+         data-product-name="Matrix Biolage Глубокое увлажнение" 
+         data-product-price="41.20" 
+         data-product-image="img/products/s9.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p13" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p13" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s9.jpg" alt="Matrix Biolage">
+        </div>
+        <p class="p-category" data-ru="Спрей" data-en="Spray">Спрей</p>
+        <h2 class="p-name">Matrix Biolage Глубокое увлажнение</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="41,20 руб." data-en="41.20 BYN">41,20 <small>руб.</small></span>
+            <span class="p-volume">150 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 14: Шампунь -->
+    <div class="product-card" 
+         data-product-id="p14" 
+         data-product-name="Wella Invigo Питание и блеск" 
+         data-product-price="31.50" 
+         data-product-image="img/products/sh3.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p14" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p14" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/sh3.jpg" alt="Wella Invigo">
+        </div>
+        <p class="p-category" data-ru="Шампунь" data-en="Shampoo">Шампунь</p>
+        <h2 class="p-name">Wella Invigo Питание и блеск</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="31,50 руб." data-en="31.50 BYN">31,50 <small>руб.</small></span>
+            <span class="p-volume">250 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 15: Мусс -->
+    <div class="product-card" 
+         data-product-id="p15" 
+         data-product-name="Londa Dramatic Hold Объем" 
+         data-product-price="24.90" 
+         data-product-image="img/products/s10.jpg">
+        <div class="product-image">
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p15" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p15" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s10.jpg" alt="Londa Dramatic Hold">
+        </div>
+        <p class="p-category" data-ru="Мусс" data-en="Mousse">Мусс</p>
+        <h2 class="p-name">Londa Dramatic Hold Объем</h2>
+        <div class="p-footer">
+            <span class="p-price" data-ru="24,90 руб." data-en="24.90 BYN">24,90 <small>руб.</small></span>
+            <span class="p-volume">250 мл</span>
+        </div>
+    </div>
+
+    <!-- Товар 16: Уход (со скидкой) -->
+    <div class="product-card" 
+         data-product-id="p16" 
+         data-product-name="Matrix Keep Me Vivid Яркость цвета" 
+         data-product-price="21.30" 
+         data-product-image="img/products/s11.jpg">
+        <div class="product-image">
+            <span class="discount-badge">%</span>
+            <div class="product-actions">
+                <button class="btn-action btn-favorite" data-action="toggle-favorite" data-type="product" data-id="p16" aria-label="В избранное"><span class="fav-icon">♡</span></button>
+                <button class="btn-action btn-cart-action" data-action="add-to-cart" data-id="p16" aria-label="В корзину">🛒</button>
+            </div>
+            <img src="img/products/s11.jpg" alt="Matrix Keep Me Vivid">
+        </div>
+        <p class="p-category" data-ru="Уход" data-en="Care">Уход</p>
+        <h2 class="p-name">Matrix Keep Me Vivid Яркость цвета</h2>
+        <div class="p-footer">
+            <span class="p-price orange" data-ru="21,30 руб." data-en="21.30 BYN">21,30 <small>руб.</small></span>
+            <span class="p-volume">300 мл</span>
+        </div>
+    </div>
+</div>
+
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-preview__content">
+                <div class="about-preview__image-block">
+                    <div class="about-preview__circle"></div>
+                    <img src="img/about/hairstyle.png" alt="Ваше место для красоты">
                 </div>
-                <div class="card-content">
-                    <h3 class="card-title">Антистатик зимой</h3>
-                    <p class="card-text">
-                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                <div class="about-preview__text-block">
+                    <h2 class="about-preview__title" data-ru="Ваше место для красоты" data-en="Your place for beauty">Ваше место<br>для красоты</h2>
+                    <p class="about-preview__desc" data-ru="Парикмахерская Ок - это счастливые девушки и парни, яркие цвета волос и воздушные локоны. Это дружная семья, которая встретит Вас и окутает заботой с первого шага в парикмахерскую." data-en="Hairdresser Ok is about happy girls and guys, vibrant hair colors and airy curls. It's a friendly family that will welcome you and surround you with care from the very first step into the salon.">
+                        Парикмахерская Ок - это счастливые девушки и парни, яркие цвета волос и воздушные локоны. Это дружная семья, которая встретит Вас и окутает заботой с первого шага в парикмахерскую.
                     </p>
-                    <a href="#" class="card-link">
-                        Читать далее
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </article>
-
-            <!-- Карточка 2 -->
-            <article class="blog-card">
-                <div class="card-image">
-                    <img src="img/blog/post-2.png" alt="Мой голову правильно">
-                    <span class="card-badge">Новый пост</span> <!-- Бейдж как на макете -->
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Мой голову правильно</h3>
-                    <p class="card-text">
-                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
-                    </p>
-                    <a href="#" class="card-link">
-                        Читать далее
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </article>
-
-            <!-- Карточка 3 -->
-            <article class="blog-card">
-                <div class="card-image">
-                    <img src="img/blog/post-3.png" alt="Уход за кончиками">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Уход за кончиками</h3>
-                    <p class="card-text">
-                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
-                    </p>
-                    <a href="#" class="card-link">
-                        Читать далее
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-<section class="instagram">
-    <div class="container">
-        <div class="instagram__header">
-            <h2 class="instagram__title">Мы в инстаграм!</h2>
-            <a href="#" class="instagram__link">
-                <span>Подпишись</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-                    <g opacity="0.7">
-                        <path d="M14.8281 7.08524C14.828 7.08507 14.8278 7.08486 14.8276 7.08469L11.766 4.03781C11.5366 3.80956 11.1656 3.81041 10.9373 4.0398C10.709 4.26917 10.7099 4.64015 10.9393 4.86844L12.9949 6.91406H0.585938C0.262324 6.91406 0 7.17638 0 7.5C0 7.82361 0.262324 8.08594 0.585938 8.08594H12.9948L10.9393 10.1316C10.7099 10.3598 10.7091 10.7308 10.9373 10.9602C11.1657 11.1896 11.5367 11.1904 11.766 10.9622L14.8276 7.91531C14.8278 7.91513 14.828 7.91493 14.8282 7.91475C15.0577 7.68571 15.0569 7.31352 14.8281 7.08524Z" fill="#FE5B14"/>
-                    </g>
-                </svg>
-            </a>
-        </div>
-
-        <div class="instagram__grid">
-            <div class="instagram__item"><img src="img/inst/1.png" alt="Inst 1"></div>
-            <div class="instagram__item"><img src="img/inst/2.png" alt="Inst 2"></div>
-            <div class="instagram__item">
-                <img src="img/inst/3.png" alt="Inst 3">
-                <div class="instagram__overlay">
-                    <span>Перейти в Instagram →</span>
-                </div>
-            </div>
-            <div class="instagram__item"><img src="img/inst/4.png" alt="Inst 4"></div>
-            <div class="instagram__item"><img src="img/inst/5.png" alt="Inst 5"></div>
-        </div>
-    </div>
-</section>
-<section class="contacts">
-    <div class="container contacts__container">
-        <div class="contacts__content">
-            <h2 class="contacts__title">Как нас найти</h2>
-            
-            <div class="contacts__item">
-                <p class="contacts__label">Адрес</p>
-                <p class="contacts__info">Минск, Ленинградская 10</p>
-                <a href="#" class="contacts__link">Схема прохода</a>
-            </div>
-
-            <div class="contacts__item">
-                <p class="contacts__label">Телефон</p>
-                <p class="contacts__info">+375 25 655-44-33</p>
-            </div>
-
-            <button class="btn-gradient contacts__btn">Записаться онлайн</button>
-        </div>
-
-        <div class="contacts__map-wrapper">
-            <div id="map" class="contacts__map">
-                <img src="img/contacts/map.png" alt="Карта" class="map-bg">
-                
-                <div class="map-marker">
-                    <img src="img/header/ok-logo.png" alt="OK!">
-                    <span>Ленинградская 10</span>
+                    <button class="btn-gradient-blue about-preview__btn" data-ru="Узнать больше о нас" data-en="Learn more about us">Узнать больше о нас</button>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="beauty-blog">
+        <div class="container">
+            <div class="blog-header">
+                <h2 class="blog-title" data-ru="Бьюти блог" data-en="Beauty blog">Бьюти блог</h2>
+                <a href="#" class="blog-link-all" data-ru="Смотреть все статьи" data-en="View all articles">
+                    Смотреть все статьи
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.33333 8H12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="blog-cards">
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="img/blog/post-1.png" alt="Антистатик зимой">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-ru="Антистатик зимой" data-en="Anti-static in winter">Антистатик зимой</h3>
+                        <p class="card-text" data-ru="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает..." data-en="It's long been known that readable text distracts from evaluating design and composition. That's why Lorem Ipsum is used — it provides...">
+                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                        </p>
+                        <a href="#" class="card-link" data-ru="Читать далее" data-en="Read more">
+                            Читать далее
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="img/blog/post-2.png" alt="Мой голову правильно">
+                        <span class="card-badge" data-ru="Новый пост" data-en="New post">Новый пост</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-ru="Мой голову правильно" data-en="Wash your hair right">Мой голову правильно</h3>
+                        <p class="card-text" data-ru="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает..." data-en="It's long been known that readable text distracts from evaluating design and composition. That's why Lorem Ipsum is used — it provides...">
+                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                        </p>
+                        <a href="#" class="card-link" data-ru="Читать далее" data-en="Read more">
+                            Читать далее
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="img/blog/post-3.png" alt="Уход за кончиками">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-ru="Уход за кончиками" data-en="Care for split ends">Уход за кончиками</h3>
+                        <p class="card-text" data-ru="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает..." data-en="It's long been known that readable text distracts from evaluating design and composition. That's why Lorem Ipsum is used — it provides...">
+                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
+                        </p>
+                        <a href="#" class="card-link" data-ru="Читать далее" data-en="Read more">
+                            Читать далее
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="instagram">
+        <div class="container">
+            <div class="instagram__header">
+                <h2 class="instagram__title" data-ru="Мы в инстаграм!" data-en="We're on Instagram!">Мы в инстаграм!</h2>
+                <a href="#" class="instagram__link" data-ru="Подпишись" data-en="Subscribe">
+                    <span data-ru="Подпишись" data-en="Subscribe">Подпишись</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <g opacity="0.7">
+                            <path d="M14.8281 7.08524C14.828 7.08507 14.8278 7.08486 14.8276 7.08469L11.766 4.03781C11.5366 3.80956 11.1656 3.81041 10.9373 4.0398C10.709 4.26917 10.7099 4.64015 10.9393 4.86844L12.9949 6.91406H0.585938C0.262324 6.91406 0 7.17638 0 7.5C0 7.82361 0.262324 8.08594 0.585938 8.08594H12.9948L10.9393 10.1316C10.7099 10.3598 10.7091 10.7308 10.9373 10.9602C11.1657 11.1896 11.5367 11.1904 11.766 10.9622L14.8276 7.91531C14.8278 7.91513 14.828 7.91493 14.8282 7.91475C15.0577 7.68571 15.0569 7.31352 14.8281 7.08524Z" fill="#FE5B14"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="instagram__grid">
+                <div class="instagram__item"><img src="img/inst/1.png" alt="Inst 1"></div>
+                <div class="instagram__item"><img src="img/inst/2.png" alt="Inst 2"></div>
+                <div class="instagram__item">
+                    <img src="img/inst/3.png" alt="Inst 3">
+                    <div class="instagram__overlay">
+                        <span data-ru="Перейти в Instagram →" data-en="Go to Instagram →">Перейти в Instagram →</span>
+                    </div>
+                </div>
+                <div class="instagram__item"><img src="img/inst/4.png" alt="Inst 4"></div>
+                <div class="instagram__item"><img src="img/inst/5.png" alt="Inst 5"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts">
+        <div class="container contacts__container">
+            <div class="contacts__content">
+                <h2 class="contacts__title" data-ru="Как нас найти" data-en="How to find us">Как нас найти</h2>
+                <div class="contacts__item">
+                    <p class="contacts__label" data-ru="Адрес" data-en="Address">Адрес</p>
+                    <p class="contacts__info" data-ru="Минск, Ленинградская 10" data-en="Minsk, Leningradskaya 10">Минск, Ленинградская 10</p>
+                    <a href="#" class="contacts__link" data-ru="Схема прохода" data-en="Directions">Схема прохода</a>
+                </div>
+                <div class="contacts__item">
+                    <p class="contacts__label" data-ru="Телефон" data-en="Phone">Телефон</p>
+                    <p class="contacts__info">+375 25 655-44-33</p>
+                </div>
+                <button class="btn-gradient contacts__btn" data-ru="Записаться онлайн" data-en="Book online">Записаться онлайн</button>
+            </div>
+            <div class="contacts__map-wrapper">
+                <div id="map" class="contacts__map">
+                    <img src="img/contacts/map.png" alt="Карта" class="map-bg">
+                    <div class="map-marker">
+                        <img src="img/header/ok-logo.png" alt="OK!">
+                        <span data-ru="Ленинградская 10" data-en="Leningradskaya 10">Ленинградская 10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </main>
+
 <footer class="footer">
     <div class="container footer__container">
         <div class="footer__logo-block">
             <img src="img/header/ok-logo.png" alt="OK!" class="footer__logo">
-            <p class="footer__brand">Парикмахерская ОК</p>
-            <span class="footer__unp">УНП 1964554378</span>
+            <p class="footer__brand" data-ru="Парикмахерская ОК" data-en="Hairdressing salon OK">Парикмахерская ОК</p>
+            <span class="footer__unp" data-ru="УНП 1964554378" data-en="UNP 1964554378">УНП 1964554378</span>
         </div>
 
         <div class="footer__menu footer__menu--bold">
-            <a href="#">Женский зал</a>
-            <a href="#">Мужской зал</a>
-            <a href="#">Маникюр</a>
-            <a href="#">Brow-сервис</a>
+            <a href="#" data-ru="Женский зал" data-en="Women's hall">Женский зал</a>
+            <a href="#" data-ru="Мужской зал" data-en="Men's hall">Мужской зал</a>
+            <a href="#" data-ru="Маникюр" data-en="Manicure">Маникюр</a>
+            <a href="#" data-ru="Brow-сервис" data-en="Brow-service">Brow-сервис</a>
         </div>
 
         <div class="footer__menu footer__menu--medium">
-            <a href="#">О нас</a>
-            <a href="#">Стоимость</a>
-            <a href="#">Вакансии</a>
-            <a href="#">Контакты</a>
+            <a href="#" data-ru="О нас" data-en="About us">О нас</a>
+            <a href="#" data-ru="Стоимость" data-en="Prices">Стоимость</a>
+            <a href="#" data-ru="Вакансии" data-en="Jobs">Вакансии</a>
+            <a href="#" data-ru="Контакты" data-en="Contacts">Контакты</a>
         </div>
 
         <div class="footer__contacts">
@@ -423,12 +680,129 @@
             </div>
             <div class="footer__time">
                 <img src="img/hero/clock.png" alt="" class="footer__icon">
-                <span>9:00 - 21:00</span>
+                <span data-ru="9:00 - 21:00" data-en="9:00 AM - 9:00 PM">9:00 - 21:00</span>
             </div>
         </div>
     </div>
 </footer>
-  <script src="js/main.js"></script>
-</body>
 
+<div class="accessibility-modal" id="accessibility-modal">
+  <div class="accessibility-modal__backdrop" id="accessibility-backdrop"></div>
+  <div class="accessibility-modal__panel">
+    <div class="accessibility-modal__header">
+      <h2 class="accessibility-modal__title" data-ru="Настройки доступности" data-en="Accessibility settings">Настройки доступности</h2>
+      <button class="accessibility-modal__close-x" id="accessibility-close-x">&times;</button>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <h3 class="accessibility-modal__label" data-ru="Размер шрифта" data-en="Font size">Размер шрифта</h3>
+      <div class="accessibility-modal__options" id="a11y-font-size">
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="normal" checked />
+          <span class="accessibility-modal__option-text" style="font-size: 1em" data-ru="Стандартный (Aa)" data-en="Standard (Aa)">Стандартный (Aa)</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="large" />
+          <span class="accessibility-modal__option-text" style="font-size: 1.1em" data-ru="Средний (Aa+)" data-en="Medium (Aa+)">Средний (Aa+)</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-font" value="xlarge" />
+          <span class="accessibility-modal__option-text" style="font-size: 1.2em" data-ru="Крупный (Aa++)" data-en="Large (Aa++)">Крупный (Aa++)</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <h3 class="accessibility-modal__label" data-ru="Цветовая схема" data-en="Color scheme">Цветовая схема</h3>
+      <div class="accessibility-modal__options accessibility-modal__options--schemes" id="a11y-color-scheme">
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="default" checked />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--default">Aa</span>
+          <span class="accessibility-modal__option-text" data-ru="Обычная тема" data-en="Default theme">Обычная тема</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="black-white" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--black-white">Aa</span>
+          <span class="accessibility-modal__option-text" data-ru="Чёрным по белому" data-en="Black on white">Чёрным по белому</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="white-black" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--white-black">Aa</span>
+          <span class="accessibility-modal__option-text" data-ru="Белым по чёрному" data-en="White on black">Белым по чёрному</span>
+        </label>
+        <label class="accessibility-modal__option">
+          <input class="radio" type="radio" name="a11y-scheme" value="blue-darkblue" />
+          <span class="accessibility-modal__swatch accessibility-modal__swatch--blue-darkblue">Aa</span>
+          <span class="accessibility-modal__option-text" data-ru="Синим по голубому" data-en="Blue on light blue">Синим по голубому</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="accessibility-modal__section">
+      <label class="accessibility-modal__option">
+        <input class="checkbox" type="checkbox" id="a11y-images-toggle" />
+        <span class="accessibility-modal__option-text" style="font-weight: 600;" data-ru="Выключить изображения (показывать текст)" data-en="Disable images (show text only)">Выключить изображения (показывать текст)</span>
+      </label>
+    </div>
+    
+    <div class="accessibility-modal__actions">
+      <button class="btn-secondary" id="accessibility-reset" data-ru="Сбросить" data-en="Reset">Сбросить</button>
+      <button class="btn-primary" id="accessibility-apply-btn" data-ru="Применить" data-en="Apply">Применить</button>
+    </div>
+  </div>
+</div>
+<script src="js/notifications.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/favorites.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/user-info.js"></script>
+  <script src="js/booking.js"></script>
+
+ 
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Инициализируем менеджеры (они сами привяжут события)
+    window.cart = new CartManager();
+    window.favorites = new FavoritesManager();
+    
+    // 🔐 Проверка авторизации для отображения имени
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const userNameEl = document.querySelector('.user-name');
+    const loginLink = document.querySelector('.user-profile');
+    
+    if (user && userNameEl) {
+        userNameEl.textContent = user.nickname || user.fio?.split(' ')[0] || 'Профиль';
+        loginLink.href = 'profile.html'; // Ссылка на личный кабинет
+    }
+});
+</script>
+<!-- Всплывающее уведомление (Toast) -->
+<div id="toast-notification" class="toast-notification">
+    <div class="toast-content">
+        <div class="toast-icon">✓</div>
+        <div class="toast-message">
+            <strong class="toast-title">Добавлено!</strong>
+            <span class="toast-text">Товар добавлен в корзину</span>
+        </div>
+        <button class="toast-close" onclick="hideToast()">&times;</button>
+    </div>
+    <div class="toast-actions">
+        <button class="toast-btn toast-btn-secondary" onclick="hideToast()">Продолжить покупки</button>
+        <button class="toast-btn toast-btn-primary" onclick="goToCart()">Перейти в корзину</button>
+    </div>
+</div>
+
+<!-- Модальное окно для быстрого просмотра (опционально) -->
+<div id="quick-view-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+
+</body>
 </html>
