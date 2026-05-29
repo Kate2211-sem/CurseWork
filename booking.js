@@ -1,5 +1,5 @@
 /**
- * 📋 Booking Module v2.2 (Все ошибки исправлены)
+ * 📋 Booking Module v2.3 (Интеграция системы скидок 20%)
  */
 (function() {
   'use strict';
@@ -38,7 +38,7 @@
     any: { name: 'Любой свободный' }
   };
 
-  // === HTML МОДАЛКИ (без ошибок) ===
+  // === HTML МОДАЛКИ ===
   const MODAL_HTML = `
     <div id="booking-modal" class="modal-overlay" style="display:none;">
       <div class="modal-content" style="max-width:560px; padding:24px; position:relative; background:var(--bg-card); border-radius:20px;">
@@ -80,9 +80,13 @@
             </div>
           </div>
           <textarea id="book-comment" placeholder="Комментарий" rows="2" style="padding:12px; border:1px solid var(--border); border-radius:8px; background:var(--input-bg); color:var(--text-main); resize:vertical;"></textarea>
-          <div style="background:var(--bg-card); padding:12px; border-radius:8px; font-weight:700; font-size:16px; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border);">
-            <span>Итого:</span>
-            <span><span id="book-price">0</span> руб. • <span id="book-duration">0</span> мин</span>
+          
+          <div style="background:var(--bg-card); padding:12px; border-radius:8px; font-weight:700; font-size:16px; display:flex; flex-direction:column; gap:4px; border:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+              <span>Итого:</span>
+              <span><span id="book-price">0</span> руб. • <span id="book-duration">0</span> мин</span>
+            </div>
+            <div id="promo-notice" style="font-size:12px; color:#22c55e; display:none; text-align:right; font-weight:600;"></div>
           </div>
           <button type="submit" class="cart-checkout" style="width:100%;">✅ Подтвердить запись</button>
         </form>
@@ -115,6 +119,19 @@
   function saveAppointment(data) {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     if (!user) return alert('Ошибка авторизации');
+
+    // Рассчитываем итоговую стоимость с учётом возможной скидки
+    let finalPrice = SERVICES[data.serviceId].price;
+    const activePromo = localStorage.getItem('active_salon_promo');
+    let appliedPromoName = '';
+    
+    if (activePromo) {
+      finalPrice = Math.round(finalPrice * 0.8); // Применяем скидку 20%
+      appliedPromoName = activePromo === 'pensioner' ? 'Акция "Пенсионерам" (-20%)' : 'Акция "Новый клиент" (-20%)';
+      
+      // Сбрасываем промокод после успешного использования, чтобы он не висел вечно
+      localStorage.removeItem('active_salon_promo');
+    }
     
     const appointment = {
       id: 'AP-' + Date.now().toString().slice(-6),
@@ -123,7 +140,9 @@
       masterId: data.masterId, masterName: MASTERS[data.masterId]?.name || 'Любой',
       categoryId: data.categoryId, categoryName: CATEGORIES[data.categoryId],
       serviceId: data.serviceId, serviceName: SERVICES[data.serviceId].name,
-      duration: SERVICES[data.serviceId].duration, price: SERVICES[data.serviceId].price,
+      duration: SERVICES[data.serviceId].duration, 
+      price: finalPrice, // Сюда уходит цена со скидкой
+      promoApplied: appliedPromoName, // Пометка для истории заказов
       appointmentDate: data.date, appointmentTime: data.time,
       customer: { name: user.fio, phone: user.phone, comment: data.comment },
       status: 'confirmed'
@@ -163,7 +182,6 @@
         window.location.href = 'index.html';
         return;
       }
-      // Блокировка для админа
       if (user.role === 'admin') {
         this._showAdminBookingModal();
         return;
@@ -182,9 +200,16 @@
       document.getElementById('book-price').textContent = '0';
       document.getElementById('book-duration').textContent = '0';
       document.getElementById('book-comment').value = '';
+      
+      // Скрываем строчку уведомления о скидке при чистом открытии
+      const promoNotice = document.getElementById('promo-notice');
+      if (promoNotice) promoNotice.style.display = 'none';
 
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      
+      // Если открыли форму, и у нас выбрана услуга, обновляем прайс
+      this.updateTotal();
     },
 
     _showAdminBookingModal() {
@@ -256,9 +281,31 @@
 
     updateTotal() {
       const id = document.getElementById('book-service').value;
+      const priceElem = document.getElementById('book-price');
+      const durationElem = document.getElementById('book-duration');
+      const promoNotice = document.getElementById('promo-notice');
+      const isEn = document.documentElement.lang === 'en';
+
       if (id && SERVICES[id]) {
-        document.getElementById('book-price').textContent = SERVICES[id].price;
-        document.getElementById('book-duration').textContent = SERVICES[id].duration;
+        let basePrice = SERVICES[id].price;
+        durationElem.textContent = SERVICES[id].duration;
+
+        // Проверяем наличие активной промо-акции
+        const activePromo = localStorage.getItem('active_salon_promo');
+        if (activePromo) {
+          const discountPrice = Math.round(basePrice * 0.8); // Скидка 20%
+          priceElem.textContent = discountPrice;
+          
+          if (promoNotice) {
+            promoNotice.textContent = activePromo === 'pensioner' 
+              ? (isEn ? '✓ Senior discount applied (-20%)' : '✓ Применена скидка пенсионерам (-20%)')
+              : (isEn ? '✓ New client discount applied (-20%)' : '✓ Применена скидка нового клиента (-20%)');
+            promoNotice.style.display = 'block';
+          }
+        } else {
+          priceElem.textContent = basePrice;
+          if (promoNotice) promoNotice.style.display = 'none';
+        }
       }
     },
 
@@ -286,7 +333,7 @@
           <div style="margin-bottom:8px;"><strong>📅 Дата:</strong> ${appt.appointmentDate} в ${appt.appointmentTime}</div>
           <div style="margin-bottom:8px;"><strong>✂️ Услуга:</strong> ${appt.categoryName} → ${appt.serviceName}</div>
           <div style="margin-bottom:8px;"><strong>👤 Мастер:</strong> ${appt.masterName}</div>
-          <div style="margin-bottom:8px;"><strong>💰 Стоимость:</strong> ${appt.price} руб.</div>
+          <div style="margin-bottom:8px;"><strong>💰 Стоимость:</strong> ${appt.price} руб. ${appt.promoApplied ? `<span style="color:#22c55e; font-size:13px; font-weight:600;"><br>(${appt.promoApplied})</span>` : ''}</div>
         `;
         this.close();
         document.getElementById('booking-success').style.display = 'block';
@@ -302,13 +349,12 @@
     }
   };
 
-  // Авто-инициализация (строго один раз)
   document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('[data-book]') && !window.BookingModule._initialized) {
       window.BookingModule.init();
     }
   });
-    // 🧪 ТЕСТ: принудительно открываем модалку по клику на любую кнопку с data-book
+
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-book]');
     if (btn) {
