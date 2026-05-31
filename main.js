@@ -202,25 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-document.addEventListener('click', (e) => {
-    // 1. Обработка кнопки "Перейти в магазин"
-    if (e.target.classList.contains('btn-primary')) {
-        window.location.href = 'shop.html';
-    }
 
-    // 2. Обработка кнопки "В корзину" (делегирование)
-    if (e.target.closest('.btn-add-to-cart')) {
-        e.preventDefault();
-        const btn = e.target.closest('.btn-add-to-cart');
-        const card = btn.closest('.product-card');
-        
-        // Здесь мы вызываем твой CartManager, если он существует
-        if (window.cartManager && card) {
-             const productData = { /* данные из карточки */ };
-             window.cartManager.add(card.dataset.productId, productData);
-        }
-    }
-});
 
 /////слайдеры о нас
 document.addEventListener('DOMContentLoaded', () => {
@@ -394,5 +376,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cardsContainer && paginationContainer) {
     displayCards(currentPage);
     setupPagination();
+  }
+});
+// === ИНИЦИАЛИЗАЦИЯ МЕНЕДЖЕРОВ (корзина, избранное) ===
+document.addEventListener('DOMContentLoaded', () => {
+  // Инициализируем корзину, если класс есть и ещё не создан
+  if (typeof CartManager !== 'undefined' && !window.cartManager) {
+    window.cartManager = new CartManager();
+    console.log('CartManager инициализирован');
+  }
+  // Инициализируем избранное
+  if (typeof FavoritesManager !== 'undefined' && !window.favoritesManager) {
+    window.favoritesManager = new FavoritesManager();
+    console.log('FavoritesManager инициализирован');
   }
 });

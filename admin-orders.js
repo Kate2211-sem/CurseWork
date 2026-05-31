@@ -78,44 +78,89 @@ if (!dataProducts || dataProducts.length === 0) {
       getData: () => dataOrders,
       filterItem: (item, f) => f === 'all' || item.status === f,
       searchItem: (item, s) => (item.orderNumber && item.orderNumber.toLowerCase().includes(s)) || (item.customer?.name && item.customer.name.toLowerCase().includes(s)),
-      renderRow: (item) => {
-        const date = item.date ? new Date(item.date).toLocaleDateString('ru-RU') + ' ' + new Date(item.date).toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'}) : '—';
-        const statusClass = `status-${item.status || 'pending'}`;
-        const statusText = statusLabels[item.status] || '⏳ Ожидает';
-        return `
-          <tr class="order-row" data-id="${item.orderNumber}">
-            <td><strong>${item.orderNumber || '#'}</strong></td>
-            <td><small>${date}</small></td>
-            <td>${item.customer?.name || '—'}<br><small>${item.customer?.phone || ''}</small></td>
-            <td><strong>${item.total || 0} ₽</strong></td>
-            <td><span class="status-badge ${statusClass}">${statusText}</span></td>
-            <td><button class="action-btn view-btn" style="background:none;border:none;cursor:pointer;font-size:18px;">👁️</button></td>
-          </tr>
-        `;
-      },
-      renderPanel: (item) => {
-        document.getElementById('panel-title').textContent = `Заказ ${item.orderNumber || ''}`;
-        const itemsHtml = item.items?.map(i => `<div style="border-bottom:1px dashed #eee; padding:8px 0; display:flex; justify-content:space-between;"><span>${i.name} × ${i.quantity}</span><b>${(i.price * i.quantity).toFixed(2)} ₽</b></div>`).join('') || 'Нет товаров';
-        
-        document.getElementById('panel-body').innerHTML = `
-          <div class="info-block"><h4>Клиент</h4><p>${item.customer?.name || '—'}</p><p><a href="tel:${item.customer?.phone}">${item.customer?.phone || ''}</a></p><p>${item.customer?.address || '—'}</p></div>
-          <div class="info-block"><h4>Состав</h4>${itemsHtml}<div style="margin-top:10px; font-weight:700; text-align:right;">ИТОГО: ${item.total || 0} ₽</div></div>
-        `;
-        document.getElementById('panel-footer').innerHTML = `
-          <select class="status-select" id="panel-status" style="width:100%; margin-bottom:10px;">
+      // Внутри TAB_CONFIG.orders:
+renderRow: (item, index) => { // Добавляем index как второй аргумент
+    // 1. Порядковый номер (index + 1, так как массив начинается с 0)
+    const rowNumber = index + 1;
+
+    // 2. Форматируем дату из createdAt
+    const date = item.createdAt ? new Date(item.createdAt).toLocaleString('ru-RU', {
+        day: '2-digit', 
+        month: '2-digit', 
+        year: '2-digit',
+        hour: '2-digit', 
+        minute: '2-digit'
+    }) : '—';
+    
+    const statusClass = `status-${item.status || 'pending'}`;
+    const statusText = statusLabels[item.status] || '⏳ Ожидает';
+
+    return `
+      <tr class="order-row" data-id="${item.id}">
+        <td><strong>${rowNumber}</strong></td> 
+        <td><small>${date}</small></td>
+        <td>${item.customerName || '—'}<br><small>${item.customerPhone || ''}</small></td>
+        <td><strong>${item.total ? item.total.toFixed(2) : '0'} ₽</strong></td>
+        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+        <td><button class="action-btn view-btn" style="background:none;border:none;cursor:pointer;font-size:18px;">👁️</button></td>
+      </tr>
+    `;
+},
+     renderPanel: (item) => {
+    document.getElementById('panel-title').textContent = `Заказ #${item.id}`;
+    
+    // Генерируем список товаров (если они есть)
+    const itemsHtml = item.items?.map(i => 
+        `<div style="border-bottom:1px dashed #eee; padding:8px 0; display:flex; justify-content:space-between;">
+            <span>${i.name} × ${i.quantity}</span>
+            <b>${(i.price * i.quantity).toFixed(2)} ₽</b>
+        </div>`
+    ).join('') || 'Нет товаров';
+    
+    document.getElementById('panel-body').innerHTML = `
+        <div class="info-block">
+            <h4>Клиент</h4>
+            <p>${item.customerName || '—'}</p>
+            <p><a href="tel:${item.customerPhone}">${item.customerPhone || ''}</a></p>
+            <p>${item.customerAddress || '—'}</p>
+            ${item.customerComment ? `<p><b>Комментарий:</b> ${item.customerComment}</p>` : ''}
+        </div>
+        <div class="info-block">
+            <h4>Состав</h4>
+            ${itemsHtml}
+            <div style="margin-top:10px; font-weight:700; text-align:right;">ИТОГО: ${item.total || 0} ₽</div>
+        </div>
+    `;
+
+    document.getElementById('panel-footer').innerHTML = `
+        <select class="status-select" id="panel-status" style="width:100%; margin-bottom:10px; padding: 8px;">
             <option value="pending" ${item.status==='pending'?'selected':''}>⏳ Ожидает</option>
             <option value="confirmed" ${item.status==='confirmed'?'selected':''}>✅ Подтверждён</option>
             <option value="completed" ${item.status==='completed'?'selected':''}>🎉 Выполнен</option>
             <option value="cancelled" ${item.status==='cancelled'?'selected':''}>❌ Отменён</option>
-          </select>
-          <button class="btn-panel primary" id="btn-save">💾 Сохранить</button>
-          <button class="btn-panel danger" id="btn-delete">🗑️ Удалить заказ</button>
-        `;
-      },
-      save: (newStatus) => {
-        const idx = dataOrders.findIndex(o => o.orderNumber === selectedItem.orderNumber);
-        if (idx !== -1) { dataOrders[idx].status = newStatus; localStorage.setItem('orders', JSON.stringify(dataOrders)); }
-      },
+        </select>
+        <button class="btn-panel primary" id="btn-save" style="width:100%; margin-bottom: 5px;">💾 Сохранить статус</button>
+        <button class="btn-panel danger" id="btn-delete" style="width:100%;">🗑️ Удалить заказ</button>
+    `;
+},
+      save: async (newStatus) => {
+    try {
+        // Отправляем PATCH запрос на сервер для обновления статуса конкретного заказа
+        const res = await fetch(`http://localhost:3000/orders/${selectedItem.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: newStatus })
+        });
+        
+        if (res.ok) {
+            alert('Статус успешно обновлен!');
+            // После успешного обновления перезагружаем данные
+            renderAll(); 
+        }
+    } catch (err) {
+        console.error("Ошибка при сохранении статуса:", err);
+    }
+},
       delete: () => {
         dataOrders = dataOrders.filter(o => o.orderNumber !== selectedItem.orderNumber);
         localStorage.setItem('orders', JSON.stringify(dataOrders));
@@ -129,15 +174,24 @@ if (!dataProducts || dataProducts.length === 0) {
       filterItem: (item, f) => f === 'all' || item.status === f,
       searchItem: (item, s) => (item.id && String(item.id).toLowerCase().includes(s)) || (item.customer?.name && item.customer.name.toLowerCase().includes(s)) || (item.serviceName && item.serviceName.toLowerCase().includes(s)),
       renderRow: (item) => {
-        const statusClass = `status-${item.status || 'confirmed'}`;
-        const statusText = apptStatusLabels[item.status] || '✅ Подтверждено';
+        // Проверяем, есть ли поле даты, иначе ставим прочерк
+        const date = item.createdAt ? new Date(item.createdAt).toLocaleDateString('ru-RU') : '—';
+        
+        // Используем ваши точные имена полей из лога
+        const name = item.customerName || '—';
+        const phone = item.customerPhone || '—';
+        const orderNumber = item.id || '#';
+        const total = item.total || 0;
+        
+        const statusClass = `status-${item.status || 'pending'}`;
+        const statusText = statusLabels[item.status] || '⏳ Ожидает';
+
         return `
           <tr class="order-row" data-id="${item.id}">
-            <td><strong>${item.id || '#'}</strong></td>
-            <td>${item.appointmentDate || '—'}<br><small>${item.appointmentTime || ''}</small></td>
-            <td>${item.customer?.name || '—'}<br><small>${item.customer?.phone || ''}</small></td>
-            <td>${item.serviceName || '—'}</td>
-            <td>${item.masterName || '—'}</td>
+            <td><strong>${orderNumber}</strong></td>
+            <td><small>${date}</small></td>
+            <td>${name}<br><small>${phone}</small></td>
+            <td><strong>${total} ₽</strong></td>
             <td><span class="status-badge ${statusClass}">${statusText}</span></td>
             <td><button class="action-btn view-btn" style="background:none;border:none;cursor:pointer;font-size:18px;">👁️</button></td>
           </tr>
@@ -255,16 +309,16 @@ if (!dataProducts || dataProducts.length === 0) {
       filterItem: () => true,
       searchItem: (item, s) => (item.id && item.id.toLowerCase().includes(s)) || (item.name && item.name.toLowerCase().includes(s)) || (item.brand && item.brand.toLowerCase().includes(s)),
       renderRow: (item) => `
-        <tr class="order-row" data-id="${item.id}">
-          <td><img src="${item.image || ''}" class="prod-table-img" alt="" style="width:40px; height:40px; object-fit:contain; border-radius:6px;"></td>
-          <td><strong>${item.id || '—'}</strong></td>
-          <td>${item.name || '—'}</td>
-          <td>${item.brand || '—'} <br><small>${item.volume || ''}</small></td>
-          <td><strong>${item.price ? item.price.toFixed(2) : 0} руб.</strong></td>
-          <td><span class="status-badge status-confirmed">${item.category || '—'}</span></td>
-          <td><button class="action-btn view-btn" style="background:none;border:none;cursor:pointer;font-size:18px;">👁️</button></td>
-        </tr>
-      `,
+    <tr class="order-row" data-id="${item.id}">
+      <td><img src="${item.image || ''}" style="width:40px; height:40px; object-fit:contain;"></td>
+      <td><strong>${item.id || '—'}</strong></td>
+      <td>${item.name || '—'}</td>
+      <td>${item.brand || '—'} / ${item.volume || ''}</td>
+      <td><strong>${item.price ? item.price.toFixed(2) : '0.00'} ₽</strong></td>
+      <td>${item.category || '—'}</td>
+      <td><button class="action-btn view-btn" style="background:none;border:none;cursor:pointer;font-size:18px;">👁️</button></td>
+    </tr>
+  `,
       renderPanel: (item) => {
         document.getElementById('panel-title').textContent = `Товар ${item.id || ''}`;
         document.getElementById('panel-body').innerHTML = `
@@ -325,12 +379,21 @@ if (!dataProducts || dataProducts.length === 0) {
 
     if (list.length === 0) {
       if (emptyBlock) emptyBlock.style.display = 'block';
-    } else {
+  } else {
       if (emptyBlock) emptyBlock.style.display = 'none';
-      // Генерируем новые строки (они уже содержат открывающий и закрывающий тег <tr>)
-      tBody.innerHTML = list.map(item => cfg.renderRow(item)).join('');
+      
+      // ИСПРАВЛЕННЫЙ РЕНДЕР:
+      tBody.innerHTML = list.map((item, index) => {
+        // Если это заказы (orders) или записи (appointments), передаем индекс
+        if (currentTab === 'orders' || currentTab === 'appointments') {
+            return cfg.renderRow(item, index);
+        } 
+        // Для остальных (каталог, вакансии, заявки) передаем только item
+        else {
+            return cfg.renderRow(item);
+        }
+      }).join('');
     }
-
     updateStatsCounters();
   }
 
@@ -369,23 +432,46 @@ if (!dataProducts || dataProducts.length === 0) {
     });
   }
 
-  function renderAll() {
+async function renderAll() {
+    try {
+        // Пытаемся получить заказы с сервера
+        const response = await fetch('http://localhost:3000/orders');
+        if (response.ok) {
+            dataOrders = await response.json();
+            console.log('СТРУКТУРА ОДНОГО ЗАКАЗА:', dataOrders[0]);
+            localStorage.setItem('orders', JSON.stringify(dataOrders));
+        }
+    } catch (err) {
+        console.warn("Сервер недоступен, берем данные из памяти:", err);
+        dataOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    }
+
+    // Остальные данные (которые не хранятся на сервере)
+    dataAppts = JSON.parse(localStorage.getItem('appointments')) || [];
+    dataHomeRequests = JSON.parse(localStorage.getItem('home_requests')) || [];
+    dataJobApps = JSON.parse(localStorage.getItem('job_applications')) || [];
+    dataProducts = JSON.parse(localStorage.getItem('shop_products')) || [];
+
     renderFiltersButtons();
     renderTable();
-  }
+}
 
   // === ОТКРЫТИЕ ПАНЕЛИ ===
-  function openPanel(id) {
+ function openPanel(id) {
     const cfg = TAB_CONFIG[currentTab];
-    selectedItem = cfg.getData().find(i => String(currentTab === 'orders' ? i.orderNumber : i.id) === String(id));
+    // Если мы в заказах — ищем по orderNumber, во всех остальных — по обычному id
+    selectedItem = cfg.getData().find(i => {
+        const itemId = (currentTab === 'orders') ? (i.orderNumber || i.id) : i.id;
+        return String(itemId) === String(id);
+    });
     
     if (selectedItem) {
-      cfg.renderPanel(selectedItem);
-      document.getElementById('details-panel').classList.add('open');
-      document.getElementById('details-overlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
+        cfg.renderPanel(selectedItem);
+        document.getElementById('details-panel').classList.add('open');
+        document.getElementById('details-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
     }
-  }
+}
 
   function closePanel() {
     document.getElementById('details-panel').classList.remove('open');
@@ -423,13 +509,17 @@ if (!dataProducts || dataProducts.length === 0) {
     renderTable();
   });
 
-  // Делегируем клик на всю таблицу, ищем класс кнопки .view-btn
-  document.getElementById('data-table')?.addEventListener('click', e => {
-    if (e.target.closest('.view-btn')) {
-      const row = e.target.closest('.order-row');
-      if (row) openPanel(row.dataset.id);
+ document.getElementById('data-table')?.addEventListener('click', e => {
+    // Ищем кнопку .view-btn внутри строки
+    const btn = e.target.closest('.view-btn');
+    if (btn) {
+        const row = e.target.closest('.order-row');
+        if (row) {
+            console.log('Нажали на заказ с ID:', row.dataset.id); // Проверка в консоли
+            openPanel(row.dataset.id);
+        }
     }
-  });
+});
 
   document.getElementById('panel-close').addEventListener('click', closePanel);
   document.getElementById('details-overlay').addEventListener('click', closePanel);
@@ -462,17 +552,19 @@ if (!dataProducts || dataProducts.length === 0) {
     e.preventDefault();
     const newProduct = {
       id: 'PROD-' + Date.now().toString().slice(-4),
-      titleRu: document.getElementById('prod-title-ru').value.trim(),
-      titleEn: document.getElementById('prod-title-en').value.trim(),
+      name: document.getElementById('prod-title-ru').value.trim(), // <--- изменил на name
+      brand: 'OK Salon', // Добавьте бренд, если нужно
+      volume: '200 мл',  // Или добавьте поле для объема в форму
       price: parseFloat(document.getElementById('prod-price').value),
-      img: document.getElementById('prod-img').value.trim(),
-      category: document.getElementById('prod-category').value
+      image: document.getElementById('prod-img').value.trim(),
+      category: document.getElementById('prod-category').value,
+      inStock: true
     };
     dataProducts.push(newProduct);
     localStorage.setItem('shop_products', JSON.stringify(dataProducts));
     this.reset();
-    renderAll();
-    alert('✓ Товар успешно добавлен в каталог!');
+    renderAll(); // Теперь сработает корректно
+    alert('✓ Товар успешно добавлен!');
   });
 
   // Первоначальный старт
