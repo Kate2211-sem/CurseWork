@@ -3,7 +3,7 @@
 Этот проект представляет собой веб-приложение для салона красоты с функционалом магазина косметики, корзиной заказов и системой управления.
 
 ## 🔗 Дизайн-макеты
-[Ссылка на Figma-файл с прототипами и дизайном]((https://www.figma.com/design/wsgOXCP4gCdao9ylZgoWEf/ОК---Copy-?node-id=308-2&p=f&t=8QUDtlDTk4Xi3z1k-0))
+[Ссылка на Figma-файл с прототипами и дизайном][(https://www.figma.com/design/wsgOXCP4gCdao9ylZgoWEf/ОК---Copy-?node-id=308-2&p=f&t=8QUDtlDTk4Xi3z1k-0)]
 
 ## 🌐 Деплой
 [Посмотреть работу онлайн (GitHub Pages)](https://Kate2211-sem.github.io/CurseWork/)
