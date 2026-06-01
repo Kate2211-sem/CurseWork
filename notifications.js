@@ -35,7 +35,7 @@ function showToast(type, productName, itemType = 'товар') {
     }
 
     // ✅ ГАРАНТИРОВАННЫЙ ПОКАЗ (не зависит от CSS)
-    toast.style.display = 'flex';
+    toast.classList.add('show');
     toast.style.opacity = '0';
     toast.style.transform = 'translateY(-20px)';
     toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -47,7 +47,7 @@ function showToast(type, productName, itemType = 'товар') {
     });
     
     // Автоматическое скрытие через 3 секунды
-    setTimeout(() => hideToast(), 3000);
+    setTimeout(() => hideToast(), 10000);
 }
 
 function hideToast() {
@@ -100,16 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    const cartIcon = document.querySelector('.user-zone .icon-btn:nth-child(2)');
-    if (cartIcon) {
-        cartIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            const user = JSON.parse(localStorage.getItem('currentUser'));
-            if (user && user.role === 'admin') {
-                showToast('admin', 'Администраторы не могут оформлять заказы', 'Система');
-                return;
-            }
-            window.location.href = 'cart.html';
-        });
-    }
+   // Внутри DOMContentLoaded в notifications.js
+const cartIcon = document.querySelector('.user-zone .icon-btn:nth-child(2)');
+if (cartIcon) {
+    cartIcon.addEventListener('click', (e) => {
+        // Если мы уже на странице корзины — ничего не делаем
+        if (window.location.pathname.includes('cart.html')) {
+            return;
+        }
+
+        // ВАЖНО: Если у вас НЕТ модального окна корзины в shop.html, 
+        // просто перенаправляем пользователя:
+        window.location.href = 'cart.html';
+    });
+}
 });
