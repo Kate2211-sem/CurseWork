@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-ru="Магазин косметики | Салон красоты OK!" data-en="Cosmetics Shop | Beauty Salon OK!">Магазин косметики | Салон красоты OK!</title>
+   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/shop.css">
-  <link rel="stylesheet" href="css/style.css">
+ 
 </head>
 <body>
-
+<div id="site-preloader" class="preloader">
+  <div class="preloader__content">
+    <div class="preloader__spinner"></div>
+    <p class="preloader__text" data-ru="Салон красоты OK!..." data-en="Beauty Salon OK!...">Загрузка салона красоты...</p>
+  </div>
+</div>
   <!-- Шапка -->
   <header class="header">
   <div class="container header__container">
@@ -94,7 +100,7 @@
     </div>
   </div>
 </header>
-
+<div class="nav-overlay"></div>
  <main class="shop">
     <div class="container">
         <div class="shop__header">
@@ -126,27 +132,56 @@
             </div>
         </div>
 
-        <div class="shop__filters">
-            <div class="filter-item">
-                <span class="filter-label" data-ru="Производитель" data-en="Brand">Производитель</span>
-                <select class="filter-select"><option data-ru="ESTEL" data-en="ESTEL">ESTEL</option></select>
-            </div>
-            <div class="filter-item">
-                <span class="filter-label" data-ru="Категория" data-en="Category">Категория</span>
-                <select class="filter-select"><option data-ru="Шампунь" data-en="Shampoo">Шампунь</option></select>
-            </div>
-            <div class="filter-price-wrapper">
-                <span class="price-value" data-ru="12 р." data-en="12 BYN">12 р.</span>
-                <div class="neon-range">
-                    <div class="neon-line"></div>
-                    <input type="range" class="range-input min-price" min="12" max="56" value="12">
-                    <input type="range" class="range-input max-price" min="12" max="56" value="56">
-                </div>
-                <span class="price-value" data-ru="56 р." data-en="56 BYN">56 р.</span>
-            </div>
-        </div>
+<div class="shop__filters">
+    <div class="filter-item filter-group">
+        <span class="filter-label" data-ru="Поиск" data-en="Search">Поиск</span>
+        <input type="text" id="search-input" class="filter-input" placeholder="Введите название...">
+    </div>
 
-      <div class="product-grid">
+    <div class="filter-item filter-group">
+        <span class="filter-label" data-ru="Сортировка" data-en="Sort">Сортировка</span>
+        <select id="sort-select" class="filter-select">
+            <option value="default" data-ru="По умолчанию" data-en="Default">По умолчанию</option>
+            <option value="price-asc" data-ru="Сначала дешевые" data-en="Price: Low to High">Сначала дешевые</option>
+            <option value="price-desc" data-ru="Сначала дорогие" data-en="Price: High to Low">Сначала дорогие</option>
+            <option value="name-asc" data-ru="По алфавиту (А-Я)" data-en="Name: A-Z">По алфавиту (А-Я)</option>
+        </select>
+    </div>
+
+    <div class="filter-item filter-group">
+        <span class="filter-label" data-ru="Производитель" data-en="Brand">Производитель</span>
+        <select id="brand-select" class="filter-select">
+            <option value="all">Все бренды</option>
+            <option value="ESTEL">ESTEL</option>
+            <option value="Londa">Londa</option>
+            <option value="Matrix">Matrix</option>
+            <option value="Ollin">Ollin</option>
+            <option value="Schwarzkopf">Schwarzkopf</option>
+            <option value="Wella">Wella</option>
+            <option value="Nioxin">Nioxin</option>
+        </select>
+    </div>
+
+    <div class="filter-item filter-group">
+        <span class="filter-label" data-ru="Категория" data-en="Category">Категория</span>
+        <select id="category-select" class="filter-select">
+            <option value="all">Все категории</option>
+            <option value="shampoo">Шампунь</option>
+            <option value="spray">Спрей</option>
+            <option value="oil">Масло</option>
+            <option value="mask">Маска</option>
+            <option value="conditioner">Кондиционер</option>
+            <option value="serum">Сыворотка</option>
+            <option value="styling">Стайлинг</option>
+            <option value="peeling">Пилинг</option>
+            <option value="balm">Бальзам</option>
+            <option value="care">Уход</option>
+            <option value="mousse">Мусс</option>
+        </select>
+    </div>
+</div>
+
+     <div class="product-grid" id="main-product-grid">
     <!-- Товар 1: Шампунь -->
     <div class="product-card" 
          data-product-id="p1" 
@@ -322,14 +357,15 @@
         <div class="banner__content">
             <p class="banner__subtitle" data-ru="Не пропусти" data-en="Don't miss">Не пропусти</p>
             <h2 class="banner__title" data-ru="Комплект для ухода за волосами KIKIMORA" data-en="KIKIMORA hair care set giveaway">Комплект для ухода<br>за волосами KIKIMORA</h2>
-            <a href="#" class="banner__link" data-ru="Участвовать в розыгрыше → " data-en="Join the giveaway → ">Участвовать в розыгрыше <span>→</span></a>
+            <button id="kikimora-btn" class="banner__link" style="background: none; border: none; cursor: pointer; text-align: left;" data-ru="Участвовать в розыгрыше → " data-en="Join the giveaway → ">Участвовать в розыгрыше <span>→</span></button>
         </div>
         <div class="banner__discount" data-ru="Розыгрыш" data-en="Giveaway">Розыгрыш</div>
         <img src="img/sale/kiki_set_s_montazhnaya-oblast-1 1.png" alt="KIKIMORA" class="banner__img">
     </div>
+</section>
 
 
-       <div class="product-grid second-block">
+       <div class="product-grid second-block" id="second-product-grid">
     <!-- Товар 9: Шампунь -->
     <div class="product-card" 
          data-product-id="p9" 
@@ -520,79 +556,23 @@
     </section>
 
     <section class="beauty-blog">
-        <div class="container">
-            <div class="blog-header">
-                <h2 class="blog-title" data-ru="Бьюти блог" data-en="Beauty blog">Бьюти блог</h2>
-                <a href="#" class="blog-link-all" data-ru="Смотреть все статьи" data-en="View all articles">
-                    Смотреть все статьи
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.33333 8H12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="blog-cards">
-                <article class="blog-card">
-                    <div class="card-image">
-                        <img src="img/blog/post-1.png" alt="Антистатик зимой">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title" data-ru="Антистатик зимой" data-en="Anti-static in winter">Антистатик зимой</h3>
-                        <p class="card-text" data-ru="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает..." data-en="It's long been known that readable text distracts from evaluating design and composition. That's why Lorem Ipsum is used — it provides...">
-                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
-                        </p>
-                        <a href="#" class="card-link" data-ru="Читать далее" data-en="Read more">
-                            Читать далее
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="card-image">
-                        <img src="img/blog/post-2.png" alt="Мой голову правильно">
-                        <span class="card-badge" data-ru="Новый пост" data-en="New post">Новый пост</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title" data-ru="Мой голову правильно" data-en="Wash your hair right">Мой голову правильно</h3>
-                        <p class="card-text" data-ru="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает..." data-en="It's long been known that readable text distracts from evaluating design and composition. That's why Lorem Ipsum is used — it provides...">
-                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
-                        </p>
-                        <a href="#" class="card-link" data-ru="Читать далее" data-en="Read more">
-                            Читать далее
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="card-image">
-                        <img src="img/blog/post-3.png" alt="Уход за кончиками">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title" data-ru="Уход за кончиками" data-en="Care for split ends">Уход за кончиками</h3>
-                        <p class="card-text" data-ru="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает..." data-en="It's long been known that readable text distracts from evaluating design and composition. That's why Lorem Ipsum is used — it provides...">
-                            Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает...
-                        </p>
-                        <a href="#" class="card-link" data-ru="Читать далее" data-en="Read more">
-                            Читать далее
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.33333 8H12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-            </div>
+    <div class="container">
+        <div class="blog-header">
+            <h2 class="blog-title" data-ru="Бьюти блог" data-en="Beauty Blog">Бьюти блог</h2>
+            <a href="#" class="blog-link-all" data-ru="Смотреть все статьи" data-en="View all articles">
+                Смотреть все статьи
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.33333 8H12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 3.33333L12.6667 8L8 12.6667" stroke="#FE5B14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
         </div>
-    </section>
+
+        <div class="blog-cards" id="blog-cards-container"></div>
+
+        <div class="blog-pagination" id="blog-pagination"></div>
+    </div>
+</section>
 
     <section class="instagram">
         <div class="container">
@@ -638,15 +618,24 @@
                 </div>
                 <button class="btn-gradient contacts__btn" data-ru="Записаться онлайн" data-en="Book online">Записаться онлайн</button>
             </div>
-            <div class="contacts__map-wrapper">
-                <div id="map" class="contacts__map">
-                    <img src="img/contacts/map.png" alt="Карта" class="map-bg">
-                    <div class="map-marker">
-                        <img src="img/header/ok-logo.png" alt="OK!">
-                        <span data-ru="Ленинградская 10" data-en="Leningradskaya 10">Ленинградская 10</span>
-                    </div>
-                </div>
-            </div>
+           <div class="contacts__map-wrapper">
+    <div id="map" class="contacts__map" style="position: relative; width: 100%; height: 100%;">
+        
+        <iframe 
+            src="https://yandex.ru/map-widget/v1/?ll=27.5492%2C53.8927&z=16.5&mode=search&text=Минск%2C%20Ленинградская%20улица%2C%2010" 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            allowfullscreen="true" 
+            style="display: block; border: none;">
+        </iframe>
+        
+        <div class="map-marker">
+            <img src="img/header/ok-logo.png" alt="OK!">
+            <span data-ru="Ленинградская 10" data-en="10 Leningradskaya St.">Ленинградская 10</span>
+        </div>
+    </div>
+</div>
         </div>
     </section>
   </main>
@@ -751,31 +740,29 @@
     </div>
   </div>
 </div>
+ 
 <script src="js/notifications.js"></script>
+<script src="js/api.js"></script>
+<script src="js/shop.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/favorites.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+ <script src="js/theme.js"></script>
   <script src="js/accessibility.js"></script>
   <script src="js/translate.js"></script>
   <script src="js/user-info.js"></script>
   <script src="js/booking.js"></script>
+  <script src="js/giveaway.js"></script>
 
  
   <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Инициализируем менеджеры (они сами привяжут события)
-    window.cart = new CartManager();
-    window.favorites = new FavoritesManager();
-    
-    // 🔐 Проверка авторизации для отображения имени
     const user = JSON.parse(localStorage.getItem('currentUser'));
     const userNameEl = document.querySelector('.user-name');
     const loginLink = document.querySelector('.user-profile');
-    
     if (user && userNameEl) {
         userNameEl.textContent = user.nickname || user.fio?.split(' ')[0] || 'Профиль';
-        loginLink.href = 'profile.html'; // Ссылка на личный кабинет
+        loginLink.href = 'profile.html';
     }
 });
 </script>
@@ -802,7 +789,18 @@ document.addEventListener('DOMContentLoaded', () => {
         <div id="modal-body"></div>
     </div>
 </div>
-
+<div id="giveaway-modal" class="modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:3000; align-items:center; justify-content:center;">
+  <div class="modal-content" style="max-width:450px; padding:32px; text-align:center; position:relative; background:var(--bg-card); border-radius:20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+    <button id="close-giveaway" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; cursor:pointer; color:var(--text-muted);">&times;</button>
+    <div style="font-size:64px; margin-bottom:16px;">🎁</div>
+    <h3 id="giveaway-title" style="font-family:'Gilroy',sans-serif; font-size:24px; margin:0 0 12px;">Вы участвуете!</h3>
+    <p id="giveaway-text" style="color:var(--text-muted); margin:0 0 20px; line-height:1.5;">Ваш счастливый номер участника розыгрыша набора KIKIMORA:</p>
+    <div id="giveaway-number" style="font-size:36px; font-weight:800; color:#fe5b14; background:var(--input-bg); padding:12px 24px; border-radius:12px; display:inline-block; margin-bottom:24px; letter-spacing:1px; border:1px solid var(--border);">
+      № 0000
+    </div>
+    <button id="giveaway-ok" class="cart-checkout" style="width:100%; padding:14px; cursor:pointer;">👍 Отлично</button>
+  </div>
+</div>
 
 </body>
 </html>
