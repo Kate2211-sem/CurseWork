@@ -73,7 +73,12 @@
   </style>
 </head>
 <body>
-
+<div id="site-preloader" class="preloader">
+  <div class="preloader__content">
+    <div class="preloader__spinner"></div>
+    <p class="preloader__text" data-ru="Салон красоты OK!..." data-en="Beauty Salon OK!...">Загрузка салона красоты...</p>
+  </div>
+</div>
   <!-- Шапка -->
   <header class="header">
   <div class="container header__container">
@@ -123,6 +128,7 @@
     <div class="cart-container">
       <div class="cart-header">
         <h1 class="cart-title">Ваша корзина</h1>
+        
         <a href="shop.html" class="cart-back">← Продолжить покупки</a>
       </div>
 
@@ -139,11 +145,20 @@
 
       <!-- Итого -->
       <div id="cart-summary" class="cart-summary" style="display: none;">
-        <div class="summary-row"><span>Товары (<span id="summary-count">0</span>)</span><span id="summary-subtotal">0.00 руб.</span></div>
-        <div class="summary-row"><span>Доставка</span><span>Бесплатно</span></div>
-        <div class="summary-row summary-total"><span>Итого</span><span id="summary-total">0.00 руб.</span></div>
-        <button class="cart-checkout" id="btn-checkout" type="button">📦 Оформить заказ</button>
-      </div>
+  <div class="summary-row">
+    <span>Товары (<span id="summary-count">0</span>)</span>
+    <span id="summary-subtotal">0.00 руб.</span>
+  </div>
+  <div class="summary-row">
+    <span>Доставка</span>
+    <span>Бесплатно</span>
+  </div>
+  <div class="summary-row summary-total">
+    <span>Итого</span>
+    <span id="summary-total">0.00 руб.</span>
+  </div>
+  <button class="cart-checkout" id="btn-checkout" type="button">📦 Оформить заказ</button>
+</div>
     </div>
   </main>
 
@@ -163,20 +178,21 @@
   </footer>
 
   <!-- Toast и модальное окно -->
-  <div id="toast-notification" class="toast-notification">
+<!-- В конце <body>, перед скриптами -->
+<div id="toast-notification" class="toast-notification" style="display: none;">
     <div class="toast-content">
-      <div class="toast-icon">✓</div>
-      <div class="toast-message"><strong class="toast-title">Добавлено!</strong><span class="toast-text">Товар добавлен в корзину</span></div>
-      <button class="toast-close" onclick="hideToast()">&times;</button>
+        <div class="toast-icon">✓</div>
+        <div class="toast-message">
+            <strong class="toast-title">Добавлено!</strong>
+            <span class="toast-text">Товар добавлен в корзину</span>
+        </div>
+        <button class="toast-close" onclick="hideToast()">&times;</button>
     </div>
     <div class="toast-actions">
-      <button class="toast-btn toast-btn-secondary" onclick="hideToast()">Продолжить</button>
-      <button class="toast-btn toast-btn-primary" onclick="goToCart()">В корзину</button>
+        <button class="toast-btn toast-btn-secondary" onclick="hideToast()">Продолжить</button>
+        <button class="toast-btn toast-btn-primary" onclick="goToCart()">В корзину</button>
     </div>
-  </div>
-  <div id="quick-view-modal" class="modal-overlay" style="display: none;">
-    <div class="modal-content"><button class="modal-close" onclick="closeModal()">&times;</button><div id="modal-body"></div></div>
-  </div>
+</div>
 
   <!-- 🔹 Модальное окно оформления заказа (ВНУТРИ body, перед скриптами) -->
   <div id="checkout-modal" class="modal-overlay" style="display: none;">
@@ -212,213 +228,31 @@
       <button onclick="window.location.href='shop.html'" class="btn-online" style="width:auto; padding:14px 32px;">Вернуться в магазин</button>
     </div>
   </div>
+   <script src="js/notifications.js"></script>
+  <script src="js/api.js"></script>
+<!-- В конце <body>, перед </body> -->
 
+<script src="js/cart.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/main.js"></script>
   <!-- 🔹 Скрипты -->
-  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/accessibility.js"></script>
   <script src="js/translate.js"></script>
-  <script src="js/notifications.js"></script>
-  <script src="js/favorites.js"></script>
-  <script src="js/user-info.js"></script>
+ 
   
+  <script src="js/user-info.js"></script>
+  <script>
+    if (window.cartManager) {
+        window.cartManager.renderCartPage();
+    }
+</script>
   <!-- 🔹 Основной скрипт корзины + оформление -->
   <script>
-    // === ФУНКЦИИ КОРЗИНЫ (глобальные) ===
-    function changeQty(productId, delta) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const item = cart.find(i => i.productId === productId);
-      if (!item) return;
-      item.quantity += delta;
-      if (item.quantity <= 0) cart = cart.filter(i => i.productId !== productId);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      location.reload();
-    }
-
-    function removeItem(productId) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart = cart.filter(i => i.productId !== productId);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      if (typeof window.updateHeaderBadges === 'function') window.updateHeaderBadges();
-      location.reload();
-    }
-
-    // === ФУНКЦИИ ОФОРМЛЕНИЯ (глобальные) ===
-    function openCheckoutModal() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      if (cart.length === 0) {
-        if (typeof showToast === 'function') showToast('error', 'Корзина пуста', 'Добавьте товары');
-        return;
-      }
-      updateCheckoutTotal();
-      document.getElementById('checkout-modal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeCheckoutModal() {
-      document.getElementById('checkout-modal').style.display = 'none';
-      document.body.style.overflow = '';
-      document.getElementById('checkout-form')?.reset();
-    }
-
-    function updateCheckoutTotal() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-      const delivery = document.getElementById('c-delivery')?.value === 'delivery' ? 5 : 0;
-      document.getElementById('checkout-total').textContent = (subtotal + delivery).toFixed(2).replace('.', ',');
-    }
-
-    function showOrderSuccess(order) {
-      document.getElementById('checkout-modal').style.display = 'none';
-      const orderNum = 'OK-' + Date.now().toString().slice(-6);
-      document.getElementById('success-order-num').textContent = '#' + orderNum;
-      
-      const itemsHtml = order.items.map(i => 
-        `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);">
-          <span>${i.name} × ${i.quantity}</span>
-          <strong>${(i.price * i.quantity).toFixed(2).replace('.', ',')} руб.</strong>
-        </div>`
-      ).join('');
-      
-      const deliveryText = order.delivery === 'delivery' ? '🚚 Доставка' : '🏪 Самовывоз';
-      const deliveryCost = order.delivery === 'delivery' ? '5.00 руб.' : 'Бесплатно';
-      
-      document.getElementById('success-details').innerHTML = `
-        ${itemsHtml}
-        <div style="display:flex;justify-content:space-between;padding:12px 0 0;font-weight:600;">
-          <span>${deliveryText}</span><span>${deliveryCost}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:18px;font-weight:700;color:var(--primary);">
-          <span>Итого</span><span>${order.total.toFixed(2).replace('.', ',')} руб.</span>
-        </div>
-      `;
-      
-      // Сохраняем заказ
-      let orders = JSON.parse(localStorage.getItem('orders')) || [];
-      orders.unshift({ ...order, orderNumber: orderNum, date: new Date().toISOString() });
-      localStorage.setItem('orders', JSON.stringify(orders));
-      
-      // Очищаем корзину
-      localStorage.removeItem('cart');
-      if (typeof window.updateHeaderBadges === 'function') window.updateHeaderBadges();
-      
-      // Показываем успех
-      document.getElementById('order-success').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    // === ИНИЦИАЛИЗАЦИЯ ===
-    document.addEventListener('DOMContentLoaded', () => {
-      // 🛒 Рендер корзины
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const emptyEl = document.getElementById('cart-empty');
-      const listEl = document.getElementById('cart-list');
-      const summaryEl = document.getElementById('cart-summary');
-      
-      if (cart.length === 0) {
-        emptyEl.style.display = 'block';
-      } else {
-        emptyEl.style.display = 'none';
-        summaryEl.style.display = 'block';
-        
-        listEl.innerHTML = cart.map(item => `
-          <div class="cart-item" data-product-id="${item.productId}">
-            <div class="cart-item-img"><img src="${item.image || 'img/products/placeholder.jpg'}" alt="${item.name}"></div>
-            <div class="cart-item-info">
-              <h3 class="cart-item-name">${item.name}</h3>
-              <p class="cart-item-meta">${item.category || 'Товар'} ${item.volume ? '• ' + item.volume : ''}</p>
-              <div class="cart-item-price">${item.price.toFixed(2).replace('.', ',')} руб.</div>
-            </div>
-            <div class="cart-item-actions">
-              <div class="qty-control">
-                <button class="qty-btn" onclick="changeQty('${item.productId}', -1)">−</button>
-                <span class="qty-value">${item.quantity}</span>
-                <button class="qty-btn" onclick="changeQty('${item.productId}', 1)">+</button>
-              </div>
-              <button class="cart-remove" onclick="removeItem('${item.productId}')" aria-label="Удалить">🗑️</button>
-            </div>
-          </div>
-        `).join('');
-        
-        const totalQty = cart.reduce((s, i) => s + i.quantity, 0);
-        const totalPrice = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-        document.getElementById('summary-count').textContent = totalQty;
-        document.getElementById('summary-subtotal').textContent = totalPrice.toFixed(2).replace('.', ',') + ' руб.';
-        document.getElementById('summary-total').textContent = totalPrice.toFixed(2).replace('.', ',') + ' руб.';
-      }
-      
-      if (typeof window.updateHeaderBadges === 'function') window.updateHeaderBadges();
-      
-      // 📦 Кнопка оформления
-      const checkoutBtn = document.getElementById('btn-checkout');
-      if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          openCheckoutModal();
-        });
-      }
-      
-      // Закрытие модалки
-      const closeBtn = document.getElementById('close-checkout');
-      const modal = document.getElementById('checkout-modal');
-      if (closeBtn) closeBtn.addEventListener('click', closeCheckoutModal);
-      if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeCheckoutModal(); });
-      
-      // Пересчёт при смене доставки
-      const deliverySelect = document.getElementById('c-delivery');
-      if (deliverySelect) deliverySelect.addEventListener('change', updateCheckoutTotal);
-      
-      // Отправка формы
-      const form = document.getElementById('checkout-form');
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-          const delivery = document.getElementById('c-delivery').value;
-          const deliveryCost = delivery === 'delivery' ? 5 : 0;
-          const total = subtotal + deliveryCost;
-          
-          const order = {
-            items: cart.map(i => ({ productId: i.productId, name: i.name, price: i.price, quantity: i.quantity, image: i.image })),
-            customer: {
-              name: document.getElementById('c-name').value.trim(),
-              phone: document.getElementById('c-phone').value.trim(),
-              address: document.getElementById('c-address').value.trim(),
-              comment: document.getElementById('c-comment').value.trim()
-            },
-            delivery,
-            subtotal,
-            deliveryCost,
-            total,
-            status: 'pending'
-          };
-          
-          // Проверка: админ не заказывает
-          const user = JSON.parse(localStorage.getItem('currentUser'));
-          if (user?.role === 'admin') {
-            if (typeof showToast === 'function') showToast('error', 'Доступ запрещён', 'Администраторы не оформляют заказы');
-            return;
-          }
-          
-          showOrderSuccess(order);
-        });
-      }
-      
-      // Закрытие по Esc
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (modal?.style.display === 'flex') closeCheckoutModal();
-          if (document.getElementById('order-success')?.style.display === 'block') {
-            document.getElementById('order-success').style.display = 'none';
-            document.body.style.overflow = '';
-          }
-        }
-      });
-      
-      // Инициализация суммы
-      updateCheckoutTotal();
-    });
-  </script>
+  if (window.cartManager) {
+    window.cartManager.renderCartPage();
+  }
+</script>
 </body>
 </html>
