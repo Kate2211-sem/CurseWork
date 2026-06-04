@@ -2,12 +2,9 @@
 .reviews-section {
     padding-top: 22px; /* Отступ от шапки по ТЗ */
     padding-bottom: 80px;
-    background-color: #F9F5F0; /* Светлый бело-голубой фон */
+   background-color: var(--bg-page) !important; /* Светлый бело-голубой фон */
     overflow: hidden; /* Чтобы декоративные элементы не создавали прокрутку */
 }
-
-
-
 
 
 .reviews-container {
@@ -26,7 +23,7 @@
 }
 
 .reviews-title {
-    color: #333;
+    color: var(--text-main) !important;
     font-family: 'Gilroy', sans-serif;
     font-size: 46px;
     font-weight: 700;
@@ -35,7 +32,7 @@
 }
 
 .reviews-description {
-    color: rgba(51, 51, 51, 0.70);
+     color: var(--text-main) !important;
     font-family: 'Gilroy', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -148,7 +145,7 @@
 }
 .testimonials {
     padding: 60px 0 100px;
-    background-color: #F9F5F0;
+    background-color: var(--bg-page) !important;
     overflow: visible; /* Чтобы тени и элементы не резались */
 }
 
@@ -168,13 +165,15 @@
     flex-wrap: nowrap;
     overflow-x: auto; /* Появится скролл, если экран будет слишком узким */
     padding-bottom: 20px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
 }
 
 /* Прячем полосу прокрутки для красоты */
 .testimonials-track::-webkit-scrollbar { display: none; }
 
 .testimonial-card {
-    background: #FFFFFF;
+  background-color: var(--bg-page) !important;
     border-radius: 20px;
     width: 287px;           /* Твоя ширина */
     height: 334px;          /* Твоя высота */
@@ -184,6 +183,7 @@
     justify-content: space-between;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;         /* Чтобы карточки не сжимались */
+    scroll-snap-align: start;
 }
 
 /* Шапка карточки: фото + имя в ряд */
@@ -218,7 +218,7 @@
     font-size: 17px;
     font-weight: 700;
     margin: 0;
-    color: #333;
+    color: var(--text-main) !important;
 }
 
 .testimonial-stars {
@@ -231,7 +231,7 @@
     /* Твои точные параметры */
     width: 233px;
     height: 211px;
-    color: #333;
+    color: var(--text-main) !important;
     font-family: 'Gilroy', sans-serif;
     font-size: 14px;
     font-style: normal;
@@ -279,10 +279,57 @@
     color: #CCCCCC;
     font-size: 18px;
 }
+.slider-arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #333333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.slider-arrow-btn:hover {
+    background-color: #f9f5f0; /* Твой светлый бежевый оттенок салона */
+    color: #b8926a;
+}
+
+/* Позиционирование левой и правой стрелки */
+.prev-btn {
+    left: -22px;
+}
+
+.next-btn {
+    right: -22px;
+}
+
+/* Автоматическая интеграция стрелок под темную тему */
+[data-theme="dark"] .slider-arrow-btn {
+    background-color: #1e1e1e;
+    border-color: #374151;
+    color: #f3f4f6;
+}
+[data-theme="dark"] .slider-arrow-btn:hover {
+    background-color: #242526;
+    color: #ff6b6b;
+}
+
+
 .beauty-format {
     padding-top: 105px; /* Отступ вниз от предыдущей секции */
     padding-bottom: 100px;
-    background-color: #F9F5F0;
+    background-color: var(--bg-page) !important;
 }
 
 .beauty-container {
@@ -337,7 +384,7 @@
 }
 
 .beauty-title {
-    color: #333;
+    color: var(--text-main) !important;
     font-family: 'Gilroy', sans-serif;
     font-size: 46px;
     font-weight: 700;
@@ -347,7 +394,7 @@
 
 .beauty-text-block {
     height: 392px; /* Твоя высота */
-    color: rgba(51, 51, 51, 0.70);
+     color: var(--text-main) !important;
     font-family: 'Gilroy', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -362,18 +409,18 @@
 .beauty-final-line {
     margin-top: 30px;
     font-weight: 500;
-    color: #333; /* Последняя строка чуть акцентнее */
+    color: var(--text-main) !important; /* Последняя строка чуть акцентнее */
 }
 .services-section {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
     padding-top: 79px; /* Отступ от круга предыдущей части */
-    background-color: #F9F5F0;
+    background-color: var(--bg-page) !important;
 }
 
 .services-title {
-    color: #333;
+    color: var(--text-main) !important;
     text-align: center;
     font-family: 'Gilroy', sans-serif;
     font-size: 46px;
@@ -429,7 +476,7 @@
     font-family: 'Gilroy', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+     color: var(--text-main) !important;
     margin-bottom: 5px;
 }
 
@@ -440,7 +487,7 @@
 .service-price {
     font-family: 'Gilroy', sans-serif;
     font-size: 16px;
-    color: #666;
+    color: var(--text-main) !important;
     margin-bottom: 20px;
 }
 
@@ -491,7 +538,7 @@
 
 .promo-text { 
     font-size: 16px; 
-    color: #333; 
+    color: var(--text-main) !important;
     margin-bottom: 5px; 
 }
 
@@ -1229,22 +1276,66 @@
 /* ==========================================================================
    АДАПТИВ КАРТОЧЕК И ОТЗЫВОВ НА ГЛАВНОЙ (ПО АНАЛОГИИ С НАШИМИ НАСТРОЙКАМИ)
    ========================================================================== */
+/* ==========================================================================
+   ЖЕСТКИЙ МОНОЛИТНЫЙ АДАПТИВ (ВЫРАВНИВАНИЕ СТРОГО ПО ЦЕНТРУ ЭКРАНА)
+   ========================================================================== */
+@media screen and (max-width: 1150px) {
+    .reviews-container {
+        display: flex !important;
+        flex-direction: column-reverse !important; /* Коллаж сверху, текст снизу */
+        align-items: center !important;
+        justify-content: center !important; 
+        text-align: center !important;
+        gap: 10px !important; 
+        padding-left: 0 !important;   /* Убираем десктопный сдвиг */
+        padding-right: 0 !important;  
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .reviews-text {
+        width: 100% !important;
+        max-width: 550px !important;
+        margin: 0 auto !important;
+        padding-top: 0 !important;
+    }
+
+    .reviews-collage {
+        position: relative !important;
+        width: 700px !important;   /* Родной десктопный размер монолита */
+        height: 460px !important;  
+        margin: 0 auto !important; 
+        left: 0 !important;
+        right: 0 !important;
+        flex-shrink: 0 !important;
+
+        /* Уменьшаем от центра, пока экран позволяет (до 600px) */
+        transform: scale(0.85) !important;
+        transform-origin: center center !important;
+    }
+}
+
+
+
+
+
 
 /* --- ПЛАНШЕТЫ И ТЕЛЕФОНЫ (1024px и ниже) --- */
 @media screen and (max-width: 1024px) {
-    /* ОТЗЫВЫ: выстраиваем карточки в гибкий флекс-ряд с переносом */
-    .testimonials-track {
+ .testimonials-track {
         display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
+        flex-wrap: nowrap !important; /* Убираем wrap, чтобы карточки не падали друг под друга! */
+        justify-content: flex-start !important; /* Начинаем строго с первой левой карточки */
         gap: 24px !important;
+        overflow-x: auto !important; /* Разрешаем свайп пальцем на планшетах и мобилках */
+        padding-left: 20px; /* Небольшой отступ слева, чтобы первая карточка не липла к краю экрана */
+        padding-right: 20px;
     }
 
     .testimonial-card {
-        width: 100% !important;
-        max-width: 480px !important; /* Наша стандартная идеальная ширина для карточки */
+        width: 287px !important; /* Возвращаем им родную аккуратную ширину, чтобы они листались по одной */
+        max-width: 85vw !important; /* Защита: карточка никогда не станет шире экрана телефона */
     }
-
     /* УСЛУГИ НА ГЛАВНОЙ: делаем сетку из 2 колонок, как мы делали ранее */
     .services-grid {
         display: grid !important;
@@ -1255,8 +1346,63 @@
         max-width: 600px !important;
         margin: 0 auto !important;
     }
-}
+   
 
+    /* --- 2. СЕКЦИЯ БЬЮТИ В НОВОМ ФОРМАТЕ --- */
+    .beauty-container {
+        display: flex !important;
+        flex-direction: column !important; /* ФОТО ВСЕГДА ПЕРВОЕ, ТЕКСТ ВТОРОЙ */
+        align-items: center !important;
+        gap: 30px !important;
+        padding: 0 20px !important;
+    }
+
+    .beauty-image-wrapper {
+        width: 100% !important;
+        max-width: 360px !important; /* Ограничиваем ширину фото на планшете/мобилке */
+        margin: 0 auto !important;
+        position: relative !important;
+    }
+
+    .beauty-main-img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        border-radius: 10px !important;
+    }
+
+    .beauty-content {
+        width: 100% !important;
+        max-width: 550px !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+    }
+
+    .beauty-title br {
+        display: none !important; /* Убираем жесткий перенос строк из HTML */
+    }
+    .beauty-decor-circle,
+    .beauty-decor-dots {
+        display: none !important;
+    }
+    .slider-arrow-btn {
+        display: none !important;
+    }
+}
+/* --- ПЛАНШЕТЫ (850px) --- */
+@media screen and (max-width: 850px) {
+    .reviews-collage {
+        transform: scale(0.7) !important;
+        transform-origin: center center !important;
+        
+        /* Из-за transform: scale вокруг блока образуются пустые невидимые поля. 
+           Отрицательными margin-top и margin-bottom мы аккуратно их прижимаем, 
+           а боковые margin: auto держат железный центр. */
+        margin: -40px auto !important; 
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
 /* --- ДЛЯ ЭКРАНОВ В РАЙОНЕ 720px --- */
 @media screen and (max-width: 720px) {
     /* Переводим сетку услуг в одну колонку */
@@ -1269,6 +1415,23 @@
         max-width: 340px !important;
     }
 }
+@media screen and (max-width: 600px) {
+    .reviews-collage {
+        /* Отключаем автоматический маржин, который ломался из-за ширины 700px */
+        margin-left: 50% !important; 
+        margin-right: auto !important;
+        
+        /* Сдвигаем точку отсчета в верхний центр и плавно сжимаем */
+        transform: translateX(-50%) scale(0.55) !important;
+        transform-origin: top center !important;
+        
+        margin-top: 0 !important;
+        /* Отрицательный нижний отступ убирает пустоту, которая создается от scale */
+        margin-bottom: -190px !important; 
+    }
+}
+
+
 
 /* --- СМАРТФОНЫ И УЗКИЕ ЭКРАНЫ (От 450px до самых маленьких 320px) --- */
 @media screen and (max-width: 450px) {
@@ -1308,4 +1471,56 @@
         line-height: 42px !important;
         margin-bottom: 35px !important;
     }
+.reviews-collage {
+        margin-left: 50% !important; 
+        margin-right: auto !important;
+        
+        /* Ещё немного уменьшаем под экраны 320px, но удерживаем железный центр */
+        transform: translateX(-50%) scale(0.44) !important;
+        transform-origin: top center !important;
+        
+        margin-top: 0 !important;
+        margin-bottom: -245px !important; 
+    }
+
+    .reviews-title {
+        font-size: 32px !important;
+        line-height: 40px !important;
+    }
+    /* Бьюти формат: подгоняем размеры под узкий экран смартфона */
+    .beauty-image-wrapper {
+        max-width: 280px !important;
+    }
+
+    /* Масштабируем фоновые декоративные круги под фото, чтобы не распирали бока */
+    .beauty-decor-circle,
+    .beauty-decor-dots {
+        transform: scale(0.7) !important;
+        opacity: 0.4 !important;
+    }
+
+    .beauty-title {
+        font-size: 28px !important;
+        line-height: 36px !important;
+    }
+
+    .beauty-text-block p {
+        font-size: 14px !important;
+        line-height: 22px !important;
+        margin-bottom: 12px !important;
+    }
+}
+ /* ========== ТЁМНАЯ ТЕМА ДЛЯ ФУТЕРА ========== */
+body.dark-theme .footer {
+    background-color: var(--bg-page) !important;
+}
+body.dark-theme .footer__container {
+    background: var(--bg-card) !important;
+}
+body.dark-theme .footer__brand,
+body.dark-theme .footer__unp,
+body.dark-theme .footer__menu a,
+body.dark-theme .footer__phone,
+body.dark-theme .footer__time {
+    color: var(--text-main) !important;
 }

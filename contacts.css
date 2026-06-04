@@ -1,6 +1,6 @@
 .contacts {
     padding: 73px 0 100px;
-    background-color: #F9F5F0;
+    background-color: var(--bg-page) !important;
 }
 
 .contacts__container {
@@ -24,7 +24,7 @@
     font-weight: 700;
     line-height: 56px;
     margin-bottom: 51px;
-    color: #333;
+   color: var(--text-main) !important;
 }
 
 .contacts__item {
@@ -34,20 +34,20 @@
 .contacts__label {
     display: block;
     font-size: 14px;
-    color: rgba(51, 51, 51, 0.4);
+   color: var(--text-main) !important;
     margin-bottom: 10px;
 }
 
 .contacts__value {
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-main) !important;
     margin: 0;
 }
 
 .contacts__note {
     font-size: 14px;
-    color: rgba(51, 51, 51, 0.6);
+   color: var(--text-main) !important;
 }
 
 .contacts__btn {
@@ -56,7 +56,7 @@
     border: none;
     border-radius: 15px;
     background: linear-gradient(90deg, #FFB800 0%, #FF9900 100%);
-    color: #fff;
+   background-color: var(--bg-page) !important;
     font-weight: 700;
     box-shadow: 0 10px 20px rgba(255, 184, 0, 0.3);
 }
@@ -71,7 +71,7 @@
 .contacts__text {
     font-size: 14px;
     line-height: 24px;
-    color: rgba(51, 51, 51, 0.7);
+    color: var(--text-main) !important;
     margin: 0;
 }
 
@@ -133,7 +133,7 @@
 }
 /* СТИЛИ ДЛЯ НОВОЙ СЕКЦИИ КАРТЫ */
 .map-section {
-    background-color: #F9F5F0; 
+   background-color: var(--bg-page) !important;
     padding-bottom: 100px;
     padding-top: 15px; /* Небольшой отступ от предыдущей секции с видео */
 }
@@ -186,11 +186,11 @@
     max-width: 1280px;
     margin: 0 auto;
     padding-top: 79px; /* Отступ от круга предыдущей части */
-    background-color: #F9F5F0;
+   background-color: var(--bg-page) !important;
 }
 
 .services-title {
-    color: #333;
+   color: var(--text-main) !important;
     text-align: center;
     font-family: 'Gilroy', sans-serif;
     font-size: 46px;
@@ -246,7 +246,7 @@
     font-family: 'Gilroy', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-main) !important;
     margin-bottom: 5px;
 }
 
@@ -257,7 +257,7 @@
 .service-price {
     font-family: 'Gilroy', sans-serif;
     font-size: 16px;
-    color: #666;
+     color: var(--text-main) !important;
     margin-bottom: 20px;
 }
 
@@ -319,7 +319,7 @@
     font-family: 'Gilroy', sans-serif;
     font-size: 13px;
     line-height: 18px;
-    color: #333333;
+   color: var(--text-main) !important;
     margin: 0;
     max-width: 250px; /* Ограничиваем ширину текста, чтобы он красиво переносился */
 }
@@ -381,7 +381,7 @@
 }
 .testimonials {
     padding: 60px 0 100px;
-    background-color: #F9F5F0;
+    background-color: var(--bg-page) !important;
     overflow: visible; /* Чтобы тени и элементы не резались */
 }
 
@@ -391,7 +391,7 @@
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 50px;
-    color: #333;
+   color: var(--text-main) !important;
 }
 
 .testimonials-track {
@@ -407,7 +407,7 @@
 .testimonials-track::-webkit-scrollbar { display: none; }
 
 .testimonial-card {
-    background: #FFFFFF;
+   background-color: var(--bg-page) !important;
     border-radius: 20px;
     width: 287px;           /* Твоя ширина */
     height: 334px;          /* Твоя высота */
@@ -451,7 +451,7 @@
     font-size: 17px;
     font-weight: 700;
     margin: 0;
-    color: #333;
+   color: var(--text-main) !important;
 }
 
 .testimonial-stars {
@@ -464,7 +464,7 @@
     /* Твои точные параметры */
     width: 233px;
     height: 211px;
-    color: #333;
+    color: var(--text-main) !important;
     font-family: 'Gilroy', sans-serif;
     font-size: 14px;
     font-style: normal;
@@ -488,7 +488,7 @@
     width: 4px;
 }
 .testimonial-text::-webkit-scrollbar-thumb {
-    background-color: #CCCCCC;
+   color: var(--text-main) !important;
     border-radius: 10px;
 }
 
@@ -628,4 +628,611 @@
 .footer__menu a:hover {
     color: #FE9313;
     transition: 0.3s;
+}
+/* ==========================================================================
+   ПОЛНЫЙ АДАПТИВ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (САЛОН КРАСОТЫ OK!)
+   ========================================================================== */
+/* --- ФИКС КАРТЫ ДЛЯ ПРЕДОТВРАЩЕНИЯ ГОРИЗОНТАЛЬНОГО СКРОЛЛА --- */
+@media screen and (max-width: 1200px) {
+    .map-section {
+        width: 100% !important;
+        overflow: hidden !important; /* На всякий случай гасим любые вылеты */
+    }
+
+    .map-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 20px !important; /* Даем аккуратные отступы от краев экрана */
+        margin: 0 auto !important;
+    }
+
+    .map-picture-wrapper {
+        width: 100% !important; /* Обёртка становится полностью резиновой */
+        max-width: 100% !important;
+        height: auto !important; /* Разрешаем высоте подстраиваться */
+        aspect-ratio: 16 / 9; /* Сохраняем красивые пропорции карты при уменьшении */
+        position: relative !important;
+    }
+
+    .map-image {
+        width: 100% !important; /* Картинка карты теперь сжимается вместе с экраном */
+        height: 100% !important;
+        object-fit: cover !important; /* Карта аккуратно заполняет блок без искажений пропорций */
+    }
+
+    /* Корректируем положение маркера, чтобы он не улетал при уменьшении карты */
+    .map-marker {
+        position: absolute !important;
+        /* Если маркер стоял по центру, фиксируем его */
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important; 
+    }
+}
+/* Точка, когда 4 карточки в ряд начинают упираться в края экрана */
+@media screen and (max-width: 1120px) {
+    .services-section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .services-grid {
+        flex-wrap: wrap !important; /* Разрешаем карточкам переноситься на новую строку */
+        justify-content: center !important; /* Центрируем карточки */
+        gap: 40px 30px !important; /* 40px отступ между строками, 30px между карточками */
+    }
+
+    .service-card {
+        /* Меняем фиксированную ширину на гибкую: по 2 карточки в ряд с учетом gap */
+        width: calc(50% - 15px) !important; 
+        max-width: 250px !important; /* Не даем им раздуваться больше десктопного размера */
+    }
+}
+/* --- ПЛАНШЕТНЫЙ РЕЖИМ (До 1024px) --- */
+@media screen and (max-width: 1024px) {
+    /* 1. Блок Контактов */
+    .contacts__container {
+        padding: 0 20px !important;
+        flex-direction: column !important; /* Выстраиваем колонки сверху вниз */
+        align-items: center !important;
+        gap: 40px !important;
+    }
+
+    .contacts__info-column,
+    .contacts__descr-column,
+    .contacts__video-column {
+        width: 100% !important;
+        max-width: 600px !important; /* Ограничиваем ширину для аккуратного чтения */
+        text-align: center !important;
+    }
+
+    .contacts__title {
+        font-size: 38px !important;
+        line-height: 46px !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 2. Карта проезда */
+    .map-container {
+        padding: 0 20px !important;
+    }
+    .map-picture-wrapper {
+        max-width: 100% !important;
+        height: 350px !important; /* Делаем карту чуть компактнее на планшетах */
+    }
+
+    /* 3. Услуги салона */
+    .services-title {
+        font-size: 34px !important;
+        text-align: center !important;
+        margin-bottom: 40px !important;
+    }
+
+    .services-grid {
+        /* Переключаем на резиновую сетку: по 2 карточки в ряд */
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+        gap: 25px !important;
+        padding: 0 20px !important;
+    }
+
+    /* 4. Двойной промо-баннер */
+    .promo-banner.double-banner {
+        flex-direction: column !important; /* Колонки встают друг под друга */
+        gap: 30px !important;
+        padding: 40px 30px !important;
+        margin: 40px 20px !important;
+        text-align: center !important;
+        height: auto !important;
+    }
+
+    .banner-divider {
+        width: 100% !important; /* Разделитель становится горизонтальной линией */
+        height: 1px !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    /* 5. Отзывы клиентов */
+    .testimonials-track {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Разрешаем карточкам переноситься */
+        justify-content: center !important;
+        gap: 25px !important;
+        padding: 0 20px !important;
+    }
+
+    .testimonial-card {
+        flex: 1 1 45% !important; /* По 2 отзыва в ряд */
+        max-width: 100% !important;
+    }
+}
+/* ==========================================================================
+   ФИКС СКРОЛЛА НА 725px (ПЛАНШЕТНАЯ И МОБИЛЬНАЯ АДАПТАЦИЯ)
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+    /* 1. Исправляем Двойной Баннер (он был 975px и жестко ломал экран) */
+    .promo-banner.double-banner {
+        width: 100% !important;
+        height: auto !important; /* Разрешаем блоку расти вниз, если текст не влезает */
+        flex-direction: column !important; /* Выстраиваем колонки друг под другом */
+        padding: 20px !important;
+        gap: 20px !important;
+    }
+
+    .banner-col {
+        width: 100% !important; /* Колонки баннера занимают всю ширину */
+        justify-content: space-between !important;
+    }
+
+    /* Прячем разделительную линию, так как колонки теперь друг под другом */
+    .banner-divider {
+        width: 100% !important;
+        height: 1px !important;
+        margin: 10px 0 !important;
+    }
+
+    /* 2. Исправляем секцию контактов (Левая колонка + Текст + Видео) */
+    .contacts__container {
+        flex-direction: column !important; /* Выстраиваем все в один столбец */
+        padding-left: 20px !important;  /* Убираем жесткий отступ 96px */
+        padding-right: 20px !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .contacts__info-column,
+    .contacts__descr-column,
+    .contacts__video-column {
+        width: 100% !important;
+        max-width: 450px !important; /* Ограничиваем, чтобы на планшете смотрелось аккуратно */
+        margin-left: 0 !important;   /* Обнуляем жесткие отступы 105px и 118px */
+        margin-right: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 40px !important; /* Делаем красивые отступы между блоками по вертикали */
+    }
+
+    .contacts__title {
+        font-size: 36px !important;
+        line-height: 46px !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 3. Фикс карточек услуг, чтобы они гарантированно не толкались на 725px */
+    .services-grid {
+        gap: 30px 15px !important; /* Чуть уменьшаем расстояние между карточками */
+    }
+
+    .service-card {
+        /* На экранах около 725px две карточки по 250px могут притираться к краям, 
+           поэтому даем им чуть больше свободы */
+        width: calc(50% - 10px) !important;
+        max-width: 240px !important;
+    }
+}
+/* ==========================================================================
+   ГЛОБАЛЬНЫЙ МОБИЛЬНЫЙ ФИКС СКРОЛЛА (ОТ 700px ДО 320px)
+   ========================================================================== */
+@media screen and (max-width: 700px) {
+    /* Жестко запрещаем всей странице и главным секциям выходить за рамки экрана */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    main.main, 
+    .contacts, 
+    .map-section, 
+    .services-section, 
+    .testimonials {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-hidden: hidden !important;
+        padding-left: 10px !important;  /* Минимальные безопасные отступы */
+        padding-right: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 1. ФИКС КОНТАКТОВ (Обнуляем скрытые десктопные ширины) */
+    .contacts__info-column,
+    .contacts__descr-column,
+    .contacts__video-column {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Видео-превью на маленьких экранах должно сжиматься, а не стоять жестко */
+    .video-card {
+        width: 100% !important;
+        max-width: 340px !important; /* Больше этого размера на мобилке не надо */
+        margin: 0 auto !important;
+    }
+
+    .video-card__bg {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* 2. ФИКС КАРТЫ */
+    .map-picture-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 3. ФИКС КАРТОЧЕК УСЛУГ (На экранах меньше 580px они строго по одной по центру) */
+    .services-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 30px !important;
+    }
+
+    .service-card {
+        width: 100% !important;
+        max-width: 270px !important; /* Зажимаем ширину карточки, чтобы она со свистом влезала даже в 320px */
+        margin: 0 auto !important;
+    }
+
+    /* 4. ФИКС БАННЕРА (Убираем любые внутренние распирания) */
+    .promo-banner.double-banner {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 5. ФИКС ОТЗЫВОВ (Убираем фиксированную ширину трека) */
+    .testimonials-track {
+        display: flex !important;
+        flex-direction: column !important; /* На мобилках отзывы строго друг под друга */
+        align-items: center !important;
+        width: 100% !important;
+        gap: 25px !important;
+    }
+
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 290px !important; /* Гарантирует, что отзыв влезет в любой экран от 320px */
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+    .header {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important; /* Обрезает всё, что невидимо торчит вправо */
+        box-sizing: border-box !important;
+    }
+
+    .header__container {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important; /* Спасает бургер от выдавливания */
+        box-sizing: border-box !important;
+    }
+
+    /* Если скрытое навигационное меню на десктопе имеет фиксированную ширину, 
+       мы ужимаем его в рамки экрана мобильного */
+    .nav {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Убираем возможные фиксированные боковые отступы у правой части */
+    .header__right {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+/* --- МОБИЛЬНЫЙ РЕЖИМ (До 650px) --- */
+@media screen and (max-width: 650px) {
+    /* 1. Блок Контактов */
+    .contacts {
+        padding: 40px 0 !important;
+    }
+
+    .contacts__title {
+        font-size: 30px !important;
+        line-height: 38px !important;
+    }
+
+    .contacts__value {
+        font-size: 20px !important;
+    }
+
+    /* Видео-карточка */
+    .video-card {
+        height: 240px !important; /* Ограничиваем высоту превью, чтобы не ломалась пропорция */
+    }
+
+    .video-play-btn svg {
+        width: 64px !important; /* Уменьшаем кнопку Play под мобильные */
+        height: 64px !important;
+    }
+
+    .video-card__title {
+        font-size: 16px !important;
+        line-height: 22px !important;
+    }
+
+    /* 2. Карта */
+    .map-picture-wrapper {
+        height: 260px !important;
+    }
+    
+    .map-marker {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+    }
+
+    /* 3. Услуги: выстраиваем строго по одной карточке в ряд */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+    .service-card {
+        width: 100% !important;
+    }
+
+    .service-image-wrapper {
+        height: 200px !important; /* Фиксируем аккуратный размер фото */
+    }
+
+    .service-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* Фотографии не сжимаются сплюснуто, а кропаются аккуратно */
+    }
+
+    /* 4. Отзывы: по одному в ряд на мобилках */
+    .testimonial-card {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+
+    .testimonial-text {
+        font-size: 14px !important;
+        line-height: 20px !important;
+    }
+}
+/* ==========================================================================
+   ФИКС ШАПКИ НА ЭКРАНАХ 320px (СПАСЕНИЕ БУРГЕРА ОТ ОБРЕЗАНИЯ)
+   ========================================================================== */
+@media screen and (max-width: 450px) {
+    /* 1. Зажимаем контейнер шапки в строгие рамки экрана */
+    .header__container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Уменьшаем логотип, чтобы освободить место справа */
+    .header__logo {
+        max-width: 110px !important; /* Логотип станет чуть компактнее */
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+    }
+
+    .logo-ok {
+        height: 30px !important; /* Аккуратный мобильный размер */
+        width: auto !important;
+    }
+
+    .logo-text {
+        height: 20px !important;
+        width: auto !important;
+    }
+
+    /* 3. НАВЕДЕНИЕ ПОРЯДКА В ПРАВОЙ ЧАСТИ */
+    .header__right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important; /* Минимальный зазор между элементами */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Скрываем на 320px громоздкие инструменты и длинную кнопку записи,
+       чтобы они не ломали верстку (их обычно переносят внутрь самого бургер-меню) */
+    
+    .social-link {
+        display: none !important; 
+    }
+
+    /* 4. ОПТИМИЗАЦИЯ ЗОНЫ ПОЛЬЗОВАТЕЛЯ */
+    .user-zone {
+        display: flex !important;
+        gap: 8px !important;
+        align-items: center !important;
+    }
+
+    .icon-btn {
+        font-size: 16px !important; /* Уменьшаем эмодзи ❤️ и 🛒 */
+    }
+
+    .user-name {
+        display: none !important; /* Скрываем слово "Войти", оставляем только иконку, если она есть */
+    }
+
+    /* 5. ЖЕСТКАЯ СТАБИЛИЗАЦИЯ БУРГЕРА */
+    .burger {
+        
+        position: static !important; /* Убираем абсолютные сдвиги */
+        margin: 0 !important;
+        padding: 5px !important;
+        flex-shrink: 0 !important; /* Запрещаем бургеру сжиматься или улетать */
+        box-sizing: border-box !important;
+    }
+    .testimonial-text {
+        width: 100% !important;     /* Больше никаких фиксированных 233px! */
+        max-width: 100% !important;  
+        height: auto !important;     /* Текст будет расти вниз, а не обрезаться */
+        max-height: 180px !important;/* Ограничиваем высоту, если отзыв слишком длинный */
+        box-sizing: border-box !important;
+        padding-right: 0 !important;
+        margin: 0 !important;
+        font-size: 13px !important;  /* Слегка уменьшаем шрифт для мобилки */
+        line-height: 19px !important;
+    }
+
+    /* 2. ФИКС БЛОКОВ ПРЕИМУЩЕСТВ (МАГАЗИН КОСМЕТИКИ) */
+    /* Чтобы иконки не наезжали на текст, выстраиваем их вертикально */
+    .shop-features, 
+    .features-container,
+    .promo-banner__features { 
+        display: flex !important;
+        flex-direction: column !important; /* Карточки преимуществ встают друг под друга */
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Сами мини-блоки преимуществ (где картинка + текст) */
+    .feature-item,
+    .benefit-item {
+        display: flex !important;
+        flex-direction: column !important; /* Иконка сверху, текст снизу */
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 260px !important;
+    }
+
+    /* Исправляем заголовки и описания преимуществ */
+    .feature-title,
+    .feature-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important; /* Убираем боковые отступы, которые вызывали наложение */
+        text-align: center !important;
+    }
+}
+/* --- КРИТИЧЕСКИ МАЛЕНЬКИЕ СМАРТФОНЫ (До 400px) --- */
+@media screen and (max-width: 400px) {
+    .contacts__title, .services-title {
+        font-size: 26px !important;
+    }
+
+    .promo-banner.double-banner {
+        padding: 30px 15px !important;
+    }
+
+    .banner-col__text {
+        font-size: 15px !important;
+        line-height: 22px !important;
+    }
+
+    /* Центрируем маркер на карте, если на мелких экранах он смещается */
+    .map-marker {
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+ /* ==========================================================================
+   ИСПРАВЛЕННЫЙ БЛОК: СТИЛИ ДЛЯ РЕЖИМА СЛАБОВИДЯЩИХ (ЧЕРНАЯ ТЕМА)
+   ========================================================================== */
+
+/* 1. СТИЛИ ДЛЯ КАРТЫ */
+html[data-a11y-scheme="white-black"] .contacts__map,
+html[data-a11y-scheme="black-white"] .contacts__map {
+    background: #242424 !important;
+}
+
+html[data-a11y-scheme="white-black"] .map-marker,
+html[data-a11y-scheme="black-white"] .map-marker {
+    background: #242424 !important;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 2. СЕКЦИЯ ОТЗЫВОВ (ПРИМЕНЯЕТСЯ ТОЛЬКО НА ЧЕРНОМ РЕЖИМЕ СЛАБОВИДЯЩИХ) */
+html[data-a11y-scheme="white-black"] .testimonials {
+    background-color: #131313 !important; 
+}
+
+html[data-a11y-scheme="white-black"] .testimonial-card {
+    background: #242424 !important; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+html[data-a11y-scheme="white-black"] .testimonial-avatar {
+    border-color: #1A1A1A !important;
+}
+
+html[data-a11y-scheme="white-black"] .testimonial-name,
+html[data-a11y-scheme="white-black"] .testimonial-text {
+    color: #FFFFFF !important;
+}
+
+html[data-a11y-scheme="white-black"] .testimonial-footer {
+    border-top: 1px solid #333333 !important;
+}
+
+/* 3. ПОДВАЛ FOOTER (ПРИМЕНЯЕТСЯ ТОЛЬКО НА ЧЕРНОМ РЕЖИМЕ СЛАБОВИДЯЩИХ) */
+html[data-a11y-scheme="white-black"] .footer__container {
+    background: #1E1E1E !important; 
+}
+
+html[data-a11y-scheme="white-black"] .footer__brand,
+html[data-a11y-scheme="white-black"] .footer__unp,
+html[data-a11y-scheme="white-black"] .footer__menu a,
+html[data-a11y-scheme="white-black"] .footer__phone,
+html[data-a11y-scheme="white-black"] .footer__time {
+    color: #FFFFFF !important;
+}
+/* ========== ТЁМНАЯ ТЕМА ДЛЯ ФУТЕРА ========== */
+body.dark-theme .footer {
+    background-color: var(--bg-page) !important;
+}
+body.dark-theme .footer__container {
+    background: var(--bg-card) !important;
+}
+body.dark-theme .footer__brand,
+body.dark-theme .footer__unp,
+body.dark-theme .footer__menu a,
+body.dark-theme .footer__phone,
+body.dark-theme .footer__time {
+    color: var(--text-main) !important;
 }

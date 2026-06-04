@@ -49,7 +49,71 @@ body {
   
 }
 
+/* ==========================================================================
+   СТИЛЬНЫЙ ПРЕЛОАДЕР НА ВЕСЬ ЭКРАН
+   ========================================================================== */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f5f0; /* Твой фирменный нежный светлый фон */
+  z-index: 99999; /* Гарантирует, что прелоадер будет поверх абсолютно всего */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, visibility 0.2s ease; /* Плавное исчезновение */
+}
 
+/* Автоматическая адаптация прелоадера под темную тему сайта */
+[data-theme="dark"] .preloader {
+  background-color: #121212;
+}
+
+.preloader__content {
+  text-align: center;
+}
+
+/* Анимация крутящегося спиннера */
+.preloader__spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(0, 0, 0, 0.05);
+  border-top-color: #b8926a; /* Элегантный золотистый или твой основной цвет салона */
+  border-radius: 50%;
+  margin: 0 auto 16px auto;
+  animation: spinPreloader 1s linear infinite;
+}
+
+[data-theme="dark"] .preloader__spinner {
+  border-color: rgba(255, 255, 255, 0.05);
+  border-top-color: #e07f0f;
+}
+
+/* Текст под спиннером */
+.preloader__text {
+  font-size: 14px;
+  color: #5e6672;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .preloader__text {
+  color: #b0b3b8;
+}
+
+/* Описание кручения */
+@keyframes spinPreloader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Класс, который мы добавим через JS для скрытия заставки */
+.preloader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
 .auth-container {
   background: var(--bg-card);
@@ -2050,7 +2114,56 @@ margin-left: 60px; }
     color: #FE5B14; /* При наведении красим в оранжевый */
 }
 
+/* ✅ СТИЛИ ПАГИНАЦИИ */
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    width: 100%;
+}
 
+.pagination-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Активная страница (оранжевая) */
+.pagination-btn.active {
+    background-color: #FE5B14;
+    border-color: #FE5B14;
+    color: #ffffff;
+}
+
+.pagination-btn:hover:not(.active) {
+    border-color: #FE5B14;
+    color: #FE5B14;
+    background-color: #fff9f6;
+}
+
+/* Поддержка темной темы сайта */
+[data-theme="dark"] .pagination-btn {
+    background-color: #242526;
+    border-color: #3a3b3c;
+    color: #b0b3b8;
+}
+[data-theme="dark"] .pagination-btn:hover:not(.active) {
+    color: #FE5B14;
+    background-color: #2d1f1f;
+}
 /* ========== ADAPTIVE (Mobile) ========== */
 @media (max-width: 768px) {
     .blog-title {
@@ -2073,6 +2186,7 @@ margin-left: 60px; }
     padding: 80px 0;
     width: 100%;
     overflow: hidden; /* Страховка от вылетания */
+    
 }
 
 /* Контейнер строго 1280px */
@@ -2156,7 +2270,96 @@ margin-left: 60px; }
     font-size: 14px;
     font-family: 'Gilroy';
 }
+/* Базовый стиль карточки */
+.instagram__item {
+    position: relative;
+    flex: 0 0 calc((100% - 60px) / 5);
+    aspect-ratio: 1 / 1;
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer; /* Элемент интерактивности: меняется курсор */
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); /* Плавность */
+}
 
+/* Эффект 1: Зум при наведении на саму карточку */
+.instagram__item:hover {
+    transform: translateY(-10px);
+}
+
+/* Эффект 2: Увеличение картинки внутри */
+.instagram__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.instagram__item:hover img {
+    transform: scale(1.15); /* Плавное увеличение фото */
+}
+
+/* Эффект 3: Красивый оверлей */
+.instagram__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(254, 91, 20, 0.6); /* Оранжевый фильтр вместо простого черного */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Эффект 4: Текст при наведении с анимацией появления */
+.instagram__overlay span {
+    color: #fff;
+    font-weight: 600;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.instagram__item:hover .instagram__overlay {
+    opacity: 1;
+}
+
+.instagram__item:hover .instagram__overlay span {
+    transform: translateY(0);
+}
+
+/* Эффект 5: Нажатие (активное состояние) */
+.instagram__item:active {
+    transform: scale(0.95);
+}
+/* Сама анимация */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Сдвигаем на половину ширины, если продублировать контент */
+}
+
+/* Останавливаем движение при наведении */
+.instagram__grid:hover {
+    animation-play-state: paused;
+}
+/* Настраиваем контейнер */
+.instagram__grid {
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Центрируем, если карточек мало */
+    
+    /* Анимация: 15 секунд, линейно, бесконечно, туда-обратно */
+    animation: bounce-horizontal 15s linear infinite alternate;
+}
+
+/* Сама анимация движения */
+@keyframes bounce-horizontal {
+    0% { transform: translateX(-150px); }  /* Сдвиг влево */
+    100% { transform: translateX(150px); } /* Сдвиг вправо */
+}
+
+/* Останавливаем при наведении */
+.instagram__grid:hover {
+    animation-play-state: paused;
+}
 /* Для адаптива */
 @media (max-width: 1024px) {
     .instagram__grid {
@@ -2322,25 +2525,20 @@ margin-left: 60px; }
 }
 .footer {
     width: 100%;
-    background-color: var(--bg-page) !important;
-    padding: 0px 0; /* Отступы сверху и снизу от края экрана */
+    background-color: var(--bg-page);  /* ← Убрали !important и используем переменную */
+    padding: 0px 0;
+    transition: background-color 0.3s ease;
 }
-
 .footer__container {
     max-width: 1280px;
     height: 222px;
-    margin: 0 auto; /* Центрируем белую карточку */
-   background-color: var(--bg-page) !important;
+    margin: 0 auto;
+    background-color: var(--bg-card);  /* ← Используем переменную вместо transparent */
     border-radius: 15px;
     display: flex;
     align-items: center;
     padding: 0 60px;
-    
-    /* Твоя внутренняя тень */
-    
-    
-    /* Добавим внешнюю тень, чтобы блок плавно выделялся на белом фоне, если нужно */
-    /* box-shadow: 0 5px 15px rgba(0,0,0,0.03), 0 5px 10px 0 rgba(0, 0, 0, 0.05) inset; */
+    transition: background-color 0.3s ease;
 }
 
 /* Ограничиваем контент внутри, чтобы ничего не "разъезжалось" на 1440px */
@@ -3724,54 +3922,7 @@ html[data-a11y-scheme="blue-darkblue"] .info-card, html[data-a11y-scheme="blue-d
 .accessibility-modal * {
   box-shadow: none !important;
 }
-/* ==========================================================================
-   ФИКС ДЛЯ РЕЖИМОВ ДОСТУПНОСТИ (ЦВЕТОВЫХ СХЕМ)
-   ========================================================================== */
 
-/* Гарантируем, что при переключении тем контент не будет съезжать или обрезаться */
-body.dark-theme .brow-service__content,
-body.dark-theme .beauty-container,
-body[class*="theme"] .beauty-container, /* на случай если классы называются blue-theme, beige-theme */
-body[class*="theme"] [class*="__content"] {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 40px !important; /* Безопасное расстояние между фото и правым текстом */
-    width: 100% !important;
-    max-width: 1280px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    margin: 0 auto !important;
-    overflow: visible !important;
-}
-
-/* Фикс для текстового блока (правая часть с ценами) */
-body[class*="theme"] .brow-service__price-block,
-body[class*="theme"] .beauty-content,
-body[class*="theme"] [class*="-block"] {
-    margin-left: 0 !important; /* Убираем коварные отрицательные маржины, которые режут текст! */
-    width: auto !important;
-    max-width: 500px !important;
-    text-align: left !important; /* Чтобы текст всегда аккуратно ровнялся по левому краю */
-}
-
-/* Фикс адаптива: если экран меньше 1024px, принудительно перестраиваем в стек (в один столбец) */
-@media screen and (max-width: 1024px) {
-    body[class*="theme"] .brow-service__content,
-    body[class*="theme"] .beauty-container,
-    body[class*="theme"] [class*="__content"] {
-        flex-direction: column !important; /* Картинка сверху, текст снизу */
-        text-align: center !important;
-    }
-    
-    body[class*="theme"] .brow-service__price-block,
-    body[class*="theme"] .beauty-content,
-    body[class*="theme"] [class*="-block"] {
-        text-align: center !important;
-        margin: 0 auto !important;
-    }
-}
 .hero-title {
     white-space: pre-line !important;
 }
@@ -4016,4 +4167,193 @@ body.nav-open {
   }
 }
 
+/* Модальное окно цен */
+.price-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2000;
+    padding: 15px;
+}
 
+.price-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.price-modal__container {
+    background: #fff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 30px 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-30px);
+    transition: transform 0.3s ease;
+}
+
+.price-modal.is-active .price-modal__container {
+    transform: translateY(0);
+}
+
+.price-modal__close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+}
+
+.price-modal__close:hover {
+    color: #333;
+}
+
+.price-modal__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #222;
+}
+
+/* Таблица цен */
+.price-modal__table-wrapper {
+    max-height: 350px;
+    overflow-y: auto;
+    margin-bottom: 25px;
+    padding-right: 5px;
+}
+
+/* Стилизация скроллбара */
+.price-modal__table-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+.price-modal__table-wrapper::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.price-modal__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.price-modal__table th {
+    font-weight: 600;
+    color: #777;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #eee;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-modal__table td {
+    padding: 14px 0;
+    border-bottom: 1px solid #f5f5f5;
+    color: #333;
+    font-size: 16px;
+}
+
+.price-modal__table tr:last-child td {
+    border-bottom: none;
+}
+
+.price-modal__table td:nth-child(2) {
+    color: #888;
+    font-size: 14px;
+}
+
+.price-modal__table td:last-child {
+    font-weight: 600;
+    text-align: right;
+    color: #fe5b14; /* Твой фирменный цвет */
+}
+
+.price-modal__actions {
+    display: flex;
+    justify-content: center;
+}
+
+.price-modal__actions .btn-gradient {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px;
+    font-size: 16px;
+}
+/* Кнопка сброса внутри блока hero-buttons */
+.profile-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  /* Подстраиваем под размеры стандартных кнопок */
+  padding: 12px 24px; 
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px; /* Если у твоих кнопок другой радиус (например 50px), измени тут */
+  
+  /* Стильный нейтральный вид */
+  color: #5e6672;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Эффект при наведении (аккуратный красный оттенок) */
+.profile-reset-btn:hover {
+  color: #dc2626;
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+  transform: translateY(-1px);
+}
+
+.profile-reset-btn:active {
+  transform: translateY(1px);
+}
+
+/* Красивое кручение стрелочки */
+.profile-reset-btn:hover span {
+  display: inline-block;
+  transform: rotate(-180deg);
+  transition: transform 0.4s ease;
+}
+
+/* Поддержка темной темы сайта */
+[data-theme="dark"] .profile-reset-btn {
+  background-color: #242526;
+  border-color: #3a3b3c;
+  color: #b0b3b8;
+}
+
+[data-theme="dark"] .profile-reset-btn:hover {
+  background-color: #2d1f1f;
+  border-color: #7f2323;
+  color: #ff6b6b;
+}
+
+/* Если на мобилках кнопки встают друг под друга */
+@media (max-width: 768px) {
+  .profile-reset-btn {
+    width: 100%; /* на телефонах растянется во всю ширину */
+  }
+}
